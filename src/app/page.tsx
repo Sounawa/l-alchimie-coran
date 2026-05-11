@@ -393,27 +393,62 @@ export default function QuranMirrorPage() {
     return !!MIROIR[`${surahId}:${verseId}`];
   };
 
-  // Audio toggle handler
+  // Audio toggle handler with actual TTS
   const handleAudioToggle = useCallback(async () => {
     if (!selectedVerse) return;
     
     setIsAudioLoading(true);
     
-    // Use TTS skill to generate audio
     try {
       if (isAudioPlaying) {
+        // Stop playback
         setIsAudioPlaying(false);
+        if (audioRef.current) {
+          audioRef.current.pause();
+          audioRef.current = null;
+        }
       } else {
-        setIsAudioPlaying(true);
-        // Simulate audio playback duration based on verse length
-        const duration = Math.max(5000, selectedVerse.text.length * 50);
-        setTimeout(() => {
+        // Start playback with TTS
+        // Use Arabic text for recitation
+        const textToSpeak = selectedVerse.text;
+        
+        const response = await fetch('/api/tts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            text: textToSpeak,
+            voice: 'tongtong',
+            speed: 0.75
+          }),
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to generate audio');
+        }
+        
+        const audioBlob = await response.blob();
+        const audioUrl = URL.createObjectURL(audioBlob);
+        
+        const audio = new Audio(audioUrl);
+        audioRef.current = audio;
+        
+        audio.onended = () => {
           setIsAudioPlaying(false);
-        }, duration);
+          URL.revokeObjectURL(audioUrl);
+        };
+        
+        audio.onerror = () => {
+          setIsAudioPlaying(false);
+          toast.error('Erreur de lecture audio');
+          URL.revokeObjectURL(audioUrl);
+        };
+        
+        await audio.play();
+        setIsAudioPlaying(true);
       }
     } catch (error) {
       console.error('Audio error:', error);
-      toast.error('Erreur de lecture audio');
+      toast.error('Erreur de génération audio');
     } finally {
       setIsAudioLoading(false);
     }
