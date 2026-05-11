@@ -1,0 +1,90 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  avatar    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  bookmarks   Bookmark[]
+  notes       Note[]
+  readingHistory ReadingHistory[]
+  preferences UserPreferences?
+}
+
+model UserPreferences {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  theme           String   @default("dark")
+  fontSize        Float    @default(1.0)
+  showArabic      Boolean  @default(true)
+  showTranslation Boolean  @default(true)
+  showTranslit    Boolean  @default(false)
+  autoPlayAudio   Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Bookmark {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  surahId   Int
+  verseId   Int
+  reference String   // "2:255" format
+  note      String?
+  color     String   @default("#c9a227")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, surahId, verseId])
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  surahId   Int
+  verseId   Int
+  reference String
+  content   String
+  isPrivate Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, surahId, verseId])
+}
+
+model ReadingHistory {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  surahId   Int
+  verseId   Int
+  reference String
+  duration  Int      @default(0) // seconds spent reading
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+}
+
+model SurahProgress {
+  id           String   @id @default(cuid())
+  surahId      Int      @unique
+  lastReadAt   DateTime?
+  readCount    Int      @default(0)
+  completedAt  DateTime?
+}
