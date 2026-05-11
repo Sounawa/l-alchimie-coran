@@ -2,11 +2,90 @@ import { NextResponse } from 'next/server';
 
 const CDN_BASE = 'https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/chapters/fr';
 
-// Miroir references for counting
+// Miroir references for counting - comprehensive list
 const MIROIR_REFERENCES = [
-  '1:1', '1:5', '2:152', '2:186', '2:255', '2:286',
-  '3:139', '13:28', '24:35', '39:53', '50:16', '55:13',
-  '65:3', '67:3', '89:27', '89:28', '94:5', '112:1', '112:2'
+  // Surah 1 - Al-Fatihah
+  '1:1', '1:5',
+  // Surah 2 - Al-Baqarah
+  '2:152', '2:186', '2:255', '2:286',
+  // Surah 3 - Ali 'Imran
+  '3:139',
+  // Surah 4 - An-Nisa
+  '4:36',
+  // Surah 5 - Al-Ma'idah
+  '5:3',
+  // Surah 6 - Al-An'am
+  '6:59',
+  // Surah 7 - Al-A'raf
+  '7:43',
+  // Surah 8 - Al-Anfal
+  '8:17',
+  // Surah 9 - At-Tawbah
+  '9:51',
+  // Surah 10 - Yunus
+  '10:62',
+  // Surah 11 - Hud
+  '11:88',
+  // Surah 12 - Yusuf
+  '12:53',
+  // Surah 13 - Ar-Ra'd
+  '13:28',
+  // Surah 14 - Ibrahim
+  '14:34',
+  // Surah 15 - Al-Hijr
+  '15:99',
+  // Surah 16 - An-Nahl
+  '16:97',
+  // Surah 17 - Al-Isra
+  '17:82',
+  // Surah 18 - Al-Kahf
+  '18:24',
+  // Surah 19 - Maryam
+  '19:96',
+  // Surah 20 - Ta-Ha
+  '20:14',
+  // Surah 21 - Al-Anbya
+  '21:35',
+  // Surah 22 - Al-Hajj
+  '22:78',
+  // Surah 24 - An-Nur
+  '24:35',
+  // Surah 25 - Al-Furqan
+  '25:70',
+  // Surah 29 - Al-'Ankabut
+  '29:69',
+  // Surah 30 - Ar-Rum
+  '30:21',
+  // Surah 31 - Luqman
+  '31:17',
+  // Surah 32 - As-Sajdah
+  '32:17',
+  // Surah 33 - Al-Ahzab
+  '33:56',
+  // Surah 35 - Fatir
+  '35:2',
+  // Surah 36 - Ya-Sin
+  '36:11',
+  // Surah 39 - Az-Zumar
+  '39:53',
+  // Surah 40 - Ghafir
+  '40:60',
+  // Surah 41 - Fussilat
+  '41:53',
+  // Surah 50 - Qaf
+  '50:16',
+  // Surah 55 - Ar-Rahman
+  '55:13',
+  // Surah 65 - At-Talaq
+  '65:3',
+  // Surah 67 - Al-Mulk
+  '67:3',
+  // Surah 89 - Al-Fajr
+  '89:27', '89:28',
+  // Surah 94 - Ash-Sharh
+  '94:5',
+  // Surah 112 - Al-Ikhlas
+  '112:1', '112:2'
 ];
 
 export async function GET() {
