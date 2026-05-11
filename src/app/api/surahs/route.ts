@@ -4,8 +4,9 @@ const CDN_BASE = 'https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/chapters/fr
 
 // Miroir references for counting
 const MIROIR_REFERENCES = [
-  '1:1', '1:5', '13:28', '39:53', '94:5', '50:16', '2:186', 
-  '65:3', '2:286', '89:27', '89:28', '112:1'
+  '1:1', '1:5', '2:152', '2:186', '2:255', '2:286',
+  '3:139', '13:28', '24:35', '39:53', '50:16', '55:13',
+  '65:3', '67:3', '89:27', '89:28', '94:5', '112:1', '112:2'
 ];
 
 export async function GET() {

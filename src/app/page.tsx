@@ -374,116 +374,158 @@ export default function QuranMirrorPage() {
   );
 
   // Render welcome screen
-  const renderWelcome = () => (
-    <div className="flex-1 flex items-center justify-center p-6">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-center max-w-md"
-      >
-        {/* Bismillah symbol */}
-        <motion.div 
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-gold-dim via-mirror/10 to-purple/10 border border-gold/15 flex items-center justify-center shadow-lg shadow-gold/5 animate-pulse-glow"
-        >
-          <span className="font-arabic text-3xl text-gold">﷽</span>
-        </motion.div>
-        
-        {/* Gold divider */}
-        <div className="gold-divider max-w-[200px] mx-auto mb-6">
-          <span></span>
-          <div className="dot"></div>
-          <div className="dot-sm"></div>
-          <div className="dot"></div>
-          <span></span>
-        </div>
-        
-        {/* Title */}
-        <h1 className="font-title text-2xl font-bold mb-3">Le Coran du Miroir</h1>
-        
-        <p className="text-sm text-muted-foreground italic leading-relaxed mb-6">
-          Le Coran ne se lit pas — il se contemple.<br />
-          Chaque verset est un miroir qui révèle une couche de ton âme.
-        </p>
-        
-        {/* Divider */}
-        <div className="gold-divider max-w-[160px] mx-auto mb-6">
-          <span></span>
-          <div className="dot"></div>
-          <span></span>
-        </div>
-        
-        {/* Stats */}
-        <div className="flex justify-center gap-8 mb-8">
+  const renderWelcome = () => {
+    // Get daily verse based on day of year
+    const getDailyVerse = () => {
+      const miroirKeys = Object.keys(MIROIR);
+      const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000);
+      const index = dayOfYear % miroirKeys.length;
+      return miroirKeys[index];
+    };
+    
+    const dailyRef = getDailyVerse();
+    const dailyMiroir = MIROIR[dailyRef];
+    
+    return (
+      <div className="flex-1 flex flex-col overflow-auto">
+        <div className="flex-1 flex items-center justify-center p-6">
           <motion.div 
-            whileHover={{ scale: 1.05 }}
-            className="cursor-default"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center max-w-lg"
           >
-            <div className="text-xl font-semibold text-gold">6236</div>
-            <div className="text-[10px] text-muted-foreground">versets</div>
-          </motion.div>
-          <motion.div 
-            whileHover={{ scale: 1.05 }}
-            className="cursor-default"
-          >
-            <div className="text-xl font-semibold text-mirror">114</div>
-            <div className="text-[10px] text-muted-foreground">sourates</div>
-          </motion.div>
-          <motion.div 
-            whileHover={{ scale: 1.05 }}
-            className="cursor-default"
-          >
-            <div className="text-xl font-semibold text-purple">{getMiroirCount()}</div>
-            <div className="text-[10px] text-muted-foreground">miroirisés</div>
-          </motion.div>
-        </div>
-        
-        {/* Random button */}
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          <Button
-            onClick={goRandomMiroir}
-            className="bg-gold-dim border border-gold/25 text-gold hover:bg-gold/20 transition-all"
-          >
-            <Shuffle className="w-4 h-4 mr-2" />
-            Verset miroir aléatoire
-          </Button>
-        </motion.div>
-        
-        {/* Reading history */}
-        {readingHistory.length > 0 && (
-          <div className="mt-8">
-            <p className="text-[11px] text-muted-foreground mb-2 flex items-center justify-center gap-1">
-              <Clock className="w-3 h-3" /> Récemment lus
-            </p>
-            <div className="flex flex-wrap justify-center gap-1">
-              {readingHistory.slice(0, 5).map((ref, i) => {
-                const surah = surahs.find(s => s.id === parseInt(ref));
-                if (!surah) return null;
-                return (
-                  <button
-                    key={i}
-                    onClick={() => loadSurah(parseInt(ref))}
-                    className="px-2 py-1 text-[10px] rounded bg-white/[0.02] hover:bg-white/[0.05] text-muted-foreground hover:text-foreground transition-all"
-                  >
-                    {surah.translation}
-                  </button>
-                );
-              })}
+            {/* Bismillah symbol */}
+            <motion.div 
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="w-24 h-24 mx-auto mb-8 rounded-full bg-gradient-to-br from-gold-dim via-mirror/10 to-purple/10 border border-gold/15 flex items-center justify-center shadow-lg shadow-gold/5 animate-pulse-glow"
+            >
+              <span className="font-arabic text-4xl text-gold">﷽</span>
+            </motion.div>
+            
+            {/* Gold divider */}
+            <div className="gold-divider max-w-[220px] mx-auto mb-6">
+              <span></span>
+              <div className="dot"></div>
+              <div className="dot-sm"></div>
+              <div className="dot"></div>
+              <span></span>
             </div>
-          </div>
-        )}
-        
-        <p className="text-[10px] text-muted-foreground mt-6">
-          Traduction : Muhammad Hamidullah • Texte : Uthmani vocalisé
-        </p>
-      </motion.div>
-    </div>
-  );
+            
+            {/* Title */}
+            <h1 className="font-title text-3xl font-bold mb-3 bg-gradient-to-r from-gold via-mirror to-purple bg-clip-text text-transparent">
+              Le Coran du Miroir
+            </h1>
+            
+            <p className="text-sm text-muted-foreground italic leading-relaxed mb-8">
+              Le Coran ne se lit pas — il se contemple.<br />
+              Chaque verset est un miroir qui révèle une couche de ton âme.
+            </p>
+            
+            {/* Stats */}
+            <div className="flex justify-center gap-10 mb-8">
+              <motion.div 
+                whileHover={{ scale: 1.1, y: -2 }}
+                className="cursor-default group"
+              >
+                <div className="text-2xl font-bold text-gold group-hover:text-gold/80 transition-colors">6236</div>
+                <div className="text-[10px] text-muted-foreground uppercase tracking-wider">versets</div>
+              </motion.div>
+              <motion.div 
+                whileHover={{ scale: 1.1, y: -2 }}
+                className="cursor-default group"
+              >
+                <div className="text-2xl font-bold text-mirror group-hover:text-mirror/80 transition-colors">114</div>
+                <div className="text-[10px] text-muted-foreground uppercase tracking-wider">sourates</div>
+              </motion.div>
+              <motion.div 
+                whileHover={{ scale: 1.1, y: -2 }}
+                className="cursor-default group"
+              >
+                <div className="text-2xl font-bold text-purple group-hover:text-purple/80 transition-colors">{getMiroirCount()}</div>
+                <div className="text-[10px] text-muted-foreground uppercase tracking-wider">miroirisés</div>
+              </motion.div>
+            </div>
+            
+            {/* Daily Verse Card */}
+            {dailyMiroir && (
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="mb-8 p-5 rounded-2xl border border-gold/15 bg-gradient-to-br from-gold-dim/30 via-transparent to-purple/5"
+              >
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <Sparkles className="w-4 h-4 text-gold" />
+                  <span className="text-[11px] font-medium text-gold uppercase tracking-wider">Verset du jour</span>
+                  <span className="text-[10px] text-muted-foreground">{dailyRef}</span>
+                </div>
+                <p className="text-sm text-foreground/80 italic leading-relaxed line-clamp-3 mb-3">
+                  {dailyMiroir.mirrorVersion.slice(0, 200)}...
+                </p>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={async () => {
+                    const [surahId, verseId] = dailyRef.split(':').map(Number);
+                    await loadSurah(surahId);
+                  }}
+                  className="text-gold hover:text-gold/80 hover:bg-gold/10"
+                >
+                  Contempler ce verset →
+                </Button>
+              </motion.div>
+            )}
+            
+            {/* Random button */}
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="mb-6"
+            >
+              <Button
+                onClick={goRandomMiroir}
+                className="bg-gold-dim border border-gold/25 text-gold hover:bg-gold/20 transition-all px-6"
+              >
+                <Shuffle className="w-4 h-4 mr-2" />
+                Verset miroir aléatoire
+              </Button>
+            </motion.div>
+            
+            {/* Reading history */}
+            {readingHistory.length > 0 && (
+              <div className="mb-6">
+                <p className="text-[11px] text-muted-foreground mb-2 flex items-center justify-center gap-1">
+                  <Clock className="w-3 h-3" /> Récemment lus
+                </p>
+                <div className="flex flex-wrap justify-center gap-1.5">
+                  {readingHistory.slice(0, 5).map((ref, i) => {
+                    const surah = surahs.find(s => s.id === parseInt(ref));
+                    if (!surah) return null;
+                    return (
+                      <motion.button
+                        key={i}
+                        whileHover={{ scale: 1.05 }}
+                        onClick={() => loadSurah(parseInt(ref))}
+                        className="px-3 py-1.5 text-[10px] rounded-full bg-white/[0.03] hover:bg-white/[0.06] border border-border/50 hover:border-gold/30 text-muted-foreground hover:text-foreground transition-all"
+                      >
+                        {surah.translation}
+                      </motion.button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+            
+            <p className="text-[10px] text-muted-foreground/60">
+              Traduction : Muhammad Hamidullah • Texte : Uthmani vocalisé
+            </p>
+          </motion.div>
+        </div>
+      </div>
+    );
+  };
 
   // Render verse list
   const renderVerseList = () => {

@@ -232,6 +232,132 @@ export const MIROIR: Record<string, MiroirEntry> = {
       { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Quand l'Un se révèle au cœur, le cœur perd la capacité de dire « deux ». Il ne peut plus concevoir la séparation. Ce n'est pas de l'ignorance — c'est la connaissance la plus profonde qui soit." }
     ],
     munajat: `Ya Ahad, Tu es l'Unique et je suis noyé dans la multiplicité. Unifie mon regard. Fais que je Te voie derrière chaque chose — jusqu'à ce qu'il n'y ait plus « chaque chose » mais seulement Toi.`
+  },
+
+  "2:255": {
+    reference: "2:255",
+    theme: ["présence", "sagesse", "force"],
+    emotion: "Révérence, protection",
+    difficulty: "intermédiaire",
+    relatedNames: ["Al-Hayy", "Al-Qayyum", "Al-Aziz", "Al-Aliyy"],
+    mirrorVersion: `« Allah ! Point de divinité à part Lui, le Vivant, Celui qui subsiste par lui-même. » Ce verset — Ayat al-Kursi — est le plus grand verset du Coran. Le miroir me place devant une présence verticale : Allah est, et tout le reste devient relatif. « Al-Hayy » — le Vivant. Pas une vie qui commence et finit, mais la Vie même. « Al-Qayyum » — Celui qui se tient par Lui-même, qui soutient toute chose sans être soutenu. Quand je contemple cela, mon cœur se calme. Je n'ai pas à me soutenir moi-même. Je n'ai pas à être ma propre source. Je peux m'appuyer sur Celui qui ne fléchit jamais. Les cieux et la terre tiennent par Lui — et moi aussi. Le miroir me révèle que mon épuisement vient de ce que j'essaie d'être mon propre Qayyum.`,
+    reflection: `Ayat al-Kursi contient dix attributs divins. Le Prophète a dit qu'il protège celui qui le récite. La protection n'est pas magique — c'est l'ancrage dans la Présence inébranlable.`,
+    tajalli: [
+      { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Le verset le plus long du Coran, au cœur de la sourate la plus longue. Il énumère les attributs divins : Vivant, Subsistant, lassitude ne Le saisit pas, Son Trône s'étend sur les cieux et la terre." },
+      { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Qu'est-ce qui me fatigue dans ma vie ? Qu'est-ce qui m'épuise à porter ? Le miroir me montre que je porte ce que Seul Allah peut porter. Ma lassitude est un symptôme de ma tentative d'être qayyum pour moi-même." },
+      { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Allah ne dort pas, ne somnole pas — mais Il m'invite au repos. Son Trône s'étend — et Il me fait une place dedans. La grandeur divine n'écrase pas : elle accueille." },
+      { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Le Trône divin (Kursi) est comparé à l'univers comme un anneau dans un désert. L'univers n'est pas grand — Il l'est. Et cette immensité contient chaque atome, chaque prière, chaque souffle." },
+      { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Qui intercédera auprès de Lui sans Sa permission ? Ce n'est pas une fermeture — c'est une invitation. L'intercession existe, mais elle passe par Lui. Tout chemin mène à Lui, y compris celui de l'intercession." }
+    ],
+    munajat: `Ya Hayy, ya Qayyum, je viens à Toi fatigué de me porter moi-même. Reprends Ton trône dans mon cœur. Sois Celui qui tient ce que je ne peux pas tenir.`
+  },
+
+  "24:35": {
+    reference: "24:35",
+    theme: ["sagesse", "guidance", "présence"],
+    emotion: "Émerveillement, clarté",
+    difficulty: "avancé",
+    relatedNames: ["An-Nur", "Al-Hadi"],
+    mirrorVersion: `« Allah est la Lumière des cieux et de la terre. » Ce verset — Ayat an-Nur — est une métaphore qui dépasse toute métaphore. Le miroir ne me montre pas une lumière que je peux voir — il me montre que je suis fait pour être traversé par elle. La lampe dans un récipient de verre, le verre comme une étoile brillante... Chaque détail est une invitation. Mon cœur est ce récipient. La lumière y brûle — mais le verre doit être pur pour la laisser passer. Le miroir me demande : qu'est-ce qui trouble ton verre ? Qu'est-ce qui empêche la lumière de se diffuser ?`,
+    reflection: `La lumière n'est pas un objet parmi d'autres — elle est ce par quoi tout objet devient visible. Allah n'est pas vu — Il est ce par quoi on voit.`,
+    tajalli: [
+      { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Un verset d'une beauté inégalée. La lumière dans la niche, la lampe dans le cristal, l'huile qui brûle sans contact avec le feu — autant d'images pour dire l'indicible." },
+      { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Si mon cœur était ce cristal, qu'y verrait-on ? Une lumière claire ou des taches ? Le miroir m'invite à polir ce qui ternit ma transparence." },
+      { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "L'huile presque lumineuse même sans feu — c'est l'âme prête à s'enflammer. La lumière est déjà là, en moi. Il ne manque que l'étincelle." },
+      { label: "L'Universel", ar: "الكون", color: "#34d399", text: "La lumière physique permet la vision des objets. La lumière divine permet la vision du sens. Sans Elle, l'univers est visible mais vide de signification." },
+      { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Allah guide vers Sa lumière qui Il veut. La guidance n'est pas une récompense — c'est un don. Et ce don passe par le polissage du cœur." }
+    ],
+    munajat: `Ya Nur, illumine ce qui est obscur en moi. Fais de mon cœur un cristal pur que Ta lumière traverse sans obstacle.`
+  },
+
+  "3:139": {
+    reference: "3:139",
+    theme: ["force", "espoir", "confiance"],
+    emotion: "Courage renouvelé",
+    difficulty: "débutant",
+    relatedNames: ["Al-Aziz", "Al-Mu'izz"],
+    mirrorVersion: `« Ne faiblissez pas et ne vous affligez pas, alors que vous êtes les supérieurs, si vous êtes croyants. » Le miroir me renvoie une image surprenante : je suis en position de force, même quand tout me dit le contraire. Ce n'est pas de l'arrogance — c'est de la conscience de qui me soutient. La faiblesse que je ressens n'est pas la réalité de ma situation — elle est l'oubli de ma source. « Si vous êtes croyants » — la condition est claire. La supériorité n'est pas une propriété de l'ego — c'est un effet de la foi. Je ne suis pas supérieur par moi-même. Je le suis par Lui.`,
+    reflection: `La force dans l'Islam n'est pas la force musculaire — c'est la certitude inébranlable que la vérité finit par triompher.`,
+    tajalli: [
+      { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Un verset révélé après Uhud, où les musulmans ont subi des pertes. Le contexte de défaite devient contexte de victoire — par la promesse divine." },
+      { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Dans quelle situation me sens-je faible maintenant ? Et si je regardais cette situation à travers la promesse « vous êtes les supérieurs » ?" },
+      { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Ma faiblesse n'est pas un fait — c'est une perception. Et ma force n'est pas un fait non plus — c'est un don. Tout dépend de la source à laquelle je m'abreuve." },
+      { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'histoire humaine est traversée par ce paradoxe : les faibles qui triomphent des forts, non par force, mais par conviction. La vérité a un poids que le mensonge n'a pas." },
+      { label: "Le Secret", ar: "السر", color: "#fb7185", text: "La supériorité dont parle le verset n'est pas sur les autres — elle est sur soi-même. Sur ses peurs, ses doutes, ses tentations. Le vrai triomphe est intérieur." }
+    ],
+    munajat: `Ya Allah, je me sens faible mais Tu dis que je suis fort. Donne-moi de voir ce que Tu vois — et de croire ce que Tu promets.`
+  },
+
+  "55:13": {
+    reference: "55:13",
+    theme: ["gratitude", "présence", "méditation"],
+    emotion: "Émerveillement, reconnaissance",
+    difficulty: "débutant",
+    relatedNames: ["Ar-Rahman", "Al-Karim"],
+    mirrorVersion: `« Lequel donc des bienfaits de votre Seigneur nierez-vous ? » Ce verset — répété 31 fois dans la sourate — est une question qui me poursuit. Le miroir me montre la liste de ce que j'ai : la vue, l'ouïe, la parole, le souffle, l'amour, la foi. Et il me demande : lequel de ces biens as-tu mérité ? La réponse me glace : aucun. Tout est don. Le miroir ne me fait pas culpabiliser — il m'invite à voir. À voir que chaque instant est un cadeau, que chaque capacité est une grâce, que l'ingratitude n'est pas juste un péché — c'est une cécité.`,
+    reflection: `Ar-Rahman répète cette question après chaque énumération de bienfaits. C'est comme si Allah disait : « Regarde. Regarde encore. Regarde toujours. Et dis-Moi ce que tu peux nier. »`,
+    tajalli: [
+      { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "La sourate Ar-Rahman énumère les bienfaits divins : le soleil, la lune, les étoiles, les arbres, les mers, les perles... Après chaque groupe : « Lequel donc... nierez-vous ? »" },
+      { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Qu'est-ce que j'ai aujourd'hui que je considère comme acquis ? Ma santé ? Ma famille ? Ma foi ? Le miroir me demande : si tout cela s'arrêtait, le remarquerais-je ?" },
+      { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La question est adressée aux humains ET aux djinns. C'est un appel universel. Personne ne peut prétendre avoir « mérité » l'existence même." },
+      { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers entier est une vitrine de bienfaits. Chaque atome crie « don ! ». Seul l'être humain peut choisir de fermer les yeux sur cette évidence." },
+      { label: "Le Secret", ar: "السر", color: "#fb7185", text: "La gratitude n'est pas un devoir — c'est une guérison. Celui qui voit les dons guérit de l'amertume. Celui qui les nie s'enfonce dans l'aveuglement." }
+    ],
+    munajat: `Ya Rahman, j'ai tant de bienfaits que je ne compte plus. Réveille mon cœur à la gratitude. Fais que je voie ce que Tu me donnes — et que je le reconnaisse.`
+  },
+
+  "112:2": {
+    reference: "112:2",
+    theme: ["méditation", "confiance", "sagesse"],
+    emotion: "Paix, sécurité",
+    difficulty: "intermédiaire",
+    relatedNames: ["As-Samad"],
+    mirrorVersion: `« Allah, le Absolu. » As-Samad — ce nom est un trésor. Il signifie Celui dont tout dépend, et qui ne dépend de rien. Le miroir me place devant une Réalité solide. Tout dans ma vie est fragile, dépendant, conditionnel. Ma santé dépend de mon corps, mon corps dépend de la nourriture, la nourriture dépend de la terre, la terre dépend des lois cosmiques... Tout tient à quelque chose d'autre. Sauf Lui. Il est le Point Fixe. Quand je me tourne vers Lui, je me tourne vers ce qui ne s'effondrera jamais.`,
+    reflection: `As-Samad est Celui qu'on invoque dans le besoin. Mais Il est aussi Celui qui n'a besoin de rien. Cette asymétrie est au cœur de la relation créateur-créature.`,
+    tajalli: [
+      { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Le mot « Samad » n'a pas d'équivalent parfait en français. Il contient : l'indépendance absolue, la solidité, la référence ultime, Celui qui satisfait tous les besoins." },
+      { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "À quoi est-ce que je me « fixe » dans ma vie ? Sur quoi m'appuie ma sécurité ? Le miroir me montre que tout point d'appui humain est fragile. Seul As-Samad ne faillit pas." },
+      { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Je Le sollicite pour mes besoins — mais Lui, Il n'a besoin de rien de moi. Cette asymétrie devrait m'humilier. Au lieu de cela, elle me rassure : Sa disponibilité n'est jamais épuisée." },
+      { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute la création « samada » vers Allah — se tourne vers Lui pour ses besoins. L'univers entier est en état de besoin constant. Seul Allah est Samad." },
+      { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Quand le cœur réalise As-Samad, il cesse de courir après les créatures pour ses besoins. Il va directement à la Source. C'est une économie spirituelle radicale." }
+    ],
+    munajat: `Ya Samad, je viens à Toi avec mes besoins infinis. Toi qui n'as besoin de rien, comble ce qui manque en moi. Sois mon Point Fixe dans un monde qui bouge.`
+  },
+
+  "2:152": {
+    reference: "2:152",
+    theme: ["gratitude", "présence", "prière"],
+    emotion: "Reconnaissance, intimité",
+    difficulty: "débutant",
+    relatedNames: ["Adh-Dhakir", "Al-Mujib"],
+    mirrorVersion: `« Souvenez-vous de Moi, Je me souviendrai de vous. » Ce verset est une promesse extraordinaire. Le miroir me montre un échange inégal : je me souviens de Lui un instant, Il se souvient de moi toujours. Mon dhikr est intermittent, distrait, imparfait. Son souvenir de moi est constant, attentif, parfait. Et pourtant, Il lie Son souvenir au mien. Ce n'est pas une condition — c'est une invitation. « Souvenez-vous » n'est pas un ordre strict — c'est une ouverture. Comme si Allah disait : « Tu as accès à Ma présence. Une présence que J'ai déjà. Il suffit que tu t'en souviennes. »`,
+    reflection: `Le Prophète a rapporté qu'Allah dit : « Je suis comme Mon serviteur M'imagine. » Notre souvenir de Lui détermine Sa relation avec nous. La première step est la nôtre.`,
+    tajalli: [
+      { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Une symétrie apparente : « Souvenez-vous » ↔ « Je Me souviendrai ». Mais le contenu est asymétrique : un dhikr limité contre une miséricorde illimitée." },
+      { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Quand est-ce que je Me souviens d'Allah ? Aux moments faciles ou difficiles ? Le miroir me montre la qualité de mon dhikr — et me promet une réponse qui dépasse ce que je donne." },
+      { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "C'est aussi : « J'ai commencé par Me souvenir de vous, alors souvenez-vous de Moi. » Mon dhikr est une réponse à Son dhikr éternel. Il m'a précédé." },
+      { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute chose dans l'univers « se souvient » d'Allah par son existence même. L'arbre se souvient en poussant, l'étoile en brillant. L'humain se souvient consciemment." },
+      { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Le dhikr n'est pas une technique — c'est une relation. Et dans toute relation, l'initiative de l'autre précède la mienne. Je réponds à un appel qui m'a précédé." }
+    ],
+    munajat: `Ya Allah, Tu T'es souvenu de moi avant que je n'existe. Aide-moi à me souvenir de Toi maintenant que j'existe. Fais que mon dhikr soit une réponse à Ton amour.`
+  },
+
+  "67:3": {
+    reference: "67:3",
+    theme: ["méditation", "sagesse", "présence"],
+    emotion: "Émerveillement, silence",
+    difficulty: "intermédiaire",
+    relatedNames: ["Al-Khaliq", "Al-Bari"],
+    mirrorVersion: `« Celui qui a créé sept cieux superposés. Tu ne vois aucune disproportion dans la création du Tout-Miséricordieux. Regarde encore une fois : y vois-tu une faille ? » Ce verset m'invite à regarder le monde différemment. Le miroir ne me montre pas seulement la création — il me montre mon regard sur elle. « Regarde encore une fois » — l'invitation est claire : le problème n'est pas dans ce que je vois, mais dans comment je vois. Si je vois des failles, c'est que mon regard est imparfait. La création est parfaite — ma perception ne l'est pas.`,
+    reflection: `L'invitation à « regarder encore » suggère que la première vue ne suffit pas. Il faut regarder plusieurs fois, avec plusieurs angles, pour voir la perfection qui était toujours là.`,
+    tajalli: [
+      { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Un verset d'une précision scientifique étonnante. Les sept cieux, l'absence de disproportion, l'invitation à réexaminer — tout converge vers une contemplation cosmique." },
+      { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Qu'est-ce que je vois comme « faille » dans ma vie ? Dans le monde ? Le miroir me demande : et si la faille était dans ton regard, pas dans l'objet ?" },
+      { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "« Regarde encore » — et si je regardais mes propres « failles » de la même manière ? Peut-être que ce que je juge imparfait a une perfection que je ne vois pas encore." },
+      { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Les sciences modernes confirment l'ajustement fin de l'univers. Chaque constante physique est calibrée avec une précision extrême. La création n'a pas de faille." },
+      { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Quand le regard se purifie, tout devient signe. Chaque imperfection apparente révèle une sagesse cachée. La faille n'est jamais dans la création — elle est dans l'observateur." }
+    ],
+    munajat: `Ya Khaliq, mon regard est limité et je vois des failles partout. Purifie ma vision. Fais que je voie Ta perfection dans tout ce que Tu as créé — y compris en moi.`
   }
 };
 
