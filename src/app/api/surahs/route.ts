@@ -48,10 +48,18 @@ const MIROIR_REFERENCES = [
   '21:35',
   // Surah 22 - Al-Hajj
   '22:78',
+  // Surah 23 - Al-Mu'minun
+  '23:1',
   // Surah 24 - An-Nur
   '24:35',
   // Surah 25 - Al-Furqan
   '25:70',
+  // Surah 26 - Ash-Shu'ara
+  '26:88',
+  // Surah 27 - An-Naml
+  '27:62',
+  // Surah 28 - Al-Qasas
+  '28:56',
   // Surah 29 - Al-'Ankabut
   '29:69',
   // Surah 30 - Ar-Rum
@@ -62,30 +70,64 @@ const MIROIR_REFERENCES = [
   '32:17',
   // Surah 33 - Al-Ahzab
   '33:56',
+  // Surah 34 - Saba
+  '34:3',
   // Surah 35 - Fatir
   '35:2',
   // Surah 36 - Ya-Sin
   '36:11',
   // Surah 39 - Az-Zumar
-  '39:53',
+  '39:9', '39:53',
   // Surah 40 - Ghafir
   '40:60',
   // Surah 41 - Fussilat
   '41:53',
+  // Surah 42 - Ash-Shura
+  '42:37',
+  // Surah 47 - Muhammad
+  '47:7',
+  // Surah 49 - Al-Hujurat
+  '49:13',
   // Surah 50 - Qaf
   '50:16',
+  // Surah 51 - Adh-Dhariyat
+  '51:56',
+  // Surah 53 - An-Najm
+  '53:39',
+  // Surah 54 - Al-Qamar
+  '54:17',
   // Surah 55 - Ar-Rahman
   '55:13',
+  // Surah 57 - Al-Hadid
+  '57:3',
+  // Surah 59 - Al-Hashr
+  '59:21',
+  // Surah 63 - Al-Munafiqun
+  '63:9',
   // Surah 65 - At-Talaq
   '65:3',
   // Surah 67 - Al-Mulk
   '67:3',
+  // Surah 73 - Al-Muzzammil
+  '73:8',
+  // Surah 87 - Al-A'la
+  '87:14',
   // Surah 89 - Al-Fajr
   '89:27', '89:28',
+  // Surah 93 - Ad-Duha
+  '93:3',
   // Surah 94 - Ash-Sharh
   '94:5',
+  // Surah 103 - Al-'Asr
+  '103:1',
+  // Surah 108 - Al-Kawthar
+  '108:1',
+  // Surah 110 - An-Nasr
+  '110:1',
   // Surah 112 - Al-Ikhlas
-  '112:1', '112:2'
+  '112:1', '112:2',
+  // Surah 114 - An-Nas
+  '114:1'
 ];
 
 export async function GET() {

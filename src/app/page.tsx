@@ -67,16 +67,22 @@ interface BookmarkData {
   timestamp: number;
 }
 
-// Particles Background Component
+// Generate stable random values for particles (only on client)
+const getInitialParticles = () => {
+  if (typeof window === 'undefined') return [];
+  return Array.from({ length: 30 }, (_, i) => ({
+    id: i,
+    left: `${Math.random() * 100}%`,
+    delay: `${Math.random() * 15}s`,
+    duration: `${15 + Math.random() * 15}s`,
+  }));
+};
+
+// Particles Background Component  
 const ParticlesBackground = () => {
-  const particles = useMemo(() => 
-    Array.from({ length: 30 }, (_, i) => ({
-      id: i,
-      left: `${Math.random() * 100}%`,
-      delay: `${Math.random() * 15}s`,
-      duration: `${15 + Math.random() * 15}s`,
-    })), []
-  );
+  const [particles] = useState(getInitialParticles);
+
+  if (particles.length === 0) return null;
 
   return (
     <div className="particles-bg">

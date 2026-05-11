@@ -913,3 +913,425 @@ MIROIR["41:53"] = {
   ],
   munajat: `Ya Haqq, montre-moi Tes signes. Ouvre mes yeux à l'univers et à mon âme. Fais que la vérité devienne évidente pour mon cœur, pas seulement pour mon intellect.`
 };
+
+// ============================================
+// EXPANSION PHASE 2 - More Surah Coverage
+// ============================================
+
+// Surah 23 - Al-Mu'minun
+MIROIR["23:1"] = {
+  reference: "23:1",
+  theme: ["présence", "prière", "méditation"],
+  emotion: "Espoir, détermination",
+  difficulty: "débutant",
+  relatedNames: ["Al-Mu'min", "Al-Muflih"],
+  mirrorVersion: `« Bienheureux sont les croyants qui sont humbles dans leur prière. » Ce verset ouvre une sourate entière dédiée aux qualités des croyants véritables. Le miroir me place devant une liste de contrôle spirituelle. Suis-je de ceux qui « sont humbles dans leur prière » ? L'humilité dans la prière (khushu') n'est pas une émotion — c'est une présence. C'est quand mon corps et mon cœur sont alignés face à Allah.`,
+  reflection: `Les « bienheureux » (aflaha) sont ceux qui réussissent vraiment. Le succès dans l'au-delà commence par la qualité de la prière ici-bas.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "La sourate énumère les qualités des croyants : khushu' dans la prière, évitement du vain, paiement de la zakat, préservation des parties intimes..." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Quand je prie, où est mon cœur ? Est-ce que je suis présent ou distrait ? Le miroir m'invite à évaluer la qualité, pas seulement la quantité." },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "L'humilité dans la prière n'est pas un effort — c'est un don. C'est quand je réalise devant Qui je me tiens que l'humilité devient naturelle." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute la création « prie » à sa manière. L'humain seul peut prier avec conscience ou sans. Le khushu' est ce qui distingue la prière vivante de la récitation morte." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "La prière avec khushu' est le paradis anticipé. Dans ces moments, le temps s'arrête, et l'âme goûte à ce qui l'attend." }
+  ],
+  munajat: `Ya Allah, je me tiens devant Toi mais mon cœur s'égare. Apprends-moi le khushu'. Fais que ma prière soit une vraie rencontre, pas une répétition.`
+};
+
+// Surah 26 - Ash-Shu'ara
+MIROIR["26:88"] = {
+  reference: "26:88",
+  theme: ["détachement", "confiance", "sagesse"],
+  emotion: "Lucidité, priorisation",
+  difficulty: "intermédiaire",
+  relatedNames: ["Al-Wali", "Al-Hadi"],
+  mirrorVersion: `« Le jour où ni les biens ni les enfants ne seront d'aucune utilité, sauf celui qui vient à Allah avec un cœur sain. » Ce verset est un diagnostic radical. Le miroir me demande : sur quoi comptes-tu vraiment ? Tes économies ? Ta famille ? Ta réputation ? Tout cela sera inutile. Seul un « cœur sain » (qalb salim) servira. Un cœur sain, c'est un cœur sans maladie : sans shirk (association), sans hasad (envie), sans kibr (orgueil). Un cœur purifié.`,
+  reflection: `Le cœur sain est la seule monnaie valable au Jour du Jugement. Ni l'intelligence, ni la beauté, ni la richesse ne seront acceptées. Seul le cœur compte.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Le verset vient dans le contexte des épreuves de l'au-delà. Les biens et les enfants, souvent nos plus grandes fiertés, deviennent inutiles." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Qu'est-ce qui « sécurise » ma vie aujourd'hui ? Et si j'enlevais cela, que resterait-il ? Le miroir m'aide à identifier mes fausses assurances." },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Le cœur sain n'est pas un cœur parfait — c'est un cœur qui se tourne sincèrement vers Allah. La santé spirituelle n'est pas l'absence de péché, mais la présence de retour." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute chose retourne à son origine. Le cœur retourne à son Créateur. Seul ce qui est compatible avec Lui peut faire ce voyage." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Le cœur sain est celui qui a fait la paix avec Allah — qui a cessé de Lui faire la guerre par ses résistances, ses doutes, ses rébellions." }
+  ],
+  munajat: `Ya Allah, purifie mon cœur. Enlève ce qui l'encombre : l'orgueil, l'envie, l'attachement au monde. Donne-moi un qalb salim qui viendra à Toi sans honte.`
+};
+
+// Surah 27 - An-Naml
+MIROIR["27:62"] = {
+  reference: "27:62",
+  theme: ["espoir", "confiance", "prière"],
+  emotion: "Soulagement, confiance",
+  difficulty: "débutant",
+  relatedNames: ["Al-Mujib", "Al-Fattah"],
+  mirrorVersion: `« N'est-ce pas Lui qui répond à l'accablé quand il L'invoque, et qui dissipe le mal ? » Ce verset est une des plus belles promesses du Coran. Le miroir me montre un Allah qui répond spécifiquement à « l'accablé » (al-mudtar). Pas au parfait, pas au saint — à celui qui est écrasé par les difficultés. Quand je suis au fond du trou, incapable de bouger, Allah dit : « Invoque-Moi, Je répondrai. »`,
+  reflection: `La réponse d'Allah à l'accablé est une promesse inconditionnelle. Celui qui est vraiment dans la difficulté a accès direct à la miséricorde.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Le verset utilise la forme interrogative rhétorique : « N'est-ce pas Lui... ? » La réponse est évidente : oui, c'est Lui." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Quand je suis accablé, vers qui me tourne-je en premier ? Vers les remèdes humains ou vers l'Invoqué divin ?" },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "C'est peut-être l'accablement lui-même qui est la porte. Sans lui, je n'invoquerais pas. La difficulté crée l'ouverture vers Allah." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute créature en détresse « invoque » à sa manière. Le cri du bébé, le gémissement du malade, le silence du désespéré — tout est entendu." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "La réponse d'Allah précède parfois l'invocation. Il prépare la délivrance avant même que je ne demande." }
+  ],
+  munajat: `Ya Mujib, je suis accablé et je viens à Toi. Réponds à mon invocation. Délivre-moi de ce qui m'écrase. Tu es le seul qui peut vraiment soulager.`
+};
+
+// Surah 28 - Al-Qasas
+MIROIR["28:56"] = {
+  reference: "28:56",
+  theme: ["guidance", "amour", "sagesse"],
+  emotion: "Humilité, acceptation",
+  difficulty: "intermédiaire",
+  relatedNames: ["Al-Hadi", "Al-Muqtadir"],
+  mirrorVersion: `« Tu ne guides pas celui que tu aimes, mais c'est Allah qui guide qui Il veut. » Ce verset a été révélé au sujet d'Abu Talib, l'oncle du Prophète qui l'avait protégé mais n'avait pas embrassé l'Islam. Le miroir me montre les limites de mon influence. J'ai des proches que j'aime et que je voudrais voir guidés. Mais la guidance n'est pas dans mes mains. Mon rôle est d'aimer, de témoigner, de prier — le reste appartient à Allah.`,
+  reflection: `La guidance (hidayah) est un don divin, pas un fruit de l'effort humain. Le Prophète lui-même ne pouvait pas guider ceux qu'il aimait.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Un verset d'humilité pour le Prophète et pour nous. Même le meilleur des humains ne contrôle pas les cœurs." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Qui est-ce que j'essaie de « sauver » ? Et comment réagis-je quand mes efforts échouent ? Le miroir m'invite au lâcher-prise." },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Si je ne peux pas guider, je peux aimer. L'amour authentique est plus puissant que la persuasion." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Chaque cœur a son propre chemin vers Allah. Certains prennent des détours que je ne comprends pas." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "La vraie guidance passe par l'acceptation que je ne suis pas le Maître des cœurs. Je suis un messager, pas un contrôleur." }
+  ],
+  munajat: `Ya Hadi, Toi seul guides les cœurs. J'aime ceux qui m'entourent mais je ne peux pas les sauver. Conduis-les vers Toi, à Ton heure, à Ta manière.`
+};
+
+// Surah 34 - Saba
+MIROIR["34:3"] = {
+  reference: "34:3",
+  theme: ["présence", "sagesse", "confiance"],
+  emotion: "Révérence, certitude",
+  difficulty: "intermédiaire",
+  relatedNames: ["Al-Khaliq", "Al-'Alim"],
+  mirrorVersion: `« Ceux qui ne croient pas disent : 'L'Heure ne nous viendra pas.' Dis : 'Au contraire, par mon Seigneur, elle vous viendra certainement.' » Ce verset traite de la certitude de l'Heure (as-sa'ah). Le miroir me montre que je vis parfois comme si l'Heure n'arriverait jamais. Je remets à demain ce que je devrais faire aujourd'hui. La mort, le jugement, la rencontre avec Allah — tout cela semble si lointain. Et pourtant, c'est une certitude.`,
+  reflection: `L'Heure est certaine, mais son moment est inconnu. Cette combinaison crée une tension salutaire : vivre chaque jour comme si c'était le dernier.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Le verset répond aux négateurs par une affirmation solennelle : « Par mon Seigneur » (rabbika). Le serment divin confirme la certitude." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Si l'Heure arrivait aujourd'hui, serais-je prêt ? Qu'est-ce que j'aurais regret de ne pas avoir fait ?" },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La certitude de l'Heure devrait transformer mon présent. Chaque instant devient précieux, chaque acte devient compté." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Tout dans l'univers tend vers une fin. Les étoiles s'éteindront, les montagnes s'effondreront. Seul Allah demeure." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui vit avec la certitude de l'Heure ne s'attache à rien. Il passe dans ce monde sans s'y installer." }
+  ],
+  munajat: `Ya Allah, l'Heure viendra certainement. Fais que je ne l'oublie pas. Aide-moi à vivre chaque jour comme si c'était le dernier, dans la préparation et la présence.`
+};
+
+// Surah 39 - Az-Zumar (adding another important verse)
+MIROIR["39:9"] = {
+  reference: "39:9",
+  theme: ["méditation", "sagesse", "présence"],
+  emotion: "Humilité, aspiration",
+  difficulty: "intermédiaire",
+  relatedNames: ["Al-'Alim", "Al-Hakim"],
+  mirrorVersion: `« Dis : 'Sont-ils égaux, ceux qui savent et ceux qui ne savent pas ?' Seuls les doués d'intelligence se rappellent. » Ce verset établit une hiérarchie spirituelle basée sur la connaissance. Le miroir me demande : quelle est ma relation avec le savoir ? Le « savoir » ici n'est pas l'information — c'est la connaissance d'Allah (ma'rifa). Celui qui connaît vraiment Allah ne peut pas vivre comme celui qui ne Le connaît pas.`,
+  reflection: `La connaissance d'Allah transforme l'être. Le savant spirituel voit ce que l'ignorant ne voit pas. Sa prière, sa patience, sa confiance sont d'une autre qualité.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Une question rhétorique : l'égalité entre savants et ignorants est évidemment impossible." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Qu'est-ce que je « sais » vraiment d'Allah ? Et comment cette connaissance transforme-t-elle ma vie quotidienne ?" },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La vraie connaissance n'enflée pas — elle humilie. Plus je connais Allah, plus je me connais comme limité." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers entier est une manifestation de la connaissance divine. Le connaître, c'est Le connaître à travers Ses signes." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Les « doués d'intelligence » (ulu l-albab) sont ceux dont le cœur a été ouvert. L'intelligence spirituelle n'est pas dans la tête — elle est dans le cœur." }
+  ],
+  munajat: `Ya 'Alim, apprends-moi ce qui Te concerne. Pas une connaissance qui enflée, mais une connaissance qui rapproche. Fais de moi un de ceux qui se rappellent.`
+};
+
+// Surah 42 - Ash-Shura
+MIROIR["42:37"] = {
+  reference: "42:37",
+  theme: ["force", "patience", "confiance"],
+  emotion: "Résilience, pardon",
+  difficulty: "intermédiaire",
+  relatedNames: ["Al-'Afuww", "Al-Ghaffur"],
+  mirrorVersion: `« Ceux qui évitent les péchés graves et les turpitudes, et qui pardonnent quand ils sont en colère. » Ce verset décrit les croyants de haut rang. Le miroir me montre deux axes : l'un vertical (éviter les péchés) et l'un horizontal (pardonner quand on est en colère). Le deuxième est peut-être plus difficile. Être en colère et pardonner — c'est le test ultime de la maîtrise de soi.`,
+  reflection: `Le pardon dans la colère est un miracle spirituel. C'est quand l'ego crie « justice ! » que le cœur choisi « miséricorde ».`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Le verset lie le pardon à la colère (ghadab). Pas le pardon facile, mais le pardon dans le moment où l'ego est blessé." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Quand je suis en colère, quelle est ma première réaction ? La riposte ou le pardon ? Le miroir me montre mon niveau spirituel réel." },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Pardonner quand on est en colère, c'est se souvenir que j'ai été pardonné par Allah. Je donne ce que j'ai reçu." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "La justice humaine demande « œil pour œil ». La justice divine offre le pardon. Le croyant transcende la première pour embrasser la seconde." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Le pardon dans la colère purifie le cœur de ses chaînes. Celui qui pardonne se libère, même si l'autre ne le mérite pas." }
+  ],
+  munajat: `Ya 'Afuww, Tu me pardonnes quand je ne le mérite pas. Apprends-moi à faire de même. Quand la colère monte, fais que je choisisse le pardon, pas la riposte.`
+};
+
+// Surah 47 - Muhammad
+MIROIR["47:7"] = {
+  reference: "47:7",
+  theme: ["confiance", "force", "guidance"],
+  emotion: "Engagement, assurance",
+  difficulty: "débutant",
+  relatedNames: ["An-Nasir", "Al-Wali"],
+  mirrorVersion: `« Ô vous qui croyez ! Si vous soutenez Allah, Il vous soutiendra et raffermira vos pas. » Ce verset établit un partenariat extraordinaire. Le miroir me montre que « soutenir Allah » signifie soutenir Sa cause, Sa vérité, Sa guidance. Et la promesse est double : soutien divin et raffermissement. Quand je marche dans Sa direction, Il raffermît mes pas.`,
+  reflection: `Le soutien d'Allah n'est pas magique — il vient quand je m'engage. Ma step déclenche Sa réponse. L'initiative est la mienne.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Soutenir Allah » (tansuruna Allah) signifie aider Sa religion, défendre Ses signes, propager Sa vérité." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Comment est-ce que je « soutiens » Allah dans ma vie quotidienne ? Par ma parole ? Mes actions ? Ma patience ?" },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "C'est aussi Allah qui me soutient en premier. Mon soutien à Sa cause est une réponse à Son soutien éternel." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute cause juste est « soutenue » par Allah. L'histoire est remplie de vainqueurs apparemment faibles qui ont triomphé par un soutien invisible." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Le raffermissement des pas signifie que la route devient plus claire, plus stable. Celui qui soutient Allah n'est jamais vraiment perdu." }
+  ],
+  munajat: `Ya Nasir, je veux Te soutenir. Mais je suis faible et distrait. Montre-moi comment Te soutenir, et promets-moi Ton aide quand je le ferai.`
+};
+
+// Surah 49 - Al-Hujurat
+MIROIR["49:13"] = {
+  reference: "49:13",
+  theme: ["sagesse", "présence", "amour"],
+  emotion: "Humilité, fraternité",
+  difficulty: "débutant",
+  relatedNames: ["Al-Khaliq", "Al-'Alim"],
+  mirrorVersion: `« Ô humains ! Nous vous avons créés d'un mâle et d'une femelle, et Nous avons fait de vous des nations et des tribus pour que vous vous connaissiez. Le plus noble d'entre vous auprès d'Allah est le plus pieux. » Ce verset est la charte universelle de l'humanité. Le miroir me montre que mes distinctions (nationalité, ethnie, statut) sont des outils de connaissance, pas de supériorité. La seule vraie hiérarchie est la piété (taqwa) — et elle est invisible aux yeux humains.`,
+  reflection: `La diversité humaine est voulue par Allah. Les différences ne sont pas des obstacles mais des opportunités de rencontre et de connaissance.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Un appel universel : « Ô humains ! » Pas « ô croyants » ou « ô Arabes ». Tous sont concernés." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Comment est-ce que je vois ceux qui sont différents de moi ? Avec curiosité ou jugement ? Le miroir m'invite à la rencontre plutôt qu'à la comparaison." },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La noblesse aux yeux d'Allah n'est pas visible. Le plus pauvre, le plus simple peut être le plus noble. Le plus puissant peut être le plus vide." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'humanité forme une seule famille, diverse mais unie dans son origine et sa destination. La taqwa est le lien universel." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui réalise que la seule noblesse est la taqwa cesse de juger par l'apparence. Il regarde les cœurs, pas les habits." }
+  ],
+  munajat: `Ya Khaliq, Tu m'as créé parmi des peuples différents. Aide-moi à voir au-delà des différences. Fais que je recherche la taqwa — la seule chose qui compte vraiment auprès de Toi.`
+};
+
+// Surah 51 - Adh-Dhariyat
+MIROIR["51:56"] = {
+  reference: "51:56",
+  theme: ["présence", "prière", "méditation"],
+  emotion: "Purpose, orientation",
+  difficulty: "débutant",
+  relatedNames: ["Al-Ghani", "Al-Hamid"],
+  mirrorVersion: `« Je n'ai créé les djinns et les hommes que pour qu'ils M'adorent. » Ce verset est le verset de la finalité. Le miroir me place devant la question ultime : pourquoi existé-je ? La réponse est claire : l'adoration. Pas parce qu'Allah a besoin de mon adoration — Il est « Al-Ghani », le Riche — mais parce que l'adoration est le sens de mon existence. C'est ce pour quoi je suis fait.`,
+  reflection: `L'adoration ('ibadah) dans l'Islam englobe toute action faite avec intention divine. Travailler, aimer, apprendre — tout peut être adoration.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Une déclaration de but : « Je n'ai créé... que pour... » La raison d'être est unique et claire." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Qu'est-ce que je poursuis dans ma vie ? Est-ce aligné avec ma raison d'être ? Le miroir m'invite à vérifier ma direction." },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Allah n'a pas besoin de mon adoration — c'est moi qui ai besoin d'adorer. L'adoration me construit, pas Lui." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute la création « adore » par son existence. L'humain seul peut choisir d'adorer consciemment." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Quand l'adoration devient l'orientation de toute la vie, chaque acte devient prière. La vie entière devient un acte de présence." }
+  ],
+  munajat: `Ya Allah, Tu m'as créé pour T'adorer. Mais je m'égare dans tant de poursuites. Recentre-moi. Fais que chaque acte soit un acte d'adoration.`
+};
+
+// Surah 53 - An-Najm
+MIROIR["53:39"] = {
+  reference: "53:39",
+  theme: ["force", "méditation", "sagesse"],
+  emotion: "Responsabilité, authenticité",
+  difficulty: "intermédiaire",
+  relatedNames: ["Al-'Adl", "Al-Hasib"],
+  mirrorVersion: `« Que l'homme n'obtiendra que ce qu'il aura acquis par son effort. » Ce verset établit le principe de la responsabilité personnelle. Le miroir me montre que je ne peux pas compter sur l'héritage spirituel, la famille pieuse, ou les bonnes actions des autres. Chacun récolte ce qu'il sème. Mon effort (sa'y) détermine mon résultat.`,
+  reflection: `L'effort spirituel est individuel. Personne ne peut prier à ma place, ni croire pour moi. Ma relation avec Allah est personnelle et intransférable.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Le mot « sa'y » signifie effort, course, lutte. C'est l'investissement personnel, pas le statut social." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Quel est mon effort spirituel réel ? Est-ce que je compte sur les autres ou est-ce que je travaille sur moi-même ?" },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "L'effort est nécessaire — mais le résultat dépend d'Allah. Je fournis le sa'y, et Lui fournit le résultat." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "La loi de cause à effet gouverne le monde. Semer récolter. Effort résultat. C'est une justice cosmique." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Le plus bel effort est celui fait pour Allah, sans attacher le cœur au résultat. L'effort purifié de son ego." }
+  ],
+  munajat: `Ya Allah, fais que je ne compte que sur mon propre effort. Apprends-moi à travailler pour Toi, sans attendre la validation des autres, sans craindre le résultat.`
+};
+
+// Surah 54 - Al-Qamar
+MIROIR["54:17"] = {
+  reference: "54:17",
+  theme: ["méditation", "guidance", "présence"],
+  emotion: "Accessibilité, gratitude",
+  difficulty: "débutant",
+  relatedNames: ["Al-Hakim", "Al-Murshid"],
+  mirrorVersion: `« En vérité, Nous avons rendu le Coran facile pour la méditation. Y a-t-il quelqu'un pour le méditer ? » Ce verset est répété quatre fois dans cette sourate. Le miroir me montre une offre extraordinaire : le Coran est « facile » (yassarna) — accessible à tous, pas seulement aux savants. La seule condition est la volonté de méditer. « Y a-t-il quelqu'un pour le méditer ? » — c'est une invitation, pas un reproche.`,
+  reflection: `La facilité du Coran ne signifie pas la superficialité. C'est une profondeur accessible à tous ceux qui approchent avec sincérité.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Le mot « yassarna » signifie facilité, accessibilité. Le Coran parle à chaque niveau de compréhension." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Est-ce que je médite le Coran ? Ou est-ce que je le lis mécaniquement ? Le miroir m'invite à ralentir, à réfléchir." },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Le Coran est facile — mais est-ce que je suis disponible ? La facilité du Texte rencontre parfois mon indisponibilité." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Le Coran est le seul texte qui « parle » à chaque époque, chaque culture, chaque niveau. Il est vivant." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Méditer le Coran, c'est le laisser méditer sur moi. C'est un dialogue où le Texte me révèle à moi-même." }
+  ],
+  munajat: `Ya Allah, le Coran est facile et pourtant je le trouve parfois difficile. Ouvre mon cœur à sa méditation. Fais que je sois de ceux qui répondent à Ton invitation.`
+};
+
+// Surah 57 - Al-Hadid
+MIROIR["57:3"] = {
+  reference: "57:3",
+  theme: ["présence", "sagesse", "méditation"],
+  emotion: "Contemplation, sécurité",
+  difficulty: "avancé",
+  relatedNames: ["Al-Awwal", "Al-Akhir", "Az-Zahir", "Al-Batin"],
+  mirrorVersion: `« Il est le Premier et le Dernier, l'Apparent et le Caché. » Ce verset contient quatre noms divins qui embrassent toute la réalité. Le miroir me place devant une Présence qui est partout — avant le commencement, après la fin, visible dans la création, caché dans les cœurs. Il n'y a pas de lieu où Allah n'est pas. Je ne peux pas Le fuir, je ne peux pas Le perdre — je peux seulement ne pas Le voir.`,
+  reflection: `Ces quatre noms forment un cercle parfait de présence divine. Où que je me tourne, je Le trouve — si je regarde avec les bons yeux.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Quatre attributs : Premier (Awal), Dernier (Akhir), Apparent (Zahir), Caché (Batin). Deux temporalités, deux spatialités." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Dans ma vie, où est-ce que je vois Allah ? Dans le visible ou dans le caché ? Dans le début ou dans la fin ?" },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "S'Il est Premier et Dernier, alors je suis entre Ses deux mains. S'Il est Apparent et Caché, alors nul endroit n'est sans Lui." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute chose manifeste un de ces attributs. Le soleil est apparent, le vent est caché. L'aube est premier, le crépuscule est dernier." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui réalise ces quatre noms ne se sent jamais seul, jamais perdu. Allah l'enveloppe de toutes parts." }
+  ],
+  munajat: `Ya Awwal, ya Akhir, ya Zahir, ya Batin, Tu es avant tout, après tout, visible en tout, caché en tout. Aide-moi à Te voir partout.`
+};
+
+// Surah 59 - Al-Hashr
+MIROIR["59:21"] = {
+  reference: "59:21",
+  theme: ["présence", "force", "méditation"],
+  emotion: "Révérence, émerveillement",
+  difficulty: "intermédiaire",
+  relatedNames: ["Al-'Aziz", "Al-Hakim"],
+  mirrorVersion: `« Si Nous avions fait descendre ce Coran sur une montagne, tu l'aurais vu s'humilier et se fendre par crainte d'Allah. » Ce verset me montre la puissance du Coran. Une montagne — symbole de solidité et de force — s'humilierait et se fendrait devant ce Livre. Le miroir me demande : et moi ? Comment est-ce que je réagis au Coran ? Suis-je plus dur qu'une montagne ? Ou est-ce que je laisse Ses paroles me transformer ?`,
+  reflection: `La montagne est physiquement solide mais spirituellement sensible. L'humain est souvent l'inverse : physiquement fragile mais spirituellement endurci.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Une image saisissante : la montagne qui s'humilie et se fend. Le Coran a un poids qui dépasse la matière." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Quand j'entends le Coran, qu'est-ce qui se passe en moi ? Une montagne se fendrait — et moi ? Je continue comme si de rien n'était ?" },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "L'humilité de la montagne devrait être la mienne. Si la pierre craint Allah, comment puis-je ne pas Le craindre ?" },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute la création reconnaît la Parole divine. L'homme seul peut l'entendre sans être transformé." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Le Coran est une lumière qui fend les cœurs endurcis. Ceux qui ne sont pas fendus sont plus durs que les montagnes." }
+  ],
+  munajat: `Ya Allah, ne me laisse pas devenir plus dur que la montagne. Fends mon cœur avec Ton Livre. Fais que Sa parole me transforme vraiment.`
+};
+
+// Surah 63 - Al-Munafiqun
+MIROIR["63:9"] = {
+  reference: "63:9",
+  theme: ["détachement", "méditation", "confiance"],
+  emotion: "Vigilance, priorisation",
+  difficulty: "débutant",
+  relatedNames: ["Al-Hadi", "Al-Fattah"],
+  mirrorVersion: `« Ô vous qui croyez ! Que ni vos biens ni vos enfants ne vous distrait du rappel d'Allah. » Ce verset me met en garde contre la distraction (lahw) la plus courante : les biens et les enfants. Le miroir me montre que ce que je considère comme « bénédiction » peut devenir « obstacle » s'il me détourne d'Allah. Le problème n'est pas la possession — c'est la distraction. Puis-je avoir des biens sans être distrait ?`,
+  reflection: `Les biens et les enfants sont des tests, pas des buts. Ils sont des moyens de se rapprocher d'Allah — ou de s'en éloigner.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Le mot « tulhikum » vient de la racine qui signifie distraire, faire oublier. L'enjeu est l'attention, pas la possession." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Qu'est-ce qui me « distrait » d'Allah ? Mon travail ? Mes projets ? Mes relations ? Le miroir m'aide à identifier mes idoles modernes." },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Les biens et les enfants peuvent aussi me rapprocher d'Allah — si je les vois comme des dons à gérer, pas des maîtres à servir." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute chose est un test dans ce monde. Ce qui est bénédiction pour l'un peut être malédiction pour l'autre, selon l'usage." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui possède sans être possédé a trouvé la liberté. Ses biens sont dans ses mains, pas dans son cœur." }
+  ],
+  munajat: `Ya Allah, j'ai des biens et des responsabilités qui m'occupent. Fais qu'ils ne m'éloignent pas de Toi. Aide-moi à Te rappeler au milieu de mes occupations.`
+};
+
+// Surah 73 - Al-Muzzammil
+MIROIR["73:8"] = {
+  reference: "73:8",
+  theme: ["prière", "présence", "méditation"],
+  emotion: "Dévotion, focalisation",
+  difficulty: "avancé",
+  relatedNames: ["Ath-Thikr", "Al-Qarib"],
+  mirrorVersion: `« Et rappelle-toi du nom de ton Seigneur et consacre-toi entièrement à Lui. » Ce verset m'invite à une relation exclusive. « Consacre-toi entièrement » (tabattal) signifie couper les liens avec tout sauf Allah. Le miroir me montre que ma spiritualité est souvent partagée : je suis avec Allah ET avec le monde. L'invitation ici est à être entièrement avec Lui, même brièvement.`,
+  reflection: `Le tabattul (dévotion exclusive) est l'état du cœur qui ne regarde qu'Allah. C'est un trésor caché accessible à tous, même brièvement.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Tabattal » vient de « batta » (couper). C'est couper toute attache autre qu'Allah — pendant le dhikr, la prière, la méditation." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Pendant mes moments de prière, suis-je vraiment « entièrement » à Allah ? Ou une partie de moi est-elle ailleurs ?" },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Ce n'est pas moi qui me consacre à Lui — c'est Lui qui m'attire. La consécration est une réponse à Son appel." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute chose retourne à Allah. Le croyant anticipe ce retour en se consacrant à Lui dès maintenant." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Quand le cœur est entièrement tourné vers Allah, même un instant, cet instant a la valeur de l'éternité." }
+  ],
+  munajat: `Ya Allah, je veux me consacrer entièrement à Toi. Mais mon cœur est partagé. Coupe ce qui m'attache ailleurs. Donne-moi des moments de pureté.`
+};
+
+// Surah 87 - Al-A'la
+MIROIR["87:14"] = {
+  reference: "87:14",
+  theme: ["guérison", "présence", "prière"],
+  emotion: "Succès, gratitude",
+  difficulty: "débutant",
+  relatedNames: ["At-Tawwab", "Al-Ghaffur"],
+  mirrorVersion: `« Bienheureux celui qui se purifie, qui prononce le nom de son Seigneur et prie. » Ce verset condense le chemin spirituel en trois étapes : purification (tazkiyah), rappel (dhikr), prière (salah). Le miroir me montre une progression logique : d'abord je me purifie des souillures, puis je me tourne vers Allah par le dhikr, puis je stabilise cette relation par la prière.`,
+  reflection: `La purification est la base. Sans elle, le dhikr est superficiel et la prière mécanique. Le cœur propre accueille la présence.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Trois verbes : se purifier, prononcer, prier. Un programme spirituel complet en trois mots." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Quel est l'état de mon cœur maintenant ? Est-il purifié ? Le miroir m'invite à l'examen avant l'action." },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La purification n'est pas un effort — c'est un don qui vient quand je me tourne vers Allah avec sincérité." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute chose cherche la pureté. L'eau se purifie en s'écoulant. L'air se purifie par le vent. L'âme se purifie par le dhikr." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Le bienheureux (aflaha) est celui qui a réussi le voyage de retour vers la pureté originelle." }
+  ],
+  munajat: `Ya Tawwab, purifie mon cœur. Fais que je prononce Ton nom avec présence. Et que ma prière soit le couronnement de ma purification.`
+};
+
+// Surah 93 - Ad-Duha
+MIROIR["93:3"] = {
+  reference: "93:3",
+  theme: ["espoir", "amour", "confiance"],
+  emotion: "Réconfort, assurance",
+  difficulty: "débutant",
+  relatedNames: ["Ar-Rahman", "Al-Wadud"],
+  mirrorVersion: `« Ton Seigneur ne t'a ni abandonné ni détesté. » Ce verset a été révélé quand le Prophète n'avait pas reçu de révélation pendant un temps, et pensait qu'Allah l'avait abandonné. Le miroir me montre mes propres moments d'abandon apparent — quand je prie et que rien ne vient, quand j'attends et que rien ne change. Le verset me dit : « Il ne t'a pas abandonné. » Mon sentiment d'abandon est une illusion.`,
+  reflection: `Le silence de Dieu n'est pas Son absence. La pause dans la guidance n'est pas un rejet. Allah aime même dans le silence.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Deux négations : « pas abandonné » et « pas détesté ». Allah rassure doublement Son Prophète." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Quand est-ce que je me sens « abandonné » par Allah ? Et si ce sentiment était une illusion ? Le miroir m'invite à la confiance." },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "C'est peut-être dans le silence que l'amour d'Allah est le plus profond. Il me laisse grandir, chercher, désirer." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "La nuit précède l'aube. Le silence précède la parole. L'absence apparente précède la présence plus forte." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui sait qu'il n'est pas abandonné peut traverser n'importe quel silence. La confiance remplace la peur." }
+  ],
+  munajat: `Ya Wadud, parfois je me sens abandonné. Mais Tu dis que Tu ne m'abandonnes pas. Je choisis de Te croire, même quand je ne ressens rien.`
+};
+
+// Surah 103 - Al-'Asr
+MIROIR["103:1"] = {
+  reference: "103:1",
+  theme: ["méditation", "confiance", "force"],
+  emotion: "Urgence, détermination",
+  difficulty: "débutant",
+  relatedNames: ["Al-'Asr", "Al-Haqq"],
+  mirrorVersion: `« Par le Temps ! L'humanité est certes en perdition, sauf ceux qui croient, accomplissent les bonnes œuvres, s'enjoignent mutuellement la vérité et s'enjoignent mutuellement la patience. » Cette sourate est la plus courte mais l'une des plus complètes. Le miroir me place devant l'urgence du temps. Je suis en perdition (khusr) — perte — sauf si je fais quatre choses : croire, agir, conseiller la vérité, conseiller la patience.`,
+  reflection: `Le temps (asr) est la ressource la plus précieuse et la plus gaspillée. Chaque instant non investi dans le bien est une perte.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Quatre conditions pour échapper à la perdition : iman (foi), amal salih (bonnes actions), tawasi bil-haqq (conseil mutuel de vérité), tawasi bis-sabr (conseil mutuel de patience)." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Comment est-ce que je dépense mon temps ? Est-ce en perte ou en investissement ? Le miroir m'invite à l'audit temporel." },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La perdition est l'état par défaut. Le salut exige un effort actif et continu. Personne n'est sauvé automatiquement." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Le temps est la dimension où se joue le destin. L'éternité se décide dans le temporel. L'infini dans le fini." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Ceux qui remplissent ces quatre conditions transforment le temps en éternité. Chaque instant devient éternel par sa qualité." }
+  ],
+  munajat: `Ya Allah, je suis en perdition sans Toi. Fais que je croie, que j'agisse, que je conseille la vérité et la patience. Sauve-moi de la perte du temps.`
+};
+
+// Surah 108 - Al-Kawthar
+MIROIR["108:1"] = {
+  reference: "108:1",
+  theme: ["gratitude", "prière", "espoir"],
+  emotion: "Reconnaissance, plénitude",
+  difficulty: "débutant",
+  relatedNames: ["Al-Wahhab", "Al-Karim"],
+  mirrorVersion: `« Nous t'avons certes accordé l'Abondance. » Ce verset promet à Muhammad le Kawthar — l'abondance. Le miroir me montre qu'Allah donne sans compter. Le mot « Kawthar » suggère une rivière au Paradis, mais aussi toute forme de bien abondant. Ce que j'ai reçu — la vie, la foi, la capacité d'aimer — est une forme de Kawthar. Ma reconnaissance devrait être à la mesure de ce don.`,
+  reflection: `L'abondance divine n'est pas seulement matérielle. Le plus grand Kawthar est la proximité d'Allah et la capacité de L'invoquer.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Une courte sourate mais dense. Le Kawthar est un don spécifique au Prophète, mais le principe s'applique à tous les croyants." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Quelle est mon « abondance » ? Qu'est-ce que j'ai reçu en quantité généreuse ? Et comment est-ce que je le reconnais ?" },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "L'abondance n'est pas une accumulation — c'est une grâce. Je ne l'ai pas méritée, je l'ai reçue." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers déborde de générosité divine. Chaque soleil, chaque goutte d'eau, chaque souffle est un cadeau." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui reconnaît l'abondance reçoit plus. La gratitude est la clé qui ouvre les portes du don." }
+  ],
+  munajat: `Ya Wahhab, Tu m'as donné l'abondance que je ne mérite pas. Aide-moi à la reconnaître, à l'utiliser pour Toi, et à ne jamais l'oublier.`
+};
+
+// Surah 110 - An-Nasr
+MIROIR["110:1"] = {
+  reference: "110:1",
+  theme: ["guidance", "gratitude", "espoir"],
+  emotion: "Accomplissement, humilité",
+  difficulty: "débutant",
+  relatedNames: ["An-Nasir", "Al-Fattah"],
+  mirrorVersion: `« Lorsque vient le secours d'Allah ainsi que la victoire. » Cette sourate annonce la victoire finale de l'Islam. Le miroir me montre que toute victoire vient d'Allah. Quand je réussis, ce n'est pas mon mérite — c'est Son secours (nasr). La bonne réaction à la victoire n'est pas l'orgueil mais la reconnaissance : « tu verras les gens entrer en masse dans la religion d'Allah, alors glorifie par les louanges ton Seigneur et implore Son pardon. »`,
+  reflection: `La victoire appelle à l'humilité, pas à l'arrogance. Plus le succès est grand, plus la prosternation devrait être profonde.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "La dernière sourate révélée chronologiquement. Elle annonce la fin proche du Prophète et l'accomplissement de sa mission." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Quand je réussis, quelle est ma réaction ? Célébration personnelle ou reconnaissance divine ?" },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La victoire n'est pas la fin — elle est le début de la gratitude et de la préparation au retour vers Allah." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute victoire dans l'histoire est un don d'Allah. Les empires s'effondrent et les causes justes triomphent par Sa permission." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui comprend que la victoire vient d'Allah ne s'enorgueillit jamais. Il reste prosterné, même au sommet." }
+  ],
+  munajat: `Ya Nasir, Tu accordes la victoire à qui Tu veux. Si Tu me donnes le succès, fais que je ne m'enorgueillisse pas. Garde-moi prosterné devant Toi.`
+};
+
+// Surah 114 - An-Nas
+MIROIR["114:1"] = {
+  reference: "114:1",
+  theme: ["guérison", "confiance", "présence"],
+  emotion: "Protection, refuge",
+  difficulty: "débutant",
+  relatedNames: ["Rab an-Nas", "Malik an-Nas", "Ilah an-Nas"],
+  mirrorVersion: `« Dis : Je cherche refuge auprès du Seigneur des humains, le Souverain des humains, le Dieu des humains. » Ce verset ouvre la dernière sourate du Coran. Le miroir me place devant trois attributs divins liés à l'humanité : Seigneur (Celui qui nourrit), Souverain (Celui qui gouverne), Dieu (Celui qui est adoré). Je cherche refuge en Lui contre le mal qui vient du cœur des autres — l'envie, la jalousie, le mal occulte.`,
+  reflection: `La protection divine couvre tout : visible et invisible. Le « refuge » (isti'adha) est une prise de conscience que seule Sa protection est fiable.`,
+  tajalli: [
+    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Trois fois « an-nas » (les humains). La relation Allah-humanité est au cœur de cette sourate." },
+    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Contre quoi ai-je besoin de protection ? Les maladies occultes (hasad, 'ayn, sihr) sont réelles. Le miroir m'invite à me réfugier." },
+    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Le mal vient parfois de ceux qu'on aime. La protection d'Allah est nécessaire même — surtout — de la part des proches." },
+    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'humanité a besoin de protection contre elle-même. Les humains peuvent être la plus grande bénédiction ou le plus grand danger." },
+    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui se réfugie vraiment en Allah n'a peur de rien d'autre. Sa protection est un bouclier contre tout mal visible et invisible." }
+  ],
+  munajat: `Ya Rabb an-nas, ya Malik an-nas, ya Ilah an-nas, je cherche refuge en Toi contre tout mal qui vient des cœurs. Protège-moi, visible et invisible.`
+};
