@@ -28,9 +28,17 @@
   /* App specific colors */
   --gold: #c9a227;
   --gold-dim: rgba(201, 162, 39, 0.15);
+  --gold-glow: rgba(201, 162, 39, 0.3);
   --mirror: #00d4ff;
+  --mirror-dim: rgba(0, 212, 255, 0.15);
   --purple: #6b21a8;
+  --purple-dim: rgba(107, 33, 168, 0.15);
   --surface: rgba(255, 255, 255, 0.02);
+  
+  /* Gradient colors */
+  --gradient-gold: linear-gradient(135deg, rgba(201, 162, 39, 0.3), transparent);
+  --gradient-mirror: linear-gradient(135deg, rgba(0, 212, 255, 0.2), transparent);
+  --gradient-purple: linear-gradient(135deg, rgba(107, 33, 168, 0.2), transparent);
   
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -267,4 +275,320 @@
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Floating particles background */
+.particles-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(201, 162, 39, 0.3);
+  border-radius: 50%;
+  animation: float-particle 15s infinite ease-in-out;
+}
+
+.particle:nth-child(odd) {
+  background: rgba(0, 212, 255, 0.2);
+  animation-duration: 20s;
+}
+
+.particle:nth-child(3n) {
+  background: rgba(107, 33, 168, 0.2);
+  animation-duration: 25s;
+}
+
+@keyframes float-particle {
+  0%, 100% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100px);
+    opacity: 0;
+  }
+}
+
+/* Glow effects */
+.glow-gold {
+  box-shadow: 0 0 20px rgba(201, 162, 39, 0.3), 0 0 40px rgba(201, 162, 39, 0.1);
+}
+
+.glow-mirror {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), 0 0 40px rgba(0, 212, 255, 0.1);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(107, 33, 168, 0.3), 0 0 40px rgba(107, 33, 168, 0.1);
+}
+
+/* Enhanced mirror panel */
+.mirror-panel-enhanced {
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), transparent 50%, rgba(107, 33, 168, 0.05));
+}
+
+.mirror-panel-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.5), transparent);
+}
+
+.mirror-panel-enhanced::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 0%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Decorative corner accents */
+.corner-accent {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: rgba(201, 162, 39, 0.3);
+  pointer-events: none;
+}
+
+.corner-accent-tl {
+  top: 0;
+  left: 0;
+  border-top: 1px solid;
+  border-left: 1px solid;
+  border-top-left-radius: 8px;
+}
+
+.corner-accent-tr {
+  top: 0;
+  right: 0;
+  border-top: 1px solid;
+  border-right: 1px solid;
+  border-top-right-radius: 8px;
+}
+
+.corner-accent-bl {
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  border-bottom-left-radius: 8px;
+}
+
+.corner-accent-br {
+  bottom: 0;
+  right: 0;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+  border-bottom-right-radius: 8px;
+}
+
+/* Surah card hover effect */
+.surah-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.surah-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.05), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.surah-card:hover::before {
+  transform: translateX(100%);
+}
+
+/* Reading progress bar */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--mirror));
+  z-index: 100;
+  transition: width 0.1s ease;
+}
+
+/* Verse highlight animation */
+@keyframes verse-highlight {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.verse-highlight {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201, 162, 39, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: verse-highlight 2s ease-in-out;
+}
+
+/* Ripple effect */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(201, 162, 39, 0.3);
+  animation: ripple 0.6s ease-out;
+  pointer-events: none;
+}
+
+/* Bottom sheet mobile */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: rgba(7, 7, 13, 0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 50;
+}
+
+/* Floating action button */
+.fab {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), rgba(201, 162, 39, 0.8));
+  box-shadow: 0 4px 20px rgba(201, 162, 39, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 40;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(201, 162, 39, 0.5);
+}
+
+.fab:active {
+  transform: scale(0.95);
+}
+
+/* Audio player container */
+.audio-player {
+  background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), transparent);
+  border: 1px solid rgba(201, 162, 39, 0.15);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.audio-wave {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 20px;
+}
+
+.audio-wave span {
+  width: 3px;
+  background: var(--gold);
+  border-radius: 2px;
+  animation: audio-wave 1s ease-in-out infinite;
+}
+
+.audio-wave span:nth-child(1) { animation-delay: 0s; height: 8px; }
+.audio-wave span:nth-child(2) { animation-delay: 0.1s; height: 12px; }
+.audio-wave span:nth-child(3) { animation-delay: 0.2s; height: 16px; }
+.audio-wave span:nth-child(4) { animation-delay: 0.3s; height: 10px; }
+.audio-wave span:nth-child(5) { animation-delay: 0.4s; height: 14px; }
+
+@keyframes audio-wave {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.5); }
+}
+
+.audio-wave.paused span {
+  animation-play-state: paused;
+}
+
+/* Stagger animation for lists */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: stagger-in 0.4s ease forwards;
+}
+
+@keyframes stagger-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus ring enhancement */
+.focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(7, 7, 13, 0.8), 0 0 0 4px rgba(201, 162, 39, 0.5);
+}
+
+/* Text shimmer effect */
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--gold) 0%,
+    var(--mirror) 50%,
+    var(--gold) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shimmer 3s linear infinite;
+}
+
+@keyframes text-shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
 }

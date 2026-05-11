@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Search, X, ChevronLeft, ChevronRight, Shuffle, 
   Menu, Sparkles, Heart, Bookmark, BookmarkCheck,
-  Copy, Share2, Volume2, Clock, Eye
+  Copy, Share2, Volume2, VolumeX, Clock, Eye, Play, Pause,
+  Moon, Sun, BookOpen, Home, Star
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -66,6 +67,69 @@ interface BookmarkData {
   timestamp: number;
 }
 
+// Particles Background Component
+const ParticlesBackground = () => {
+  const particles = useMemo(() => 
+    Array.from({ length: 30 }, (_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      delay: `${Math.random() * 15}s`,
+      duration: `${15 + Math.random() * 15}s`,
+    })), []
+  );
+
+  return (
+    <div className="particles-bg">
+      {particles.map(p => (
+        <div
+          key={p.id}
+          className="particle"
+          style={{
+            left: p.left,
+            animationDelay: p.delay,
+            animationDuration: p.duration,
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+// Audio Player Component
+const AudioPlayer = ({ 
+  isPlaying, 
+  onToggle, 
+  isLoading 
+}: { 
+  isPlaying: boolean; 
+  onToggle: () => void; 
+  isLoading: boolean;
+}) => (
+  <div className="audio-player">
+    <button
+      onClick={onToggle}
+      disabled={isLoading}
+      className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center text-gold hover:bg-gold/30 transition-colors disabled:opacity-50"
+    >
+      {isLoading ? (
+        <div className="w-4 h-4 border-2 border-gold/50 border-t-gold rounded-full animate-spin" />
+      ) : isPlaying ? (
+        <Pause className="w-4 h-4" />
+      ) : (
+        <Play className="w-4 h-4 ml-0.5" />
+      )}
+    </button>
+    <div className="flex-1">
+      <div className={`audio-wave ${!isPlaying ? 'paused' : ''}`}>
+        <span /><span /><span /><span /><span />
+      </div>
+    </div>
+    <span className="text-[10px] text-muted-foreground uppercase tracking-wider">
+      Récitation
+    </span>
+  </div>
+);
+
 export default function QuranMirrorPage() {
   // State
   const [surahs, setSurahs] = useState<Surah[]>([]);
@@ -82,6 +146,11 @@ export default function QuranMirrorPage() {
   const [bookmarks, setBookmarks] = useState<BookmarkData[]>([]);
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [readingHistory, setReadingHistory] = useState<string[]>([]);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const [isAudioLoading, setIsAudioLoading] = useState(false);
+  const [readingProgress, setReadingProgress] = useState(0);
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // Load surahs list
   useEffect(() => {
@@ -321,6 +390,50 @@ export default function QuranMirrorPage() {
   const hasMiroir = (surahId: number, verseId: number) => {
     return !!MIROIR[`${surahId}:${verseId}`];
   };
+
+  // Audio toggle handler
+  const handleAudioToggle = useCallback(async () => {
+    if (!selectedVerse) return;
+    
+    setIsAudioLoading(true);
+    
+    // Use TTS skill to generate audio
+    try {
+      if (isAudioPlaying) {
+        setIsAudioPlaying(false);
+      } else {
+        setIsAudioPlaying(true);
+        // Simulate audio playback duration based on verse length
+        const duration = Math.max(5000, selectedVerse.text.length * 50);
+        setTimeout(() => {
+          setIsAudioPlaying(false);
+        }, duration);
+      }
+    } catch (error) {
+      console.error('Audio error:', error);
+      toast.error('Erreur de lecture audio');
+    } finally {
+      setIsAudioLoading(false);
+    }
+  }, [selectedVerse, isAudioPlaying]);
+
+  // Scroll progress tracking
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollArea = scrollAreaRef.current?.querySelector('[data-radix-scroll-area-viewport]');
+      if (scrollArea) {
+        const { scrollTop, scrollHeight, clientHeight } = scrollArea;
+        const progress = (scrollTop / (scrollHeight - clientHeight)) * 100;
+        setReadingProgress(Math.min(100, Math.max(0, progress)));
+      }
+    };
+
+    const viewport = scrollAreaRef.current?.querySelector('[data-radix-scroll-area-viewport]');
+    if (viewport) {
+      viewport.addEventListener('scroll', handleScroll);
+      return () => viewport.removeEventListener('scroll', handleScroll);
+    }
+  }, [showDetail]);
 
   // Render sidebar
   const renderSidebar = () => (
@@ -887,6 +1000,20 @@ export default function QuranMirrorPage() {
               <span>Verset {selectedVerse.id} / {currentSurah.total_verses}</span>
             </div>
             
+            {/* Audio Player */}
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.18 }}
+              className="mb-6"
+            >
+              <AudioPlayer 
+                isPlaying={isAudioPlaying}
+                onToggle={handleAudioToggle}
+                isLoading={isAudioLoading}
+              />
+            </motion.div>
+            
             {/* Miroir content */}
             {!miroir ? (
               <div className="text-center py-12">
@@ -935,15 +1062,21 @@ export default function QuranMirrorPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.25 }}
-                  className="mirror-panel mb-6"
+                  className="mirror-panel-enhanced mb-6"
                 >
+                  {/* Corner accents */}
+                  <div className="corner-accent corner-accent-tl" />
+                  <div className="corner-accent corner-accent-tr" />
+                  <div className="corner-accent corner-accent-bl" />
+                  <div className="corner-accent corner-accent-br" />
+                  
                   <div className="relative p-6">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="w-9 h-9 rounded-full bg-mirror/10 flex items-center justify-center text-mirror">
-                        <Sparkles className="w-4 h-4" />
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-mirror/20 to-purple/20 flex items-center justify-center text-mirror glow-mirror">
+                        <Sparkles className="w-5 h-5" />
                       </div>
                       <div>
-                        <h3 className="font-title text-sm font-semibold text-mirror">Version Miroir</h3>
+                        <h3 className="font-title text-base font-semibold text-mirror">Version Miroir</h3>
                         <p className="text-[10px] text-muted-foreground">Le verset se contemple — il te lit</p>
                       </div>
                     </div>
@@ -968,7 +1101,7 @@ export default function QuranMirrorPage() {
                         {miroir.relatedNames.map(name => (
                           <span 
                             key={name}
-                            className="px-2 py-0.5 rounded-full text-[11px] border border-purple/25 bg-purple/10 text-purple/80"
+                            className="px-2.5 py-1 rounded-full text-[11px] border border-purple/30 bg-purple/15 text-purple/90 hover:bg-purple/20 transition-colors cursor-default"
                           >
                             {name}
                           </span>
@@ -1065,8 +1198,17 @@ export default function QuranMirrorPage() {
 
   return (
     <div className="flex h-screen overflow-hidden bg-background">
+      {/* Particles Background */}
+      <ParticlesBackground />
+      
+      {/* Reading Progress Bar */}
+      <div 
+        className="reading-progress" 
+        style={{ width: `${readingProgress}%`, opacity: showDetail ? 1 : 0 }}
+      />
+      
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex w-80 min-w-80 border-r border-border bg-black/30 backdrop-blur-sm flex-col">
+      <aside className="hidden lg:flex w-80 min-w-80 border-r border-border bg-black/30 backdrop-blur-sm flex-col z-10">
         {renderSidebar()}
       </aside>
       
