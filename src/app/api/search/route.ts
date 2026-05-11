@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { MIROIR } from '@/data/miroir';
 
 const CDN_BASE = 'https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/chapters/fr';
 
@@ -51,34 +52,12 @@ export async function GET(request: Request) {
   const query = searchParams.get('q')?.toLowerCase() || '';
   const theme = searchParams.get('theme');
   
-  // Miroir references
-  const MIROIR_REFERENCES = [
-    '1:1', '1:5', '2:152', '2:186', '2:255', '2:286',
-    '3:139', '13:28', '24:35', '39:53', '50:16', '55:13',
-    '65:3', '67:3', '89:27', '89:28', '94:5', '112:1', '112:2'
-  ];
-  
-  const MIROIR_THEMES: Record<string, string[]> = {
-    '1:1': ['présence', 'amour'],
-    '1:5': ['prière', 'détachement', 'confiance'],
-    '2:152': ['gratitude', 'présence', 'prière'],
-    '2:186': ['prière', 'présence', 'amour'],
-    '2:255': ['présence', 'sagesse', 'force'],
-    '2:286': ['confiance', 'force', 'patience'],
-    '3:139': ['force', 'espoir', 'confiance'],
-    '13:28': ['présence', 'guérison', 'méditation'],
-    '24:35': ['sagesse', 'guidance', 'présence'],
-    '39:53': ['espoir', 'pardon', 'guérison'],
-    '50:16': ['présence', 'amour', 'confiance'],
-    '55:13': ['gratitude', 'présence', 'méditation'],
-    '65:3': ['confiance', 'détachement', 'force'],
-    '67:3': ['méditation', 'sagesse', 'présence'],
-    '89:27': ['présence', 'espoir', 'guérison'],
-    '89:28': ['présence', 'espoir', 'guérison'],
-    '94:5': ['patience', 'espoir', 'force'],
-    '112:1': ['méditation', 'présence', 'sagesse'],
-    '112:2': ['méditation', 'confiance', 'sagesse']
-  };
+  // Get all miroir references and themes from the MIROIR object
+  const miroirReferences = Object.keys(MIROIR);
+  const miroirThemes: Record<string, string[]> = {};
+  miroirReferences.forEach(ref => {
+    miroirThemes[ref] = MIROIR[ref].theme;
+  });
   
   try {
     const allVerses = await loadAllVerses();
@@ -91,8 +70,8 @@ export async function GET(request: Request) {
         v.surahName?.toLowerCase().includes(query);
       
       const matchesTheme = !theme || 
-        (MIROIR_REFERENCES.includes(v.reference) && 
-         MIROIR_THEMES[v.reference]?.includes(theme));
+        (miroirReferences.includes(v.reference) && 
+         miroirThemes[v.reference]?.includes(theme));
       
       return matchesQuery && matchesTheme;
     });
@@ -100,7 +79,7 @@ export async function GET(request: Request) {
     // Add miroir flag
     results = results.map(v => ({
       ...v,
-      hasMiroir: MIROIR_REFERENCES.includes(v.reference)
+      hasMiroir: miroirReferences.includes(v.reference)
     }));
     
     // Limit results

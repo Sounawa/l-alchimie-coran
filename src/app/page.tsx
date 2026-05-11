@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo, useLayoutEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Search, X, ChevronLeft, ChevronRight, Shuffle, 
@@ -67,22 +67,18 @@ interface BookmarkData {
   timestamp: number;
 }
 
-// Generate stable random values for particles (only on client)
-const getInitialParticles = () => {
-  if (typeof window === 'undefined') return [];
-  return Array.from({ length: 30 }, (_, i) => ({
-    id: i,
-    left: `${Math.random() * 100}%`,
-    delay: `${Math.random() * 15}s`,
-    duration: `${15 + Math.random() * 15}s`,
-  }));
-};
-
-// Particles Background Component  
+// Particles Background Component - static particles to avoid hydration issues
 const ParticlesBackground = () => {
-  const [particles] = useState(getInitialParticles);
-
-  if (particles.length === 0) return null;
+  // Use stable, deterministic positions based on index to avoid SSR/client mismatch
+  const particles = useMemo(() => 
+    Array.from({ length: 30 }, (_, i) => ({
+      id: i,
+      // Deterministic values based on index - no random calls
+      left: `${((i * 37) % 100)}%`,
+      delay: `${((i * 7) % 15)}s`,
+      duration: `${15 + ((i * 11) % 15)}s`,
+    })), []
+  );
 
   return (
     <div className="particles-bg">
