@@ -1163,7 +1163,7 @@ export default function QuranMirrorPage() {
                   </p>
                 </motion.div>
                 
-                {/* 5 Tajalli */}
+                {/* 6 Tajalli */}
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -1171,7 +1171,7 @@ export default function QuranMirrorPage() {
                   className="rounded-xl border border-border bg-card overflow-hidden mb-6"
                 >
                   <div className="p-4 border-b border-border">
-                    <h3 className="font-title text-sm font-semibold text-gold">Les 5 Regards du Tajalli</h3>
+                    <h3 className="font-title text-sm font-semibold text-gold">Les 6 Regards du Tajalli</h3>
                     <p className="text-[10px] text-muted-foreground mt-1">
                       Déplier chaque regard pour approfondir la contemplation
                     </p>
