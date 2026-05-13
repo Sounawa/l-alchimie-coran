@@ -400,7 +400,7 @@ export default function QuranMirrorPage() {
   // Render sidebar
   const renderSidebar = () => (
     <div className="flex flex-col h-full">
-      <div className="p-4 border-b border-border">
+      <div className="p-4 border-b border-border flex-shrink-0">
         <h2 className="font-title text-xs font-semibold text-gold uppercase tracking-wider">
           Sourates
         </h2>
@@ -408,7 +408,8 @@ export default function QuranMirrorPage() {
           114 sourates — Coran intégral
         </p>
       </div>
-      <ScrollArea className="flex-1 p-2">
+      <div className="flex-1 min-h-0 overflow-hidden">
+        <ScrollArea className="h-full p-2">
         <div className="space-y-1">
           {surahs.map((surah) => (
             <motion.button
@@ -445,6 +446,7 @@ export default function QuranMirrorPage() {
           ))}
         </div>
       </ScrollArea>
+      </div>
     </div>
   );
 
@@ -1246,7 +1248,8 @@ export default function QuranMirrorPage() {
         <span className="text-[11px] text-muted-foreground">{bookmarks.length}</span>
       </div>
       
-      <ScrollArea className="flex-1">
+      <div className="flex-1 min-h-0 overflow-hidden">
+        <ScrollArea className="h-full">
         {bookmarks.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full p-6 text-center">
             <Bookmark className="w-10 h-10 text-muted-foreground/30 mb-4" />
@@ -1280,6 +1283,7 @@ export default function QuranMirrorPage() {
           </div>
         )}
       </ScrollArea>
+      </div>
     </motion.div>
   );
 
@@ -1378,7 +1382,8 @@ export default function QuranMirrorPage() {
         </div>
         
         {/* Detail content */}
-        <ScrollArea className="flex-1">
+        <div className="flex-1 min-h-0 overflow-hidden">
+          <ScrollArea className="h-full">
           <div className="max-w-2xl mx-auto p-6">
             {/* Arabic text */}
             <motion.div 
@@ -1607,6 +1612,7 @@ export default function QuranMirrorPage() {
             </div>
           </div>
         </ScrollArea>
+        </div>
       </motion.div>
     );
   };
