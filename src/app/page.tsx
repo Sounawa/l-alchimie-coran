@@ -958,7 +958,7 @@ export default function QuranMirrorPage() {
                               <span style={{ color: t.color }}>◈</span>
                               <span className="text-[10px] font-medium" style={{ color: t.color }}>{t.label}</span>
                             </div>
-                            <p className="text-[10px] text-muted-foreground leading-relaxed line-clamp-2">{t.text}</p>
+                            <p className="text-[10px] text-muted-foreground leading-relaxed">{t.text}</p>
                           </div>
                         ))}
                       </div>
@@ -1115,7 +1115,7 @@ export default function QuranMirrorPage() {
                       {item.miroir.tajalli.slice(0, 4).map((t, i) => (
                         <div key={i} className="p-1.5 rounded bg-white/[0.02]">
                           <span className="text-[9px] font-medium" style={{ color: t.color }}>{t.label}</span>
-                          <p className="text-[9px] text-muted-foreground line-clamp-1">{t.text}</p>
+                          <p className="text-[9px] text-muted-foreground leading-relaxed">{t.text}</p>
                         </div>
                       ))}
                     </div>
@@ -1247,7 +1247,7 @@ export default function QuranMirrorPage() {
                               <span className="text-[11px] font-medium" style={{ color: t.color }}>{t.label}</span>
                               <span className="font-arabic text-[10px] text-muted-foreground">{t.ar}</span>
                             </div>
-                            <p className="text-[11px] text-muted-foreground leading-relaxed line-clamp-2">{t.text}</p>
+                            <p className="text-[11px] text-muted-foreground leading-relaxed">{t.text}</p>
                           </div>
                         ))}
                       </div>
