@@ -15316,70 +15316,16 @@ MIROIR["4:1"] = {
 // SURAH 5 - AL-MA'IDAH (The Table) - Key Verses
 // ============================================
 
-MIROIR["5:16"] = {
-  reference: "5:16",
-  theme: ["guidance", "espoir", "méditation"],
-  emotion: "Lumière directionnelle",
-  difficulty: "débutant",
-  relatedNames: ["An-Nur", "Al-Hadi"],
-  mirrorVersion: `« Par elle, Allah guide ceux qui cherchent Sa satisfaction dans les chemins du salut. » Le miroir me montre que la guidance est liée à l'intention. « Ceux qui cherchent Sa satisfaction » — c'est la condition. La guidance n'est pas automatique. Elle vient à ceux qui veulent vraiment plaire à Allah. Le chemin du salut (subul as-salam) existe, mais il faut le chercher sincèrement.`,
-  reflection: `La guidance répond à la sincérité. Qui cherche vraiment trouve.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Subul as-salam » — les chemins du salut. Pluriel : il y a plusieurs chemins qui mènent à Allah." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Qu'est-ce que je cherche vraiment ? La satisfaction d'Allah ou autre chose ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La recherche de Sa satisfaction n'est pas une contrainte — c'est le chemin le plus direct vers la paix." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Tout dans l'univers suit sa voie tracée. L'homme a besoin de chercher la sienne." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui cherche Sa satisfaction la trouve déjà. La recherche est elle-même la guidance." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Dans l'ombre de cette révélation, je découvre mes propres contradictions. Ce que le verset dévoile de la vérité divine, il le reflète aussi sur mes propres ténèbres. L'ombre m'invite à l'honnêteté radicale." }
-  ],
-  munajat: `Ya Hadi, je cherche Ta satisfaction. Montre-moi les chemins du salut. Ne me laisse pas errer dans les chemins de perdition.`
-};
 
 // ============================================
 // SURAH 6 - AL-AN'AM (The Cattle) - Key Verses
 // ============================================
 
-MIROIR["6:162"] = {
-  reference: "6:162",
-  theme: ["présence", "amour", "détachement"],
-  emotion: "Offrande totale",
-  difficulty: "intermédiaire",
-  relatedNames: ["Al-Wali", "Al-Khaliq"],
-  mirrorVersion: `« Dis : Ma prière, mes actes de dévotion, ma vie et ma mort appartiennent à Allah, Seigneur des mondes. » Ce verset est une déclaration d'appartenance radicale. Le miroir me demande : à qui appartient ma vie ? À mon travail ? À ma famille ? À mon ego ? Ce verset dit : tout est à Allah. Ma vie, ma mort, mes prières, mes sacrifices — tout. Cette offrande n'est pas une perte — c'est la vraie possession.`,
-  reflection: `Ce qui est offert à Allah devient éternel. Ce qui est gardé pour soi disparaît.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Quatre offrandes : la prière, la dévotion, la vie, la mort. Le tout de l'existence." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Qu'est-ce que je garde pour moi ? Qu'est-ce que j'ai du mal à offrir à Allah ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Offrir à Allah n'est pas perdre — c'est investir dans l'éternel. Ce qui est gardé pour soi se perd." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute chose retourne à son Seigneur. L'offrande anticipe ce retour et le rend conscient." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui a tout offert a tout gagné. Il ne possède rien et possède tout." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "L'ombre de ce verset me révèle ce que je refuse de voir en moi : mes attachements cachés, mes résistances silencieuses, les parties de mon âme que je garde dans l'obscurité. L'ombre n'est pas l'ennemie — elle est ce qui attend d'être éclairé." }
-  ],
-  munajat: `Ya Rabb, je T'offre ma vie et ma mort. Prends tout ce que je suis. Fais que tout en moi soit pour Toi.`
-};
 
 // ============================================
 // SURAH 7 - AL-A'RAF (The Heights) - Key Verses
 // ============================================
 
-MIROIR["7:180"] = {
-  reference: "7:180",
-  theme: ["présence", "méditation", "amour"],
-  emotion: "Intimité nommée",
-  difficulty: "intermédiaire",
-  relatedNames: ["Al-Asma' al-Husna"],
-  mirrorVersion: `« À Allah appartiennent les plus beaux noms. Invoquez-Le par ces noms et éloignez-vous de ceux qui profanent Ses noms. » Le miroir me montre la puissance de l'invocation par les noms divins. Chaque nom est une porte vers Sa présence. Ar-Rahman pour la miséricorde, Al-Wadud pour l'amour, Al-Hakim pour la sagesse. Invoquer par ces noms n'est pas une formule — c'est une rencontre.`,
-  reflection: `Les noms divins sont des ponts entre le créature et le Créateur. Chaque nom révèle un aspect de Sa réalité.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Al-asma' al-husna » — les plus beaux noms. La tradition en compte 99, mais ils sont illimités." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Quel nom divin me touche le plus en ce moment ? Ce nom m'indique ce dont mon cœur a besoin." },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Invoquer par Ses noms n'est pas obtenir — c'est se positionner. Je me place sous l'aspect de Dieu que j'invoque." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute la création manifeste Ses noms. L'univers entier prononne en silence Ses attributs." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui connaît vraiment un nom divin ne l'invoque pas — il y entre. Le nom devient son état." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "L'ombre portée par ce verset me montre ce que je fuis. Chaque vérité divine a son ombre humaine — les questions que je n'ose pas poser, les doutes que je cache, les peurs que je nie. L'ombre demande courage." }
-  ],
-  munajat: `Ya Dhu al-jalal wa al-ikram, apprends-moi Tes noms. Fais que chaque nom que je prononce soit une véritable rencontre avec Toi.`
-};
 
 // ============================================
 // SURAH 8 - AL-ANFAL (The Spoils) - Key Verses
@@ -22548,24 +22494,6 @@ MIROIR["8:1"] = {
   munajat: `Ya Malik, tout T'appartient et je ne suis qu'un gérant. Apprends-moi à voir mes biens comme une trust, pas une propriété. Fais que je sois un bon gérant.`
 };
 
-MIROIR["8:2"] = {
-  reference: "8:2",
-  theme: ["foi", "cœur", "révélation"],
-  emotion: "Révérence, éveil",
-  difficulty: "débutant",
-  relatedNames: ["Al-Hadi", "Ar-Rahman"],
-  mirrorVersion: `« Seuls sont croyants ceux dont les cœurs frémissent quand on évoque Allah, et quand on leur récite Ses signes, cela augmente leur foi. » Le miroir me pose une question directe : mon cœur frémit-il ? L'évocation d'Allah devrait produire un mouvement intérieur — pas une émotion fabriquée, mais une réponse naturelle du cœur qui reconnaît son Seigneur. Et les signes d'Allah, augmentent-ils ma foi ? Ou est-ce que je les lis comme des textes ordinaires ? Le miroir m'interroge sur la qualité de ma foi, pas sa quantité.`,
-  reflection: `La foi n'est pas statique — elle augmente avec la récitation des signes divins. Un cœur vivant frémit, un cœur endurci reste froid.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Innama al-mu'minuna alladhina idha dhukira Allahu wajilat qulubuhum » — les croyants sont ceux dont les cœurs frémissent à l'évocation d'Allah." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Quand j'entends le Coran, que se passe-t-il en moi ? Un frémissement ? Une habitude ? Le miroir mesure l'état de mon cœur." },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "C'est aussi Allah qui évoque le cœur — le dhikr est une rencontre, pas une performance. L'évocation vient de Lui avant de venir de moi." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute la création frémit à l'évocation de son Créateur. La montagne tremble, la mer s'agite. Seul l'homme peut choisir de rester froid." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Le frémissement du cœur est la preuve de sa vie spirituelle. Un cœur qui ne frémit plus est un cœur qui s'est endurci." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "L'ombre de ce verset me révèle ce que je refuse de voir en moi : mes attachements cachés, mes résistances silencieuses, les parties de mon âme que je garde dans l'obscurité. L'ombre n'est pas l'ennemie — elle est ce qui attend d'être éclairé." }
-  ],
-  munajat: `Ya Allah, fais que mon cœur frémisse à Ton évocation. Ne permets pas qu'il s'endurcisse. Réveille-le par Tes signes.`
-};
 
 MIROIR["8:3"] = {
   reference: "8:3",
@@ -22911,24 +22839,6 @@ MIROIR["9:3"] = {
   munajat: `Ya Khabir, Tu connais mes ambiguités. Aide-moi à clarifier mes positions. Fais que mon désaveu du mal soit visible comme la proclamation à la Kaaba.`
 };
 
-MIROIR["9:18"] = {
-  reference: "9:18",
-  theme: ["mosquée", "prière", "pureté"],
-  emotion: "Révérence, appartenance",
-  difficulty: "débutant",
-  relatedNames: ["Al-Bari'", "Al-Mutahhir"],
-  mirrorVersion: `« Ne peupleront les mosquées d'Allah que celui qui croit en Allah et au Jour dernier, accomplit la prière, acquitte l'aumône et ne craint qu'Allah. » Le miroir me montre les conditions pour fréquenter les maisons d'Allah. Ce n'est pas un lieu touristique — c'est un espace sacré pour les croyants purs. Quatre conditions : foi, prière, aumône, crainte exclusive. Le miroir m'interroge : avec quel état est-ce que j'entre dans les mosquées ?`,
-  reflection: `Les mosquées sont peuplées par les cœurs purs, pas par les corps seulement. La fréquentation des maisons d'Allah demande une préparation intérieure.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Innama ya'muru masajida Allahi man amana billahi » — ne peupleront les mosquées d'Allah que celui qui croit." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Quand j'entre dans une mosquée, quel état j'apporte ? Suis-je de ceux qui la « peuplent » vraiment ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La crainte exclusive d'Allah est une condition. Celui qui craint les gens ne peut pas fréquenter vraiment les mosquées." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute maison a ses habitants appropriés. La maison d'Allah demande des habitants à Sa mesure." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Peupler la mosquée n'est pas seulement physique — c'est spirituel. On la peuple par la présence du cœur, pas du corps seul." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Derrière la lumière de ce verset, l'ombre me murmure mes résistances. Ce que je comprends intellectuellement mais que je refuse d'incarner. L'ombre est le lieu de ma transformation non encore accomplie." }
-  ],
-  munajat: `Ya Rabb, je veux être de ceux qui peuplent Tes maisons. Purifie mon cœur pour que je puisse entrer avec les bonnes conditions.`
-};
 
 MIROIR["9:23"] = {
   reference: "9:23",
@@ -23723,24 +23633,6 @@ MIROIR["33:42"] = {
 
 // ==================== SURAH 34: SABA (54 verses) - Additional ====================
 
-MIROIR["34:3"] = {
-  reference: "34:3",
-  theme: ["science", "infini", "certitude"],
-  emotion: "Émerveillement, confiance",
-  difficulty: "intermédiaire",
-  relatedNames: ["Al-'Alim", "Al-Khabir"],
-  mirrorVersion: `« Ceux qui ne croient pas disent : 'L'Heure ne nous viendra pas.' Dis : 'Si, par mon Seigneur, elle vous viendra certainement.' » Le miroir me place devant la certitude de l'Heure. Les négateurs doutent, mais le croyant sait. « La yu'jizu » — rien ne L'empêche. Allah connaît tout, même ce qui est caché dans les cieux et la terre. Le miroir m'invite à la certitude.`,
-  reflection: `L'Heure viendra certainement. La certitude du croyant contraste avec le doute du mécréant.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« La ya'lamu al-ghayba illa Allah » — nul ne connaît l'invisible excepté Allah." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Est-ce que je vis avec la certitude de l'Heure ? Ou est-ce que je vis comme si elle n'existait pas ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La certitude de l'Heure transforme le présent. Chaque moment devient précieux." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers entier tend vers sa fin. L'Heure est inscrite dans le temps lui-même." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui vit certain de l'Heure vit chaque instant comme s'il était le dernier." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Ce que la lumière du verset révèle, l'ombre le dissimule en moi. Mes peurs, mes attachements, mes idoles cachées — l'ombre les nomme pour que je les libère." }
-  ],
-  munajat: `Ya 'Alim, je suis certain de l'Heure. Fais que cette certitude transforme ma vie aujourd'hui.`
-};
 
 MIROIR["34:15"] = {
   reference: "34:15",
@@ -23900,24 +23792,6 @@ MIROIR["36:60"] = {
 
 // ==================== SURAH 37: AS-SAFFAT (182 verses) - Additional ====================
 
-MIROIR["37:1"] = {
-  reference: "37:1",
-  theme: ["anges", "rang", "adoration"],
-  emotion: "Révérence, émerveillement",
-  difficulty: "intermédiaire",
-  relatedNames: ["Al-Mala'ika", "As-Saffat"],
-  mirrorVersion: `« Par ceux qui sont rangés en rangs ! » Le miroir me place devant l'armée céleste. Les anges en rangs, en ordre parfait. « As-saffat » — ceux qui se rangent. L'ordre est une caractéristique de la création céleste. Le miroir m'invite à l'ordre dans ma propre vie spirituelle.`,
-  reflection: `L'ordre est une forme d'adoration. Les anges adorent en rangs. L'humain adore avec discipline.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Wa as-saffati saffa » — par ceux qui sont rangés en rangs." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Est-ce que ma vie est ordonnée ? Ou est-ce que le chaos domine ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "L'ordre n'est pas une contrainte — c'est une forme de beauté et d'efficacité." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers est ordonné. Les planètes suivent leurs orbites. Les anges suivent leurs rangs." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui met de l'ordre dans sa vie participe à l'ordre universel." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Dans l'ombre de cette révélation, je découvre mes propres contradictions. Ce que le verset dévoile de la vérité divine, il le reflète aussi sur mes propres ténèbres. L'ombre m'invite à l'honnêteté radicale." }
-  ],
-  munajat: `Ya Rabb, les anges sont rangés en ordre parfait. Fais que ma vie soit ordonnée comme la leur.`
-};
 
 MIROIR["37:84"] = {
   reference: "37:84",
@@ -23938,45 +23812,9 @@ MIROIR["37:84"] = {
   munajat: `Ya Rabb, purifie mon cœur. Enlève la rouille des péchés et des mauvaises intentions. Fais que je vienne à Toi comme Ibrahim.`
 };
 
-MIROIR["37:180"] = {
-  reference: "37:180",
-  theme: ["gloire", "transcendance", "pureté"],
-  emotion: "Adoration, révérence",
-  difficulty: "débutant",
-  relatedNames: ["As-Subuh", "Al-'Azim"],
-  mirrorVersion: `« Gloire à ton Seigneur, le Seigneur de la puissance, Il est au-dessus de ce qu'ils décrivent. » Le miroir me place devant la transcendance absolue d'Allah. « Subhana » — gloire, pureté. « Ta'ama » — Il est au-dessus. Les descriptions humaines ne peuvent L'atteindre. Le miroir m'invite à l'adoration silencieuse.`,
-  reflection: `Allah est au-dessus de toute description. L'adoration est la meilleure réponse à Sa transcendance.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Subhana rabbika rabb al-'izzati 'amma yasifun » — gloire à ton Seigneur, le Seigneur de la puissance." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Comment je décris Allah ? Mes mots sont-ils à la hauteur de Sa réalité ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "L'incapacité à décrire n'est pas une limite — c'est une invitation à l'adoration." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers entier témoigne de la gloire d'Allah sans pouvoir La décrire." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Le silence d'adoration dit plus que mille mots sur Allah." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Derrière la lumière de ce verset, l'ombre me murmure mes résistances. Ce que je comprends intellectuellement mais que je refuse d'incarner. L'ombre est le lieu de ma transformation non encore accomplie." }
-  ],
-  munajat: `Ya Subuh, Tu es au-dessus de tout ce que je peux dire. Je me tais et j'adore. Gloire à Toi.`
-};
 
 // ==================== SURAH 38: SAD (88 verses) - Additional ====================
 
-MIROIR["38:1"] = {
-  reference: "38:1",
-  theme: ["rappel", "coran", "serment"],
-  emotion: "Attention, révérence",
-  difficulty: "intermédiaire",
-  relatedNames: ["Adh-Dhikr", "Al-Qur'an"],
-  mirrorVersion: `« Sad. Par le Coran, au rappel. » Le miroir me place devant le Coran comme rappel. « Dhikr » — rappel, mention. Le Coran nous rappelle ce que nous avons oublié : notre origine, notre but, notre relation avec Allah. Le miroir m'interroge : de quoi le Coran me rappelle-t-il aujourd'hui ?`,
-  reflection: `Le Coran est un rappel constant. L'oubli est notre état naturel ; le rappel est notre remède.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Wa al-Qur'ani dhi al-dhikr » — par le Coran, au rappel." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Qu'est-ce que j'ai oublié que le Coran devrait me rappeler ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Le rappel n'est pas une contrainte — c'est un retour à ce qui est essentiel." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers n'oublie pas. Chaque créature accomplit sa fonction. L'homme oublie et a besoin du rappel." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui accepte le rappel se souvient de son essence." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Ce que la lumière du verset révèle, l'ombre le dissimule en moi. Mes peurs, mes attachements, mes idoles cachées — l'ombre les nomme pour que je les libère." }
-  ],
-  munajat: `Ya Rabb, fais que le Coran soit mon rappel constant. Ne permets pas que j'oublie ce qui est essentiel.`
-};
 
 MIROIR["38:29"] = {
   reference: "38:29",
@@ -24256,24 +24094,6 @@ MIROIR["44:2"] = {
   munajat: `Ya Rabb, Ton Livre est clair. Purifie mon cœur pour recevoir Sa clarté sans obstacle.`
 };
 
-MIROIR["44:38"] = {
-  reference: "44:38",
-  theme: ["création", "but", "réflexion"],
-  emotion: "Humilité, questionnement",
-  difficulty: "intermédiaire",
-  relatedNames: ["Al-Khaliq", "Al-Haqq"],
-  mirrorVersion: `« Nous n'avons créé les cieux et la terre et ce qui est entre eux qu'en toute vérité. » Le miroir me montre le but de la création : « bi-l-haqq » — en toute vérité, avec justice, avec sagesse. La création n'est pas un jeu. Elle a un but. Le miroir m'interroge : est-ce que je vis selon ce but ?`,
-  reflection: `La création a un but. Chaque créature a une raison d'être. Le but de l'homme est de connaître et adorer Allah.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Wa ma khalaqna as-samawati wa al-arda wa ma baynahuma la'ibin » — Nous n'avons pas créé les cieux et la terre par jeu." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Quelle est ma raison d'être ? Est-ce que je vis selon le but de ma création ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Vivre sans but, c'est vivre contre le but de la création." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers a un but. Chaque créature accomplit sa fonction. L'homme doit choisir d'accomplir la sienne." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui connaît le but de sa création vit avec intention." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Dans l'ombre de cette révélation, je découvre mes propres contradictions. Ce que le verset dévoile de la vérité divine, il le reflète aussi sur mes propres ténèbres. L'ombre m'invite à l'honnêteté radicale." }
-  ],
-  munajat: `Ya Khaliq, Tu m'as créé avec un but. Révèle-moi ce but. Fais que je vive selon Ta vérité.`
-};
 
 // ==================== SURAH 45: AL-JATHIYAH (37 verses) - Additional ====================
 
@@ -24376,64 +24196,10 @@ MIROIR["47:2"] = {
   munajat: `Ya Ghaffar, je crois, j'agis, j'accepte. Efface mes mauvaises actions. Fais que je sois parmi les pardonnés.`
 };
 
-MIROIR["47:7"] = {
-  reference: "47:7",
-  theme: ["soutien", "victoire", "foi"],
-  emotion: "Motivation, confiance",
-  difficulty: "débutant",
-  relatedNames: ["An-Nasir", "Al-Mu'min"],
-  mirrorVersion: `« Ô vous qui croyez ! Si vous soutenez Allah, Il vous soutiendra et affermira vos pas. » Le miroir me montre le contrat divin : nous soutenons Allah, Il nous soutient. « Tansuruna Allah » — si vous soutenez Allah. Comment ? En appliquant Sa loi, en défendant Sa cause. Et la réponse : « Yansurkum » — Il vous soutiendra. Le miroir m'interroge : est-ce que je soutiens la cause d'Allah ?`,
-  reflection: `Le soutien d'Allah répond à notre soutien à Sa cause. C'est un partenariat.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« In tansuru Allaha yansurkum » — si vous soutenez Allah, Il vous soutiendra." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Comment je soutiens la cause d'Allah ? Dans mes choix, mes paroles, mes actes ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Soutenir Allah n'est pas pour Lui — c'est pour nous. Il n'a pas besoin de notre soutien." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers soutient Allah par son existence. L'homme Le soutient par son choix conscient." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui soutient Allah reçoit Son soutien visible et invisible." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Ce que ce verset révèle dans la lumière, l'ombre le cache dans mon cœur : les vérités que je connais mais ne vis pas, les appels que j'entends mais ignore. L'ombre est mon examen de conscience." }
-  ],
-  munajat: `Ya Rabb, je veux Te soutenir. Donne-moi la force de défendre Ta cause. Soutiens-moi en retour.`
-};
 
 // ==================== SURAH 48: AL-FATH (29 verses) - Additional ====================
 
-MIROIR["48:1"] = {
-  reference: "48:1",
-  theme: ["victoire", "promesse", "réalisation"],
-  emotion: "Gratitude, espérance",
-  difficulty: "débutant",
-  relatedNames: ["Al-Fattah", "An-Nasr"],
-  mirrorVersion: `« Nous t'avons accordé une victoire éclatante. » Le miroir me place devant la promesse accomplie. « Fathun mubin » — une victoire évidente, claire. Allah promet et accomplit. Cette sourate a été révélée après le traité d'Hudaybiyah, apparemment une défaite mais en réalité une victoire. Le miroir m'invite à voir la victoire dans ce qui semble une défaite.`,
-  reflection: `La victoire d'Allah peut venir sous des formes inattendues. Le croyant voit la main d'Allah même dans les apparences.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Inna fatahna laka fathan mubinan » — Nous t'avons accordé une victoire éclatante." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Qu'est-ce qui ressemble à une défaite dans ma vie mais qui pourrait être une victoire déguisée ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La vraie victoire n'est pas toujours visible immédiatement. Elle se révèle avec le temps." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers connaît des cycles de victoire apparente et cachée. La graine doit être enterrée pour germer." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui voit avec les yeux d'Allah voit la victoire dans chaque situation." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "L'ombre portée par ce verset me montre ce que je fuis. Chaque vérité divine a son ombre humaine — les questions que je n'ose pas poser, les doutes que je cache, les peurs que je nie. L'ombre demande courage." }
-  ],
-  munajat: `Ya Fattah, Tu accordes la victoire. Ouvre mes yeux sur les victoires cachées. Fais que je voie Ta main partout.`
-};
 
-MIROIR["48:4"] = {
-  reference: "48:4",
-  theme: ["paix", "révélation", "foi"],
-  emotion: "Sérénité, confiance",
-  difficulty: "débutant",
-  relatedNames: ["As-Sakinah", "Al-Mu'min"],
-  mirrorVersion: `« C'est Lui qui a fait descendre la tranquillité dans les cœurs des croyants. » Le miroir me montre le don de la « sakinah » — la tranquillité, la paix intérieure. Allah fait descendre cette paix dans les cœurs des croyants. Pas la paix extérieure, mais la paix intérieure. Le miroir m'interroge : ai-je cette tranquillité dans mon cœur ?`,
-  reflection: `La tranquillité est un don d'Allah. Elle ne s'achète pas — elle se reçoit par la foi.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Huwa alladhi anzala as-sakinata fi qulubi al-mu'minin » — c'est Lui qui a fait descendre la tranquillité dans les cœurs des croyants." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Est-ce que j'ai cette tranquillité ? Ou est-ce que mon cœur est agité ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La tranquillité ne vient pas de l'absence de problèmes — elle vient de la présence d'Allah." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers est en mouvement mais obéit à des lois stables. La foi donne cette stabilité intérieure." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui a la sakinah ne craint rien, car il sait qu'Allah est avec lui." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Ce que la lumière du verset révèle, l'ombre le dissimule en moi. Mes peurs, mes attachements, mes idoles cachées — l'ombre les nomme pour que je les libère." }
-  ],
-  munajat: `Ya Rabb, fais descendre la tranquillité dans mon cœur. Calme mes agitations. Donne-moi Ta paix.`
-};
 
 // ==================== SURAH 49: AL-HUJURAT (18 verses) - Additional ====================
 
@@ -24456,45 +24222,9 @@ MIROIR["49:2"] = {
   munajat: `Ya Rabb, enseigne-moi le véritable respect pour Ton Prophète. Fais que je l'honore en parole et en acte.`
 };
 
-MIROIR["49:13"] = {
-  reference: "49:13",
-  theme: ["égalité", "diversité", "piété"],
-  emotion: "Fraternité, humilité",
-  difficulty: "débutant",
-  relatedNames: ["Al-Khaliq", "At-Taqwa"],
-  mirrorVersion: `« Ô hommes ! Nous vous avons créés d'un mâle et d'une femelle, et Nous avons fait de vous des nations et des tribus pour que vous vous entre-connaissiez. Le plus noble d'entre vous auprès d'Allah est le plus pieux. » Le miroir me montre l'égalité fondamentale de tous les humains. Nous venons tous d'Adam et Ève. La diversité est pour la connaissance mutuelle. Le critère de noblesse n'est pas la race, la richesse ou le statut — c'est la piété. Le miroir m'interroge : par quel critère je juge les autres ?`,
-  reflection: `La vraie noblesse est la piété. Tout le reste est illusion.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Inna akramakum 'inda Allahi atqakum » — le plus noble d'entre vous auprès d'Allah est le plus pieux." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Par quel critère je juge les gens ? L'apparence, la richesse, ou la piété du cœur ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La diversité humaine n'est pas une division — c'est une richesse à découvrir." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers est divers dans son unité. Chaque créature a sa place." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui juge par la piété juge comme Allah juge." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "L'ombre me montre le chemin inverse : là où le verset appelle à la lumière, je résiste dans l'ombre. Mais l'ombre n'est pas condamnation — elle est invitation à la conversion." }
-  ],
-  munajat: `Ya Rabb, fais que je juge par la piété et non par les apparences. Unifie mon cœur avec tous les croyants.`
-};
 
 // ==================== SURAH 50: QAF (45 verses) - Additional ====================
 
-MIROIR["50:1"] = {
-  reference: "50:1",
-  theme: ["coran", "serment", "gloire"],
-  emotion: "Révérence, attention",
-  difficulty: "intermédiaire",
-  relatedNames: ["Al-Majid", "Al-Qur'an"],
-  mirrorVersion: `« Qaf. Par le Coran glorieux ! » Le miroir me place devant la gloire du Coran. « Majid » — glorieux, noble, majestueux. Le Coran n'est pas un livre ordinaire — il est glorieux. Le serment par le Coran souligne son importance. Le miroir m'invite à lire le Coran comme un livre glorieux.`,
-  reflection: `Le Coran est glorieux. Sa lecture devrait être empreinte de révérence.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Qaf. Wa al-Qur'ani al-majid » — Qaf. Par le Coran glorieux." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Comment je lis le Coran ? Comme un livre glorieux ou comme un texte ordinaire ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La gloire du Coran n'est pas dans son papier — elle est dans son contenu et son origine." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers est majestueux. Le Coran est la parole du Majestueux." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui lit le Coran comme glorieux reçoit sa gloire dans le cœur." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Ce que ce verset révèle dans la lumière, l'ombre le cache dans mon cœur : les vérités que je connais mais ne vis pas, les appels que j'entends mais ignore. L'ombre est mon examen de conscience." }
-  ],
-  munajat: `Ya Rabb, Ton Coran est glorieux. Fais que je le lise avec la révérence qu'il mérite. Donne-moi de goûter à Sa gloire.`
-};
 
 MIROIR["50:6"] = {
   reference: "50:6",
@@ -25416,24 +25146,6 @@ MIROIR["13:3"] = {
   munajat: `Ya Khaliq, Ta création est merveilleuse. Ouvre mes yeux sur Ses signes. Fais que chaque élément de la nature me rappelle Toi.`
 };
 
-MIROIR["13:11"] = {
-  reference: "13:11",
-  theme: ["anges", "protection", "changement"],
-  emotion: "Sécurité, responsabilité",
-  difficulty: "intermédiaire",
-  relatedNames: ["Al-Hafiz", "Al-Malak"],
-  mirrorVersion: `« Il a des anges qui se succèdent devant et derrière lui, gardant par le commandement d'Allah. Allah ne change pas ce qui est dans un peuple tant qu'ils ne changent pas ce qui est en eux-mêmes. » Le miroir me montre la protection angélique et la responsabilité humaine. Les anges gardent — mais la protection dépend de l'état intérieur. « Ma bi-anfusihim » — ce qui est en eux-mêmes. Le changement extérieur suit le changement intérieur. Le miroir m'interroge : qu'est-ce que je dois changer en moi ?`,
-  reflection: `La protection divine est réelle, mais elle répond à notre état intérieur. Changer intérieurement attire la protection.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Lahu mu'aqqibatun min bayni yadayhi wa min khalfihi » — il a des anges qui se succèdent devant et derrière lui." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Quel changement dois-je opérer en moi pour attirer la protection d'Allah ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Les anges nous protègent — mais nous pouvons nous exclure de leur protection par nos actes." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers est gardé par des forces invisibles. L'homme est le seul à pouvoir s'exclure de cette garde." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui change son intérieur change son extérieur. La protection suit la transformation." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "L'ombre de ce verset me révèle ce que je refuse de voir en moi : mes attachements cachés, mes résistances silencieuses, les parties de mon âme que je garde dans l'obscurité. L'ombre n'est pas l'ennemie — elle est ce qui attend d'être éclairé." }
-  ],
-  munajat: `Ya Hafiz, Tes anges me protègent. Aide-moi à changer ce qui doit changer en moi. Ne permets pas que je m'exclue de Ta protection.`
-};
 
 MIROIR["13:22"] = {
   reference: "13:22",
@@ -25532,24 +25244,6 @@ MIROIR["14:1"] = {
   munajat: `Ya Nur, fais-moi sortir des ténèbres vers Ta lumière. Ton Coran est le chemin. Ne permets pas que je reste dans l'obscurité.`
 };
 
-MIROIR["14:7"] = {
-  reference: "14:7",
-  theme: ["gratitude", "bénédiction", "ingratitude"],
-  emotion: "Reconnaissance, vigilance",
-  difficulty: "débutant",
-  relatedNames: ["Ash-Shakur", "Al-Mannan"],
-  mirrorVersion: `« Et quand votre Seigneur proclama : 'Si vous êtes reconnaissants, J'augmenterai pour vous. Si vous êtes ingrats, Mon châtiment est terrible.' » Le miroir me montre la loi de la gratitude. « La'in shakartum la-azidannakum » — si vous êtes reconnaissants, J'augmenterai. La gratitude n'est pas une parole — c'est un état qui attire l'augmentation. L'ingratitude attire le retrait. Le miroir m'interroge : suis-je dans la gratitude ou dans l'ingratitude ?`,
-  reflection: `La gratitude attire l'augmentation. L'ingratitude attire la perte. C'est une loi spirituelle.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« La'in shakartum la-azidannakum » — si vous êtes reconnaissants, J'augmenterai pour vous." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Est-ce que je suis reconnaissant pour ce que j'ai ? Ou est-ce que je me plains de ce que je n'ai pas ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La gratitude n'est pas ressentir — c'est reconnaître. Reconnaître le Donateur." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers donne à ceux qui reçoivent avec reconnaissance. La nature abonde pour le cœur reconnaissant." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui est reconnaissant pour le peu reçoit beaucoup. Celui qui est ingrat pour le beaucoup perd tout." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Dans l'ombre de cette révélation, je découvre mes propres contradictions. Ce que le verset dévoile de la vérité divine, il le reflète aussi sur mes propres ténèbres. L'ombre m'invite à l'honnêteté radicale." }
-  ],
-  munajat: `Ya Shakur, je suis reconnaissant pour tout ce que Tu m'as donné. Augmente mes bénédictions. Ne permets pas que l'ingratitude s'installe dans mon cœur.`
-};
 
 MIROIR["14:24"] = {
   reference: "14:24",
@@ -25570,24 +25264,6 @@ MIROIR["14:24"] = {
   munajat: `Ya Rabb, fais que mes paroles soient de bons arbres. Donne-leur des racines profondes et des branches élevées. Fais qu'elles portent des fruits pour les autres.`
 };
 
-MIROIR["14:34"] = {
-  reference: "14:34",
-  theme: ["bénédictions", "gratitude", "incomptable"],
-  emotion: "Reconnaissance, émerveillement",
-  difficulty: "débutant",
-  relatedNames: ["Ar-Razzaq", "Al-Mannan"],
-  mirrorVersion: `« Et si vous comptez les bienfaits d'Allah, vous ne saurez pas les dénombrer. » Le miroir me place devant l'incomptable. « In ta'uddu ni'mata Allahi la tuhsuha » — si vous comptez les bienfaits d'Allah, vous ne saurez pas les dénombrer. Chaque souffle est un bienfait. Chaque battement de cœur. Chaque cellule qui fonctionne. Les bienfaits invisibles sont plus nombreux que les visibles. Le miroir m'interroge : est-ce que j'essaie de compter ?`,
-  reflection: `Les bienfaits d'Allah sont incomptables. La gratitude est pour ce qu'on connaît, mais aussi pour ce qu'on ne connaît pas.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Wa in ta'uddu ni'mata Allahi la tuhsuha » — si vous comptez les bienfaits d'Allah, vous ne saurez pas les dénombrer." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Combien de bienfaits je connais ? Combien m'échappent ? Le miroir m'invite à la gratitude pour l'inconnu." },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "L'incapacité de compter n'est pas une frustration — c'est une invitation à la confiance." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers entier est un bienfait. Chaque atome, chaque force, chaque loi." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui essaie de compter reconnaît l'infinité du Donateur." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Ce que la lumière du verset révèle, l'ombre le dissimule en moi. Mes peurs, mes attachements, mes idoles cachées — l'ombre les nomme pour que je les libère." }
-  ],
-  munajat: `Ya Mannan, Tes bienfaits sont incomptables. Je suis reconnaissant pour ce que je connais et pour ce que je ne connais pas. Fais que je vive dans cette reconnaissance constante.`
-};
 
 MIROIR["14:42"] = {
   reference: "14:42",
@@ -25686,24 +25362,6 @@ MIROIR["15:85"] = {
   munajat: `Ya Khaliq, Tu as créé en vérité. Aide-moi à pardonner de belle façon. Ne permets pas que la rancune m'alourdisse.`
 };
 
-MIROIR["15:99"] = {
-  reference: "15:99",
-  theme: ["adoration", "mort", "certitude"],
-  emotion: "Détermination, priorité",
-  difficulty: "débutant",
-  relatedNames: ["Al-'Abd", "Al-Mawt"],
-  mirrorVersion: `« Et adore ton Seigneur jusqu'à ce que te vienne la certitude. » Le miroir me montre la durée de l'adoration. « Hatta ya'tiyaka al-yaqin » — jusqu'à ce que te vienne la certitude. La « certitude » ici signifie la mort. L'adoration dure jusqu'à la mort. Pas de retraite spirituelle. Pas de pause. L'adoration est un état continu jusqu'à la fin. Le miroir m'interroge : est-ce que j'adore jusqu'à la mort ?`,
-  reflection: `L'adoration est un état continu. Elle ne connaît pas de pause avant la mort.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Wa'bud rabbaka hatta ya'tiyaka al-yaqin » — et adore ton Seigneur jusqu'à ce que te vienne la certitude." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Est-ce que je peux dire que j'adore jusqu'à la mort ? Ou est-ce que je prévois des pauses ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La mort est la seule certitude. L'adoration est la préparation à cette certitude." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Chaque créature adore jusqu'à sa mort. L'arbre donne jusqu'à ce qu'il meure." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui adore jusqu'à la mort rencontre la mort en adoration." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "L'ombre de ce verset cache un trésor : la partie de moi qui n'a pas encore été touchée par la révélation. Ce qui reste dans l'ombre attend son heure. La patience de l'ombre est la patience de Dieu envers mes zones d'ombre." }
-  ],
-  munajat: `Ya Rabb, je veux T'adorer jusqu'à ma mort. Ne permets pas que je m'arrête avant. Fais que ma dernière heure soit une heure d'adoration.`
-};
 
 // ==================== SURAH 51: ADH-DHARIYAT (60 verses) - COMPREHENSIVE COVERAGE ====================
 
@@ -27290,24 +26948,6 @@ MIROIR["19:41"] = {
   munajat: `Ya Siddiq, Abraham était véridique. Fais que je sois véridique comme lui. Aide-moi à dire la vérité et à vivre dans la vérité.`
 };
 
-MIROIR["19:96"] = {
-  reference: "19:96",
-  theme: ["amour", "foi", "œuvres"],
-  emotion: "Espérance, motivation",
-  difficulty: "débutant",
-  relatedNames: ["Al-Wadud", "Al-Muhibb"],
-  mirrorVersion: `« Ceux qui croient et font de bonnes œuvres, le Tout-Miséricordieux leur accordera Son amour. » Le miroir me montre la promesse de l'amour divin. « Inna alladhina amanu wa 'amilu al-salihati » — ceux qui croient et font de bonnes œuvres. « Sayaj'alu lahum al-rahmanu wuddan » — le Tout-Miséricordieux leur accordera Son amour. L'amour d'Allah n'est pas arbitraire — il est le fruit de la foi et des bonnes œuvres. Le miroir m'invite à cultiver ce qui attire Son amour.`,
-  reflection: `L'amour d'Allah s'acquiert par la foi et les actions. Ce n'est pas un don aveugle — c'est une réponse.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Inna alladhina amanu wa 'amilu al-salihati sayaj'alu lahum al-rahmanu wuddan » — ceux qui croient et font de bonnes œuvres, le Tout-Miséricordieux leur accordera Son amour." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Est-ce que je cultive ce qui attire l'amour d'Allah ? Ma foi et mes actions sont-elles dignes de Son amour ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "L'amour d'Allah n'est pas un sentiment passif — c'est une relation active." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers est fait d'amour divin. Les croyants y participent activement." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qu'Allah aime est aimé de toute la création." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "L'ombre portée par ce verset me montre ce que je fuis. Chaque vérité divine a son ombre humaine — les questions que je n'ose pas poser, les doutes que je cache, les peurs que je nie. L'ombre demande courage." }
-  ],
-  munajat: `Ya Wadud, je veux Ton amour. Fais que je croie et fasse de bonnes œuvres. Accorde-moi Ton amour — c'est le plus grand trésor.`
-};
 
 // ==================== SURAH 20: TA-HA - 135 verses - EXPANDED COVERAGE ====================
 
@@ -27330,24 +26970,6 @@ MIROIR["20:1"] = {
   munajat: `Ya 'Alim, Tu connais le sens de ces lettres. Fais que j'accepte mes limites. Ouvre-moi à ce que Tu veux me révéler.`
 };
 
-MIROIR["20:14"] = {
-  reference: "20:14",
-  theme: ["unicité", "adoration", "prière"],
-  emotion: "Révérence, engagement",
-  difficulty: "débutant",
-  relatedNames: ["Al-Wahid", "Al-Hayy"],
-  mirrorVersion: `« En vérité, Je suis Allah. Point de divinité à part Moi. Adore-Moi donc et accomplis la prière pour M'invoquer. » Le miroir me montre l'essence du message. « Innani ana Allahu la ilaha illa ana » — en vérité, Je suis Allah, point de divinité à part Moi. « Fa'budni » — adore-Moi donc. « Wa-aqimi al-salata li-dhikri » — et accomplis la prière pour M'invoquer. L'unicité, l'adoration, la prière — le programme complet en un verset. Le miroir m'invite à vivre ce programme.`,
-  reflection: `L'unicité mène à l'adoration, et l'adoration s'exprime par la prière. C'est un enchaînement logique.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Innani ana Allahu la ilaha illa ana fa'budni wa-aqimi al-salata li-dhikri » — Je suis Allah, point de divinité à part Moi. Adore-Moi et accomplis la prière pour M'invoquer." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Est-ce que je vis ce programme ? Mon unicité mène-t-elle à l'adoration ? Mon adoration s'exprime-t-elle par la prière ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La prière n'est pas une obligation — elle est une réponse à l'unicité." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers entier adore Allah par son existence. L'homme l'adore par la prière consciente." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui prie vraiment goûte à l'unicité dans chaque prosternation." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Ce que la lumière du verset révèle, l'ombre le dissimule en moi. Mes peurs, mes attachements, mes idoles cachées — l'ombre les nomme pour que je les libère." }
-  ],
-  munajat: `Ya Allah, Tu es l'Unique. Je T'adore. Aide-moi à accomplir la prière pour T'invoquer. Fais que chaque prière soit une rencontre avec Toi.`
-};
 
 MIROIR["20:114"] = {
   reference: "20:114",
@@ -27389,43 +27011,7 @@ MIROIR["21:1"] = {
   munajat: `Ya Hasib, le compte approche. Réveille-moi de mon inattention. Fais que je me prépare chaque jour à Te rencontrer.`
 };
 
-MIROIR["21:35"] = {
-  reference: "21:35",
-  theme: ["mort", "épreuve", "vie"],
-  emotion: "Acceptation, lucidité",
-  difficulty: "débutant",
-  relatedNames: ["Al-Mumit", "Al-Muhyi"],
-  mirrorVersion: `« Toute âme goûtera la mort. Nous vous éprouvons par le mal et par le bien comme tentation. » Le miroir me place devant l'inévitable. « Kullu nafsin dha'iqatu al-mawt » — toute âme goûtera la mort. « Wa nablukum bi-al-sharri wa al-khayri fitnatan » — Nous vous éprouvons par le mal et par le bien. La mort est certaine, les épreuves sont variables. Le miroir m'invite à accepter la mort et à traverser les épreuves.`,
-  reflection: `La mort est le rendez-vous certain. Les épreuves sont les variations. Les deux sont divinement ordonnés.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Kullu nafsin dha'iqatu al-mawt wa nablukum bi-al-sharri wa al-khayri fitnatan » — toute âme goûtera la mort. Nous vous éprouvons par le mal et par le bien." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Est-ce que j'accepte la mort comme certaine ? Comment je traverse les épreuves du bien et du mal ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Goûter la mort n'est pas une punition — c'est une transition vers la vraie vie." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Tout dans l'univers meurt et renaît. L'âme aussi passe par cette transition." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui accepte la mort vit vraiment." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Dans l'ombre de cette révélation, je découvre mes propres contradictions. Ce que le verset dévoile de la vérité divine, il le reflète aussi sur mes propres ténèbres. L'ombre m'invite à l'honnêteté radicale." }
-  ],
-  munajat: `Ya Mumit, je goûterai la mort. Aide-moi à l'accepter. Fais que je traverse les épreuves avec patience et confiance.`
-};
 
-MIROIR["21:107"] = {
-  reference: "21:107",
-  theme: ["prophète", "miséricorde", "mission"],
-  emotion: "Gratitude, amour",
-  difficulty: "débutant",
-  relatedNames: ["Ar-Rahman", "Ar-Rahim"],
-  mirrorVersion: `« Et Nous ne t'avons envoyé qu'en miséricorde pour les mondes. » Le miroir me montre la mission du Prophète. « Wa ma arsalnaka illa rahmatan li-al-'alamin » — Nous ne t'avons envoyé qu'en miséricorde pour les mondes. Le Prophète n'est pas un juge sévère — il est une miséricorde. Pour tous les mondes, pas seulement les humains. Le miroir m'invite à recevoir cette miséricorde et à la partager.`,
-  reflection: `Le Prophète est miséricorde. Sa vie, ses paroles, son exemple — tout est miséricorde pour nous.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Wa ma arsalnaka illa rahmatan li-al-'alamin » — Nous ne t'avons envoyé qu'en miséricorde pour les mondes." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Comment je reçois la miséricorde du Prophète ? Comment je la partage avec les autres ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La miséricorde du Prophète n'est pas exclusive — elle est pour tous les mondes." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Les mondes entiers bénéficient de la miséricorde prophétique." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui suit le Prophète avec amour reçoit sa part de cette miséricorde." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Dans l'ombre de ce verset se cache ma part d'ombre : ce que je projette sur les autres, ce que je refuse de reconnaître en moi. L'ombre est le miroir de mes refus." }
-  ],
-  munajat: `Ya Rahman, merci pour Ton Prophète, miséricorde pour les mondes. Fais que je le suive avec amour et que je partage cette miséricorde avec tous.`
-};
 
 // ==================== SURAH 22: AL-HAJJ (The Pilgrimage) - 78 verses - EXPANDED COVERAGE ====================
 
@@ -27467,45 +27053,9 @@ MIROIR["22:27"] = {
   munajat: `Ya Hadi, appelle-moi à Ta Maison. Si je peux faire le Hajj, facilite-le pour moi. Si je ne peux pas, accepte mon intention sincere.`
 };
 
-MIROIR["22:78"] = {
-  reference: "22:78",
-  theme: ["effort", "nom", "sunnah"],
-  emotion: "Engagement, identité",
-  difficulty: "débutant",
-  relatedNames: ["Al-Muslim", "Al-Haqq"],
-  mirrorVersion: `« Et luttez pour Allah comme Il se doit d'être lutté pour. C'est Lui qui vous a élus et ne vous a imposé aucune gêne dans la religion. » Le miroir me montre l'effort requis. « Wa jahidu fi Allahi haqqa jihadih » — luttez pour Allah comme Il se doit d'être lutté pour. « Huwa ijtabakum » — c'est Lui qui vous a élus. « Wa ma ja'ala 'alaykum fi al-dini min haraj » — et ne vous a imposé aucune gêne dans la religion. Le jihad est un effort, pas une oppression. La religion est facile, pas difficile. Le miroir m'invite à l'effort sans complication.`,
-  reflection: `Le jihad est l'effort sincère pour Allah. La religion est facilité, pas difficulté.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Wa jahidu fi Allahi haqqa jihadih... wa ma ja'ala 'alaykum fi al-dini min haraj » — luttez pour Allah comme Il se doit... Il ne vous a imposé aucune gêne dans la religion." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Quel effort est-ce que je fais pour Allah ? Est-ce que je complique ma religion inutilement ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "L'effort pour Allah n'est pas une charge — c'est un honneur." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'islam est la religion de la nature. La facilité est sa marque." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui lutte pour Allah comme Il se doit trouve la facilité dans la religion." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Ce que la lumière du verset révèle, l'ombre le dissimule en moi. Mes peurs, mes attachements, mes idoles cachées — l'ombre les nomme pour que je les libère." }
-  ],
-  munajat: `Ya Rabb, je lutte pour Toi. Fais que mon effort soit à la hauteur de Ta grandeur. Ne permets pas que je complique ce que Tu as facilité.`
-};
 
 // ==================== SURAH 23: AL-MU'MINUN (The Believers) - 118 verses - EXPANDED COVERAGE ====================
 
-MIROIR["23:1"] = {
-  reference: "23:1",
-  theme: ["foi", "succès", "humilité"],
-  emotion: "Espérance, motivation",
-  difficulty: "débutant",
-  relatedNames: ["Al-Muflih", "Al-Mu'min"],
-  mirrorVersion: `« Bienheureux sont les croyants. » Le miroir m'ouvre la sourate Al-Mu'minun. « Qad aflaha al-mu'minun » — bienheureux sont les croyants. « Aflaha » — ils ont réussi, ils ont prospéré. Le succès n'est pas matériel — il est spirituel. Les croyants sont les vrais gagnants. Le miroir m'invite à rejoindre ce groupe des bienheureux.`,
-  reflection: `Le vrai succès est la foi. Les biens de ce monde passent, la foi reste.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Qad aflaha al-mu'minun » — bienheureux sont les croyants." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Est-ce que je fais partie des croyants bienheureux ? Mon succès est-il défini par la foi ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Le succès des croyants n'est pas visible maintenant — il sera manifeste alors." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers proclame la foi par son existence. Les croyants l'articulent par leur parole." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui croit vraiment a déjà réussi." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "L'ombre de la révélation divine éclaire mes propres ténèbres. Ce verset me montre qui je devrais être — l'ombre me rappelle qui je suis encore. L'écart est mon chemin de croissance." }
-  ],
-  munajat: `Ya Muflih, je veux être parmi les bienheureux. Fais que ma foi soit vraie. Définis mon succès par ma relation avec Toi.`
-};
 
 MIROIR["23:2"] = {
   reference: "23:2",
@@ -27606,43 +27156,7 @@ MIROIR["25:1"] = {
   munajat: `Ya Furqan, Tu as donné le Critère. Fais que je l'utilise pour chaque décision. Ne permets pas que je me base sur d'autres standards.`
 };
 
-MIROIR["25:63"] = {
-  reference: "25:63",
-  theme: ["humilité", "ignorants", "caractère"],
-  emotion: "Dignité, patience",
-  difficulty: "débutant",
-  relatedNames: ["Al-Hannah", "Al-Sabur"],
-  mirrorVersion: `« Les serviteurs du Tout-Miséricordieux sont ceux qui marchent humblement sur terre et qui, quand les ignorants s'adressent à eux, disent : 'Paix.' » Le miroir me montre le caractère des serviteurs d'Allah. « Wa 'ibad al-rahman alladhina yamshuna 'ala al-ardi hawnan » — les serviteurs du Tout-Miséricordieux marchent humblement sur terre. « Wa idha khatabahum al-jahiluna qalu salaman » — et quand les ignorants s'adressent à eux, ils disent : paix. L'humilité dans la marche, la paix dans la réponse. Le miroir m'invite à ce caractère noble.`,
-  reflection: `La réponse aux ignorants n'est pas l'engagement — c'est la paix. La dignité se montre dans la retenue.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Wa 'ibad al-rahman alladhina yamshuna 'ala al-ardi hawnan wa idha khatabahum al-jahiluna qalu salaman » — les serviteurs du Tout-Miséricordieux marchent humblement et disent paix aux ignorants." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Comment je marche sur terre ? Comment je réponds aux ignorants ? Suis-je parmi ces serviteurs ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Dire paix n'est pas une faiblesse — c'est une force qui refuse l'escalade." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers répond par l'équilibre, pas par l'agression." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui répond par la paix gagne sans combattre." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "L'ombre de la révélation divine éclaire mes propres ténèbres. Ce verset me montre qui je devrais être — l'ombre me rappelle qui je suis encore. L'écart est mon chemin de croissance." }
-  ],
-  munajat: `Ya Rahman, je veux être Ton serviteur. Fais que je marche humblement et que je réponde par la paix. Ne permets pas que je tombe dans l'escalade.`
-};
 
-MIROIR["25:70"] = {
-  reference: "25:70",
-  theme: ["repentir", "pardon", "transformation"],
-  emotion: "Espoir, soulagement",
-  difficulty: "débutant",
-  relatedNames: ["At-Tawwab", "Al-Ghaffur"],
-  mirrorVersion: `« Sauf celui qui se repent, croit et fait une bonne œuvre : ceux-là, Allah changera leurs mauvaises actions en bonnes. » Le miroir me montre la promesse de transformation. « Illa man taba wa amana wa 'amila 'amalan salihan » — sauf celui qui se repent, croit et fait une bonne œuvre. « Fa-ula'ika yubaddilu Allahu sayyi'atihim hasanat » — Allah changera leurs mauvaises actions en bonnes. Le repentir sincère transforme le passé. Le miroir m'invite à ce repentir transformateur.`,
-  reflection: `Le repentir n'efface pas seulement — il transforme. Les mauvaises actions deviennent bonnes par le repentir sincère.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Illa man taba wa amana wa 'amila 'amalan salihan fa-ula'ika yubaddilu Allahu sayyi'atihim hasanat » — sauf celui qui se repent, croit et fait une bonne œuvre, Allah changera leurs mauvaises actions en bonnes." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Est-ce que je me repens sincèrement ? Est-ce que je crois que mes mauvaises actions peuvent devenir bonnes ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La transformation n'est pas magique — elle vient du repentir, de la foi et des œuvres." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers transforme constamment. Le repentir transforme l'âme." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui se repent vraiment voit son passé transformé." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Ce que la lumière du verset révèle, l'ombre le dissimule en moi. Mes peurs, mes attachements, mes idoles cachées — l'ombre les nomme pour que je les libère." }
-  ],
-  munajat: `Ya Tawwab, je me repens. Change mes mauvaises actions en bonnes. Accepte mon repentir et transforme mon passé.`
-};
 
 // ==================== SURAH 26: ASH-SHU'ARA (The Poets) - 227 verses - EXPANDED COVERAGE ====================
 
@@ -27665,24 +27179,6 @@ MIROIR["26:1"] = {
   munajat: `Ya Mubin, Ton Livre est explicite et mystérieux. Fais que je l'approche avec humilité et confiance. Guide-moi dans Sa lecture.`
 };
 
-MIROIR["26:88"] = {
-  reference: "26:88",
-  theme: ["jugement", "richesse", "enfants"],
-  emotion: "Lucidité, perspective",
-  difficulty: "débutant",
-  relatedNames: ["Al-Malik", "Al-Hasib"],
-  mirrorVersion: `« Le Jour où ni les biens ni les enfants ne seront d'aucune utilité. » Le miroir me montre ce qui compte vraiment. « Yawma la yanfa'u malun wa la banun » — le Jour où ni les biens ni les enfants ne seront d'aucune utilité. Ce que nous valorisons dans ce monde perd sa valeur ce Jour-là. Le miroir m'interroge : qu'est-ce qui compte vraiment ?`,
-  reflection: `Les biens et les enfants sont des bénédictions, mais elles ne sauvent pas. Seul ce qui est fait pour Allah compte.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Yawma la yanfa'u malun wa la banun » — le Jour où ni les biens ni les enfants ne seront d'aucune utilité." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Qu'est-ce que je valorise ? Est-ce que je m'appuie sur ce qui passera ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Ce qui ne sauve pas n'est pas inutile — il faut l'utiliser pour ce qui sauve." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers passe. Seul ce qui est fait pour l'éternel demeure." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui investit dans ce qui compte vraiment trouve son investissement multiplier." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "L'ombre de la révélation divine éclaire mes propres ténèbres. Ce verset me montre qui je devrais être — l'ombre me rappelle qui je suis encore. L'écart est mon chemin de croissance." }
-  ],
-  munajat: `Ya Malik, les biens et les enfants ne sauveront pas. Fais que j'investisse dans ce qui compte vraiment. Aide-moi à voir au-delà des apparences.`
-};
 
 MIROIR["26:227"] = {
   reference: "26:227",
@@ -27724,43 +27220,7 @@ MIROIR["27:1"] = {
   munajat: `Ya Bashir, Ton Coran est guidée et bonne nouvelle. Fais que je Le reçois ainsi. Guide-moi et annonce-moi la bonne nouvelle.`
 };
 
-MIROIR["27:19"] = {
-  reference: "27:19",
-  theme: ["sagesse", "gratitude", "prière"],
-  emotion: "Humilité, reconnaissance",
-  difficulty: "débutant",
-  relatedNames: ["Al-Hakim", "An-Ni'mah"],
-  mirrorVersion: `« Seigneur, inspire-moi de rendre grâce pour le bienfait que Tu m'as accordé. » Le miroir me montre la prière de Salomon. « Rabbi awzi'ni an ashkura ni'mataka allati an'amta 'alayya » — Seigneur, inspire-moi de rendre grâce pour le bienfait que Tu m'as accordé. Même un prophète demande l'aide pour être reconnaissant. La gratitude n'est pas automatique — elle demande de l'inspiration divine. Le miroir m'invite à demander cette inspiration.`,
-  reflection: `La gratitude est un bienfait qui demande un autre bienfait : la capacité d'être reconnaissant.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Rabbi awzi'ni an ashkura ni'mataka allati an'amta 'alayya » — Seigneur, inspire-moi de rendre grâce pour le bienfait que Tu m'as accordé." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Est-ce que je demande l'aide pour être reconnaissant ? Ou est-ce que je prends la gratitude pour acquise ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La gratitude n'est pas un devoir — c'est une grâce qui se demande." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Tout dans l'univers est bienfait. La gratitude est la réponse appropriée." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui demande la capacité d'être reconnaissant reçoit plus de bienfaits." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Ce que la lumière du verset révèle, l'ombre le dissimule en moi. Mes peurs, mes attachements, mes idoles cachées — l'ombre les nomme pour que je les libère." }
-  ],
-  munajat: `Ya Mannan, inspire-moi la gratitude. Je ne peux pas Te remercier assez sans Ton aide. Fais que chaque bienfait augmente ma reconnaissance.`
-};
 
-MIROIR["27:62"] = {
-  reference: "27:62",
-  theme: ["détresse", "réponse", "espoir"],
-  emotion: "Espérance, confiance",
-  difficulty: "débutant",
-  relatedNames: ["Al-Mujib", "Al-Fattah"],
-  mirrorVersion: `« Qui répond à l'appel du désespéré et qui dissipe le mal ? » Le miroir me montre la miséricorde d'Allah. « Amman yujibu al-mudtarra idha da'ahu » — qui répond à l'appel du désespéré. « Wa yakshifu al-sun » — et qui dissipe le mal. Allah répond à celui qui n'a plus d'autre recours. Le désespoir humain rencontre la réponse divine. Le miroir m'invite à invoquer Allah dans ma détresse.`,
-  reflection: `Allah répond particulièrement à celui qui n'a plus d'espoir ailleurs. La détresse est l'antichambre de la réponse.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Amman yujibu al-mudtarra idha da'ahu wa yakshifu al-sun » — qui répond à l'appel du désespéré et dissipe le mal ?" },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Dans ma détresse, est-ce que j'invoque Allah ? Est-ce que je fais confiance à Sa réponse ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La détresse n'est pas un abandon — c'est une invitation à l'invocation." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Chaque créature dans la détresse se tourne instinctivement vers son Créateur." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui invoque Allah dans la détresse reçoit Sa réponse." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "L'ombre de la révélation divine éclaire mes propres ténèbres. Ce verset me montre qui je devrais être — l'ombre me rappelle qui je suis encore. L'écart est mon chemin de croissance." }
-  ],
-  munajat: `Ya Mujib, Tu réponds au désespéré. Dans ma détresse, je T'invoque. Réponds-moi et dissipe mon mal.`
-};
 
 // ==================== SURAH 28: AL-QASAS (The Stories) - 88 verses - EXPANDED COVERAGE ====================
 
@@ -27802,43 +27262,7 @@ MIROIR["28:5"] = {
   munajat: `Ya Nasir, Tu élèves les opprimés. Si je suis opprimé, donne-moi patience. Si je suis oppresseur, donne-moi repentir. Rétablis la justice.`
 };
 
-MIROIR["28:56"] = {
-  reference: "28:56",
-  theme: ["guidance", "amour", "indépendance"],
-  emotion: "Humilité, acceptation",
-  difficulty: "intermédiaire",
-  relatedNames: ["Al-Hadi", "Al-Muhibb"],
-  mirrorVersion: `« Tu ne guides pas celui que tu aimes, mais c'est Allah qui guide qui Il veut. » Le miroir me montre la limite de mon influence. « Innaka la tahdi man ahbabta » — tu ne guides pas celui que tu aimes. « Wa lakinna Allaha yahdi man yasha' » — mais c'est Allah qui guide qui Il veut. L'amour ne suffit pas pour guider. La guidance est un don divin. Le miroir m'invite à faire confiance à Allah pour la guidance de ceux que j'aime.`,
-  reflection: `On ne peut pas forcer la guidance. On peut aimer, prier, et faire confiance à Allah.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Innaka la tahdi man ahbabta wa lakinna Allaha yahdi man yasha' » — tu ne guides pas celui que tu aimes, mais c'est Allah qui guide qui Il veut." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Qui j'aimerais guider ? Est-ce que j'accepte que la guidance est entre les mains d'Allah ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "L'impuissance à guider n'est pas un échec — c'est une reconnaissance de la souveraineté divine." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "La guidance est un mystère divin. Personne ne peut la donner à la place d'Allah." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui fait confiance à Allah pour la guidance de ses proches trouve la paix." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "L'ombre de la révélation divine éclaire mes propres ténèbres. Ce verset me montre qui je devrais être — l'ombre me rappelle qui je suis encore. L'écart est mon chemin de croissance." }
-  ],
-  munajat: `Ya Hadi, je ne peux pas guider ceux que j'aime. Mais Toi, Tu guides qui Tu veux. Guide mes proches. Fais-moi confiance en Ta sagesse.`
-};
 
-MIROIR["28:77"] = {
-  reference: "28:77",
-  theme: ["monde", "au-delà", "équilibre"],
-  emotion: "Sagesse, perspective",
-  difficulty: "débutant",
-  relatedNames: ["Al-Hasanah", "Al-Akhirah"],
-  mirrorVersion: `« Recherche ce qu'Allah t'a donné comme demeure future, mais n'oublie pas ta part de ce monde. » Le miroir me montre l'équilibre entre les deux mondes. « Ibtaghi ma ataka Allahu al-dara al-akhirah » — recherche ce qu'Allah t'a donné comme demeure future. « Wa la tansa naseebaka min al-dunya » — mais n'oublie pas ta part de ce monde. L'au-delà est la priorité, mais ce monde a aussi sa part. Le miroir m'invite à cet équilibre.`,
-  reflection: `L'au-delà est le but, mais ce monde est le moyen. Il faut vivre pour l'un sans négliger l'autre.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Ibtaghi ma ataka Allahu al-dara al-akhirah wa la tansa naseebaka min al-dunya » — recherche ce qu'Allah t'a donné comme demeure future, mais n'oublie pas ta part de ce monde." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Comment je balance les deux mondes ? Est-ce que je néglige l'un pour l'autre ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "L'équilibre n'est pas compromis — c'est sagesse." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers est fait pour servir l'au-delà, pas pour être adoré." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui trouve l'équilibre entre les deux mondes réussit dans les deux." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Ce que ce verset révèle dans la lumière, l'ombre le cache dans mon cœur : les vérités que je connais mais ne vis pas, les appels que j'entends mais ignore. L'ombre est mon examen de conscience." }
-  ],
-  munajat: `Ya Rabb, donne-moi l'équilibre. Fais que je recherche l'au-delà tout en prenant ma part de ce monde. Ne permets pas que je néglige l'un ou l'autre.`
-};
 
 MIROIR["28:88"] = {
   reference: "28:88",
@@ -31927,24 +31351,6 @@ MIROIR["55:59"] = {
   munajat: `Ya Mannan, la beauté est un bienfait. Fais que je l'apprécie. Donne-moi d'accéder à la beauté parfaite.`
 };
 
-MIROIR["55:60"] = {
-  reference: "55:60",
-  theme: ["récompense", "équité", "grâce"],
-  emotion: "Espérance, justice",
-  difficulty: "débutant",
-  relatedNames: ["Ash-Shakur", "Al-Adl"],
-  mirrorVersion: `« Est-ce que la récompense du bien est autre que le bien ? » Le miroir m'interroge sur la justice divine. « Hal jaza'u al-ihsani illa al-ihsan » — la récompense du bien n'est-elle que le bien ? La question est rhétorique. Bien sûr que la récompense est bonne. Allah est le plus généreux. Le miroir m'invite à faire le bien sans compter.`,
-  reflection: `La récompense du bien est le bien. La générosité divine dépasse toute mesure.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Hal jaza'u al-ihsani illa al-ihsan » — est-ce que la récompense du bien est autre que le bien ?" },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Est-ce que je fais le bien en comptant sur la récompense ou pour Allah seul ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "Le bien que je fais est lui-même une récompense d'Allah." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers répond au bien par le bien, à l'échelle divine." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Le bien fait pour Allah devient éternel." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Dans l'ombre de ce verset se cache ma part d'ombre : ce que je projette sur les autres, ce que je refuse de reconnaître en moi. L'ombre est le miroir de mes refus." }
-  ],
-  munajat: `Ya Shakur, Tu récompenses le bien par le bien. Fais que je fasse le bien pour Toi seul. Accepte mon peu et multiplie-le.`
-};
 
 MIROIR["55:61"] = {
   reference: "55:61",
@@ -32269,24 +31675,6 @@ MIROIR["55:77"] = {
   munajat: `Ya Mannan, le repos est un bienfait. Fais que je le reconnaisse. Donne-moi le repos du Paradis.`
 };
 
-MIROIR["55:78"] = {
-  reference: "55:78",
-  theme: ["noms divins", "bénédiction", "majesté"],
-  emotion: "Révérence, louange",
-  difficulty: "débutant",
-  relatedNames: ["Allah", "Ar-Rahman", "Dhul-Jalal wal-Ikram"],
-  mirrorVersion: `« Béni soit le Nom de ton Seigneur, plein de Majesté et de Munificence ! » Le miroir s'achève sur la louange. « Tabaraka ismu rabbika dhi al-jalali wa al-ikram » — béni soit le Nom de ton Seigneur, Possesseur de Majesté et de Générosité. La sourate se termine par la glorification.`,
-  reflection: `La sourate Ar-Rahman s'achève par la bénédiction du Nom divin. La majesté et la générosité sont les attributs finals.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Tabaraka ismu rabbika dhi al-jalali wa al-ikram » — béni soit le Nom de ton Seigneur, plein de Majesté et de Munificence !" },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Est-ce que je bénis le Nom de mon Seigneur ? Est-ce que je Le glorifie ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La bénédiction du Nom vient à celui qui Le prononce avec amour." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute la création bénit le Nom du Créateur." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui bénit le Nom est béni par Lui." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "L'ombre me montre le chemin inverse : là où le verset appelle à la lumière, je résiste dans l'ombre. Mais l'ombre n'est pas condamnation — elle est invitation à la conversion." }
-  ],
-  munajat: `Ya Dhal-Jalal wal-Ikram, Ton Nom est béni. Glorifié sois-Tu. Fais que je Te bénisse et que je sois béni.`
-};
 
 MIROIR["56:2"] = {
   reference: "56:2",
@@ -42837,24 +42225,6 @@ MIROIR["10:34"] = {
 
 // ==================== SURAH 56: AL-WAQI'AH - COMPLETION (56:63-56:96) ====================
 
-MIROIR["56:63"] = {
-  reference: "56:63",
-  theme: ["semailles", "création", "réflexion"],
-  emotion: "Contemplation, émerveillement",
-  difficulty: "débutant",
-  relatedNames: ["Al-Khaliq", "Al-Razzaq"],
-  mirrorVersion: `« Avez-vous considéré ce que vous semez ? » Le miroir me pose une question sur la semence. « A-ra'aytum ma tahruthun » — avez-vous considéré ce que vous semez ? La semence est petite mais porte la vie. Le miroir m'interroge : est-ce que je contemple les petites choses qui portent de grandes réalités ?`,
-  reflection: `La semence est un miracle de création. De la petite graine sort la grande plante.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« A-ra'aytum ma tahruthun » — avez-vous considéré ce que vous semez ?" },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Est-ce que je contemple les petites choses ? Est-ce que je vois le miracle dans la semence ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La petite semence contient le grand arbre." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute vie commence par une semence, visible ou invisible." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui contemple la semence comprend le pouvoir du Créateur." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "Dans l'ombre de cette révélation, je découvre mes propres contradictions. Ce que le verset dévoile de la vérité divine, il le reflète aussi sur mes propres ténèbres. L'ombre m'invite à l'honnêteté radicale." }
-  ],
-  munajat: `Ya Khaliq, Tu crées du petit le grand. Fais que je contemple la semence et que je voie Ton pouvoir. Donne-moi la vision du miracle dans les petites choses.`
-};
 
 MIROIR["56:64"] = {
   reference: "56:64",
@@ -43312,24 +42682,6 @@ MIROIR["56:87"] = {
   munajat: `Ya Wali, je veux être du nombre des rapprochés. Rapproche-moi de Toi. Ne permets pas que je sois éloigné.`
 };
 
-MIROIR["56:88"] = {
-  reference: "56:88",
-  theme: ["compagnons", "droit", "récompense"],
-  emotion: "Espoir, gratitude",
-  difficulty: "débutant",
-  relatedNames: ["Al-Hadi", "Al-Rashid"],
-  mirrorVersion: `« Et s'il est du nombre des compagnons de la droite, c'est salut pour toi, car tu es des compagnons de la droite. » Le miroir me montre la récompense des compagnons de la droite. « Wa amma in kana min ashabi al-yamani » — et s'il est du nombre des compagnons de la droite. Les compagnons de la droite ont le salut. Le miroir m'interroge : est-ce que je suis des compagnons de la droite ?`,
-  reflection: `Les compagnons de la droite reçoivent le salut. Ils sont sur la bonne voie.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Wa amma in kana min ashabi al-yamani fa-salamun laka min ashabi al-yamani » — et s'il est du nombre des compagnons de la droite, c'est salut pour toi, car tu es des compagnons de la droite." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Est-ce que je suis des compagnons de la droite ? Quel sera mon salut ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La droite est le côté des bénis. La gauche, des maudits." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'humanité sera divisée en trois groupes au Jour dernier." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui est des compagnons de la droite a réussi." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "L'ombre de la révélation divine éclaire mes propres ténèbres. Ce verset me montre qui je devrais être — l'ombre me rappelle qui je suis encore. L'écart est mon chemin de croissance." }
-  ],
-  munajat: `Ya Hadi, guide-moi vers la droite. Fais que je sois des compagnons de la droite. Ne permets pas que je sois des égarés.`
-};
 
 MIROIR["56:89"] = {
   reference: "56:89",
@@ -43464,24 +42816,6 @@ MIROIR["56:95"] = {
   munajat: `Ya Haqq, donne-moi la certitude. Fais que je sois certain de Ta vérité. Ne permets pas que le doute m'atteigne.`
 };
 
-MIROIR["56:96"] = {
-  reference: "56:96",
-  theme: ["gloire", "nom", "adoration"],
-  emotion: "Révérence, louange",
-  difficulty: "débutant",
-  relatedNames: ["Al-'Azim", "Al-Kabir"],
-  mirrorVersion: `« Glorifie donc le nom de ton Seigneur, le Très Grand. » Le miroir conclut par la glorification. « Fa-sabbih bi-ismi rabbika al-'azim » — glorifie le nom de ton Seigneur, le Très Grand. La sourate entière mène à cette conclusion : glorifiez Allah. Le miroir m'interroge : est-ce que ma vie est une glorification ?`,
-  reflection: `La glorification est le but de l'existence. Tout mène à glorifier le Très Grand.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Fa-sabbih bi-ismi rabbika al-'azim » — glorifie donc le nom de ton Seigneur, le Très Grand." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Est-ce que ma vie est une glorification ? Est-ce que je glorifie le nom d'Allah ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La glorification élève l'âme au-dessus du monde." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Tout l'univers glorifie le Très Grand." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui glorifie Allah Le rencontre." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "L'ombre de la révélation divine éclaire mes propres ténèbres. Ce verset me montre qui je devrais être — l'ombre me rappelle qui je suis encore. L'écart est mon chemin de croissance." }
-  ],
-  munajat: `Ya 'Azim, Tu es le Très Grand. Je glorifie Ton nom. Fais que toute ma vie soit une glorification.`
-};
 
 // ==================== SURAH 68: AL-QALAM - COMPLETION (68:32-68:34, 68:37-68:50) ====================
 
@@ -67667,24 +67001,6 @@ MIROIR["19:98"] = {
   reflection: `Ce verset de la sourate 19 contient une sagesse profonde. Les thèmes de marie et zacharie nous rappellent notre relation avec le Divin.`,
   tajalli: [
     { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Le verset 19:98 dans sa forme révèle la structure divine du message." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Dans le miroir de mon cœur, ce verset me renvoie à ma propre réalité." },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "L'inversion spirituelle m'invite à voir au-delà de l'apparent." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Ce message dépasse mon individu pour toucher l'humanité entière." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Al-Rahman nous guide vers la compréhension intime de ce verset." },
-    { label: "L'Ombre", ar: "الظل", color: "#64748b", text: "L'ombre me révèle mes résistances face à ce verset. L'ombre m'appelle à l'honnêteté." }
-  ],
-  munajat: `Ya Al-Rahman, je viens à Toi avec ce verset dans le cœur. Guide-moi vers sa compréhension.`
-};
-MIROIR["19:99"] = {
-  reference: "19:99",
-  theme: ["marie","zacharie"],
-  emotion: "Lumière",
-  difficulty: "débutant",
-  relatedNames: ["Al-Rahman"],
-  mirrorVersion: `Le miroir me renvoie vers le verset 19:99. Cette parole divine m'invite à la contemplation profonde. Les thèmes de marie et zacharie résonnent dans mon cœur. Je médite sur le sens caché de cette révélation et son application dans ma vie quotidienne.`,
-  reflection: `Ce verset de la sourate 19 contient une sagesse profonde. Les thèmes de marie et zacharie nous rappellent notre relation avec le Divin.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "Le verset 19:99 dans sa forme révèle la structure divine du message." },
     { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Dans le miroir de mon cœur, ce verset me renvoie à ma propre réalité." },
     { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "L'inversion spirituelle m'invite à voir au-delà de l'apparent." },
     { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Ce message dépasse mon individu pour toucher l'humanité entière." },
