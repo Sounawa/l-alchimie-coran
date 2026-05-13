@@ -12,7 +12,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { 
   Accordion, 
   AccordionContent, 
@@ -1743,6 +1743,7 @@ export default function QuranMirrorPage() {
       {/* Mobile Sidebar */}
       <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
         <SheetContent side="left" className="w-80 p-0 bg-background/98 backdrop-blur-xl">
+          <SheetTitle className="sr-only">Menu des sourates</SheetTitle>
           {renderSidebar()}
         </SheetContent>
       </Sheet>
