@@ -6,7 +6,8 @@ import {
   Search, X, ChevronLeft, ChevronRight, Shuffle, 
   Menu, Sparkles, Heart, Bookmark, BookmarkCheck,
   Copy, Share2, Volume2, VolumeX, Clock, Eye, Play, Pause,
-  Moon, Sun, BookOpen, Home, Star
+  Moon, Sun, BookOpen, Home, Star, Compass, Layers, 
+  Sunrise, Sunset, Mountain, PartyPopper, Zap
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -20,7 +21,7 @@ import {
 } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { THEMES, THEME_MAP, THEME_CATEGORIES } from '@/data/themes';
+import { THEMES, THEME_MAP, THEME_CATEGORIES, PARCOURS_LIST, VERSETS_HUMEUR, THEME_CONTEXTS, DEPTH_LEVELS } from '@/data/themes';
 import { MIROIR, getMiroirCount, getRandomMiroir, MiroirEntry } from '@/data/miroir';
 import { toast } from 'sonner';
 
@@ -144,7 +145,11 @@ export default function QuranMirrorPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [view, setView] = useState<'welcome' | 'surah' | 'search' | 'theme'>('welcome');
+  const [view, setView] = useState<'welcome' | 'surah' | 'search' | 'theme' | 'parcours' | 'context'>('welcome');
+  const [selectedParcours, setSelectedParcours] = useState<string | null>(null);
+  const [selectedContext, setSelectedContext] = useState<string | null>(null);
+  const [selectedMood, setSelectedMood] = useState<string | null>(null);
+  const [depthLevel, setDepthLevel] = useState<1 | 2 | 3>(2);
   const [bookmarks, setBookmarks] = useState<BookmarkData[]>([]);
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [readingHistory, setReadingHistory] = useState<string[]>([]);
@@ -852,6 +857,278 @@ export default function QuranMirrorPage() {
     </div>
   );
 
+  // Render parcours view
+  const renderParcoursView = () => {
+    const parcours = PARCOURS_LIST.find(p => p.key === selectedParcours);
+    if (!parcours) return null;
+
+    return (
+      <div className="max-w-3xl mx-auto p-6">
+        {/* Parcours header */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-8"
+        >
+          <div className="text-4xl mb-2">{parcours.icon}</div>
+          <div className="font-title text-lg text-foreground/80">{parcours.title}</div>
+          <div className="text-[11px] text-muted-foreground mt-1">
+            {parcours.verses.length} versets • {parcours.description}
+          </div>
+
+          <div className="gold-divider max-w-[180px] mx-auto mt-4">
+            <span></span>
+            <div className="dot"></div>
+            <div className="dot-sm"></div>
+            <div className="dot"></div>
+            <span></span>
+          </div>
+        </motion.div>
+
+        {/* Depth level selector */}
+        <div className="flex justify-center gap-2 mb-6">
+          {DEPTH_LEVELS.map(level => (
+            <button
+              key={level.level}
+              onClick={() => setDepthLevel(level.level as 1 | 2 | 3)}
+              className={`px-3 py-1.5 rounded-full text-[10px] border transition-all flex items-center gap-1.5
+                ${depthLevel === level.level 
+                  ? 'bg-white/10 border-white/30' 
+                  : 'border-border/50 hover:border-border'}`}
+            >
+              <span>{level.icon}</span>
+              <span>Niveau {level.level}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Verses list */}
+        <ScrollArea className="h-[calc(100vh-350px)]">
+          <div className="space-y-3 pr-4">
+            {parcours.verses.map((verseItem, index) => {
+              const miroir = MIROIR[verseItem.reference];
+              if (!miroir) return null;
+
+              const [surahId, verseId] = verseItem.reference.split(':').map(Number);
+              const surah = surahs.find(s => s.id === surahId);
+
+              return (
+                <motion.div
+                  key={verseItem.reference}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: Math.min(index * 0.03, 0.5) }}
+                  className="p-4 rounded-xl border border-border bg-card hover:bg-white/[0.02] transition-all"
+                >
+                  {/* Header */}
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-gold/10 text-gold">
+                      {verseItem.reference}
+                    </span>
+                    {verseItem.title && (
+                      <span className="text-[11px] text-foreground/80 font-medium">{verseItem.title}</span>
+                    )}
+                    <span className="text-[10px] text-muted-foreground">
+                      {surah?.translation}
+                    </span>
+                  </div>
+
+                  {/* Level 1: Simple verse */}
+                  {depthLevel >= 1 && (
+                    <p className="text-sm text-foreground/80 leading-relaxed">
+                      {miroir.mirrorVersion}
+                    </p>
+                  )}
+
+                  {/* Level 2: Miroir */}
+                  {depthLevel >= 2 && (
+                    <p className="text-sm text-muted-foreground leading-relaxed mt-2">
+                      {miroir.reflection}
+                    </p>
+                  )}
+
+                  {/* Level 3: 6 Tajalli */}
+                  {depthLevel >= 3 && (
+                    <div className="border-t border-border/50 pt-3 mt-3">
+                      <p className="text-[10px] text-muted-foreground mb-2 font-medium">Les 6 Regards du Tajalli</p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {miroir.tajalli.map((t, i) => (
+                          <div key={i} className="p-2 rounded-lg bg-white/[0.02] border border-border/30">
+                            <div className="flex items-center gap-1.5 mb-1">
+                              <span style={{ color: t.color }}>◈</span>
+                              <span className="text-[10px] font-medium" style={{ color: t.color }}>{t.label}</span>
+                            </div>
+                            <p className="text-[10px] text-muted-foreground leading-relaxed line-clamp-2">{t.text}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Action */}
+                  <div className="flex gap-2 mt-3 pt-3 border-t border-border/30">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={async () => {
+                        await loadSurah(surahId);
+                        const checkAndSelect = () => {
+                          if (currentSurah) {
+                            const verse = currentSurah.verses.find(v => v.id === verseId);
+                            if (verse) {
+                              selectVerse(verse);
+                              return true;
+                            }
+                          }
+                          return false;
+                        };
+                        if (!checkAndSelect()) {
+                          const interval = setInterval(() => {
+                            if (checkAndSelect()) clearInterval(interval);
+                          }, 100);
+                          setTimeout(() => clearInterval(interval), 3000);
+                        }
+                      }}
+                      className="text-[10px] h-6"
+                    >
+                      <Sparkles className="w-3 h-3 mr-1" />
+                      Contempler
+                    </Button>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </ScrollArea>
+      </div>
+    );
+  };
+
+  // Render context view (Matin/Soir/Épreuve/Joie)
+  const renderContextView = () => {
+    const context = THEME_CONTEXTS.find(c => c.key === selectedContext);
+    if (!context) return null;
+
+    // Get all verses for the themes in this context
+    const contextVerses: { reference: string; miroir: MiroirEntry; themeKey: string }[] = [];
+    context.themes.forEach(themeKey => {
+      Object.entries(MIROIR).forEach(([ref, miroir]) => {
+        if (miroir.theme.includes(themeKey)) {
+          contextVerses.push({ reference: ref, miroir, themeKey });
+        }
+      });
+    });
+
+    // Shuffle and limit
+    const shuffled = contextVerses.sort(() => Math.random() - 0.5).slice(0, 20);
+
+    return (
+      <div className="max-w-3xl mx-auto p-6">
+        {/* Context header */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-8"
+        >
+          <div className="text-4xl mb-2">{context.icon}</div>
+          <div className="font-title text-lg text-foreground/80">{context.title}</div>
+          <div className="text-[11px] text-muted-foreground mt-1">
+            {context.description}
+          </div>
+
+          {/* Themes badges */}
+          <div className="flex justify-center gap-2 mt-3">
+            {context.themes.map(t => {
+              const theme = THEME_MAP[t];
+              if (!theme) return null;
+              return (
+                <span
+                  key={t}
+                  className="px-2 py-0.5 rounded-full text-[10px] border"
+                  style={{ background: theme.bg, borderColor: theme.border, color: theme.color }}
+                >
+                  {theme.ar} {theme.label}
+                </span>
+              );
+            })}
+          </div>
+
+          <div className="gold-divider max-w-[180px] mx-auto mt-4">
+            <span></span>
+            <div className="dot"></div>
+            <div className="dot-sm"></div>
+            <div className="dot"></div>
+            <span></span>
+          </div>
+        </motion.div>
+
+        {/* Depth level selector */}
+        <div className="flex justify-center gap-2 mb-6">
+          {DEPTH_LEVELS.map(level => (
+            <button
+              key={level.level}
+              onClick={() => setDepthLevel(level.level as 1 | 2 | 3)}
+              className={`px-3 py-1.5 rounded-full text-[10px] border transition-all flex items-center gap-1.5
+                ${depthLevel === level.level 
+                  ? 'bg-white/10 border-white/30' 
+                  : 'border-border/50 hover:border-border'}`}
+            >
+              <span>{level.icon}</span>
+              <span>Niveau {level.level}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Verses */}
+        <ScrollArea className="h-[calc(100vh-380px)]">
+          <div className="space-y-3 pr-4">
+            {shuffled.map((item, index) => {
+              const surah = surahs.find(s => s.id === parseInt(item.reference.split(':')[0]));
+              const theme = THEME_MAP[item.themeKey];
+
+              return (
+                <motion.div
+                  key={item.reference + index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: Math.min(index * 0.03, 0.5) }}
+                  className="p-4 rounded-xl border border-border bg-card hover:bg-white/[0.02] transition-all"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-medium"
+                      style={{ background: theme?.bg, color: theme?.color }}>
+                      {item.reference}
+                    </span>
+                    <span className="text-[10px] text-muted-foreground">{surah?.translation}</span>
+                  </div>
+
+                  {depthLevel >= 1 && (
+                    <p className="text-sm text-foreground/80 leading-relaxed">{item.miroir.mirrorVersion}</p>
+                  )}
+
+                  {depthLevel >= 2 && (
+                    <p className="text-xs text-muted-foreground leading-relaxed mt-2">{item.miroir.reflection}</p>
+                  )}
+
+                  {depthLevel >= 3 && (
+                    <div className="grid grid-cols-2 gap-1.5 mt-3 pt-3 border-t border-border/30">
+                      {item.miroir.tajalli.slice(0, 4).map((t, i) => (
+                        <div key={i} className="p-1.5 rounded bg-white/[0.02]">
+                          <span className="text-[9px] font-medium" style={{ color: t.color }}>{t.label}</span>
+                          <p className="text-[9px] text-muted-foreground line-clamp-1">{t.text}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
+        </ScrollArea>
+      </div>
+    );
+  };
+
   // Render theme verses view
   const renderThemeVerses = () => {
     if (!selectedTheme) return null;
@@ -874,6 +1151,21 @@ export default function QuranMirrorPage() {
             {themeVerses.length} verset{themeVerses.length !== 1 ? 's' : ''} miroir
           </div>
 
+          {/* Sub-themes */}
+          {theme.subThemes && theme.subThemes.length > 0 && (
+            <div className="flex flex-wrap justify-center gap-1.5 mt-3">
+              {theme.subThemes.map(sub => (
+                <span
+                  key={sub.key}
+                  className="px-2 py-0.5 rounded-full text-[10px] bg-white/[0.03] border border-border/50 text-muted-foreground"
+                  title={sub.description}
+                >
+                  {sub.ar} {sub.label}
+                </span>
+              ))}
+            </div>
+          )}
+
           <div className="gold-divider max-w-[180px] mx-auto mt-4">
             <span></span>
             <div className="dot"></div>
@@ -883,8 +1175,25 @@ export default function QuranMirrorPage() {
           </div>
         </motion.div>
 
+        {/* Depth level selector */}
+        <div className="flex justify-center gap-2 mb-6">
+          {DEPTH_LEVELS.map(level => (
+            <button
+              key={level.level}
+              onClick={() => setDepthLevel(level.level as 1 | 2 | 3)}
+              className={`px-3 py-1.5 rounded-full text-[10px] border transition-all flex items-center gap-1.5
+                ${depthLevel === level.level 
+                  ? 'bg-white/10 border-white/30' 
+                  : 'border-border/50 hover:border-border'}`}
+            >
+              <span>{level.icon}</span>
+              <span>Niveau {level.level}</span>
+            </button>
+          ))}
+        </div>
+
         {/* Verses list with scroll */}
-        <ScrollArea className="h-[calc(100vh-280px)]">
+        <ScrollArea className="h-[calc(100vh-350px)]">
           <div className="space-y-3 pr-4">
             {themeVerses.map((item, index) => {
               const surah = surahs.find(s => s.id === item.surahId);
@@ -912,37 +1221,48 @@ export default function QuranMirrorPage() {
                     )}
                   </div>
 
-                  {/* Miroir content */}
-                  <div className="mb-4">
-                    <p className="text-sm text-foreground/80 leading-relaxed mb-3">
+                  {/* Level 1: Verse */}
+                  {depthLevel >= 1 && (
+                    <p className="text-sm text-foreground/80 leading-relaxed">
                       {item.miroir.mirrorVersion}
                     </p>
-                  </div>
+                  )}
 
-                  {/* 6 Tajalli levels */}
-                  <div className="border-t border-border/50 pt-3">
-                    <p className="text-[10px] text-muted-foreground mb-2 font-medium">Les 6 Regards du Tajalli</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {item.miroir.tajalli.map((t, i) => (
-                        <div key={i} className="p-2 rounded-lg bg-white/[0.02] border border-border/30">
-                          <div className="flex items-center gap-1.5 mb-1">
-                            <span style={{ color: t.color }}>◈</span>
-                            <span className="text-[11px] font-medium" style={{ color: t.color }}>{t.label}</span>
-                            <span className="font-arabic text-[10px] text-muted-foreground">{t.ar}</span>
-                          </div>
-                          <p className="text-[11px] text-muted-foreground leading-relaxed line-clamp-2">{t.text}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Munajat */}
-                  <div className="mt-3 pt-3 border-t border-border/30">
-                    <p className="text-[10px] text-muted-foreground mb-1 font-medium">Munajat</p>
-                    <p className="text-xs text-foreground/70 italic leading-relaxed">
-                      {item.miroir.munajat}
+                  {/* Level 2: Miroir */}
+                  {depthLevel >= 2 && (
+                    <p className="text-xs text-muted-foreground leading-relaxed mt-2">
+                      {item.miroir.reflection}
                     </p>
-                  </div>
+                  )}
+
+                  {/* Level 3: 6 Tajalli levels */}
+                  {depthLevel >= 3 && (
+                    <div className="border-t border-border/50 pt-3 mt-3">
+                      <p className="text-[10px] text-muted-foreground mb-2 font-medium">Les 6 Regards du Tajalli</p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {item.miroir.tajalli.map((t, i) => (
+                          <div key={i} className="p-2 rounded-lg bg-white/[0.02] border border-border/30">
+                            <div className="flex items-center gap-1.5 mb-1">
+                              <span style={{ color: t.color }}>◈</span>
+                              <span className="text-[11px] font-medium" style={{ color: t.color }}>{t.label}</span>
+                              <span className="font-arabic text-[10px] text-muted-foreground">{t.ar}</span>
+                            </div>
+                            <p className="text-[11px] text-muted-foreground leading-relaxed line-clamp-2">{t.text}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Munajat - only in level 3 */}
+                  {depthLevel >= 3 && (
+                    <div className="mt-3 pt-3 border-t border-border/30">
+                      <p className="text-[10px] text-muted-foreground mb-1 font-medium">Munajat</p>
+                      <p className="text-xs text-foreground/70 italic leading-relaxed">
+                        {item.miroir.munajat}
+                      </p>
+                    </div>
+                  )}
 
                   {/* Action buttons */}
                   <div className="flex gap-2 mt-3 pt-3 border-t border-border/30">
@@ -960,7 +1280,6 @@ export default function QuranMirrorPage() {
                       size="sm"
                       onClick={async () => {
                         await loadSurah(item.surahId);
-                        // Wait for surah to load then select verse
                         const checkAndSelect = () => {
                           if (currentSurah) {
                             const verse = currentSurah.verses.find(v => v.id === item.verseId);
@@ -971,7 +1290,6 @@ export default function QuranMirrorPage() {
                           }
                           return false;
                         };
-                        // Try immediately, then retry if needed
                         if (!checkAndSelect()) {
                           const interval = setInterval(() => {
                             if (checkAndSelect()) {
@@ -1487,16 +1805,89 @@ export default function QuranMirrorPage() {
           </div>
         </header>
 
+        {/* Parcours Spirituels & Contextes */}
+        <div className="px-4 py-2 border-b border-border flex-shrink-0 bg-black/10">
+          <div className="flex flex-wrap items-center gap-3">
+            {/* Parcours */}
+            <div className="flex items-center gap-1.5">
+              <Compass className="w-3 h-3 text-gold/70" />
+              <span className="text-[9px] text-muted-foreground uppercase tracking-wider">Parcours</span>
+            </div>
+            {PARCOURS_LIST.map(parcours => (
+              <motion.button
+                key={parcours.key}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  if (selectedParcours === parcours.key) {
+                    setSelectedParcours(null);
+                    setView('welcome');
+                  } else {
+                    setSelectedParcours(parcours.key);
+                    setSelectedContext(null);
+                    setSelectedTheme(null);
+                    setView('parcours');
+                  }
+                }}
+                className={`px-2.5 py-1 rounded-full text-[10px] border transition-all flex items-center gap-1
+                  ${selectedParcours === parcours.key
+                    ? 'bg-white/10 border-white/30 shadow-sm'
+                    : 'border-border/50 hover:border-border opacity-70 hover:opacity-100'}`}
+                style={{ color: parcours.color }}
+              >
+                <span>{parcours.icon}</span>
+                <span>{parcours.title}</span>
+              </motion.button>
+            ))}
+
+            <div className="w-px h-4 bg-border/50 mx-1" />
+
+            {/* Contextes */}
+            <div className="flex items-center gap-1.5">
+              <Zap className="w-3 h-3 text-purple/70" />
+              <span className="text-[9px] text-muted-foreground uppercase tracking-wider">Moment</span>
+            </div>
+            {THEME_CONTEXTS.map(context => (
+              <motion.button
+                key={context.key}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  if (selectedContext === context.key) {
+                    setSelectedContext(null);
+                    setView('welcome');
+                  } else {
+                    setSelectedContext(context.key);
+                    setSelectedParcours(null);
+                    setSelectedTheme(null);
+                    setView('context');
+                  }
+                }}
+                className={`px-2.5 py-1 rounded-full text-[10px] border transition-all flex items-center gap-1
+                  ${selectedContext === context.key
+                    ? 'bg-white/10 border-white/30 shadow-sm'
+                    : 'border-border/50 hover:border-border opacity-70 hover:opacity-100'}`}
+                style={{ color: context.color }}
+              >
+                <span>{context.icon}</span>
+                <span>{context.title}</span>
+              </motion.button>
+            ))}
+          </div>
+        </div>
+
         {/* Theme filters by category */}
         <div className="px-4 py-3 border-b border-border flex-shrink-0 bg-black/20">
           <div className="flex items-center justify-between mb-2">
             <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Thèmes spirituels</span>
-            {selectedTheme && (
+            {(selectedTheme || selectedParcours || selectedContext) && (
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => {
                   setSelectedTheme(null);
+                  setSelectedParcours(null);
+                  setSelectedContext(null);
                   setView('welcome');
                 }}
                 className="h-5 px-2 text-[10px] text-muted-foreground hover:text-foreground"
@@ -1567,6 +1958,8 @@ export default function QuranMirrorPage() {
               {view === 'surah' && renderVerseList()}
               {view === 'search' && renderSearchResults()}
               {view === 'theme' && renderThemeVerses()}
+              {view === 'parcours' && renderParcoursView()}
+              {view === 'context' && renderContextView()}
             </>
           )}
         </div>

@@ -2,12 +2,66 @@
 
 ## Project Status
 - **Status**: ✅ COMPLETE - All 114 Surahs covered
-- **Last Verified**: Session 33 (Current)
+- **Last Verified**: Session 34 (Current)
 - **Framework**: Next.js 16 with App Router, TypeScript, Tailwind CSS 4, shadcn/ui
 - **Miroir Coverage**: 6236 entries | 6236 with 6 tajalli levels | 115,613 lines of code
 - **All Surahs**: ✅ COMPLETE - All 6236 Quran verses covered (one entry per verse)
 - **Data Integrity**: ✅ No duplicates | ✅ All references valid
-- **Theme View**: ✅ 15 themes organized by 5 spiritual dimensions
+- **Features**: ✅ Parcours | ✅ Contextes | ✅ Sous-thèmes | ✅ Niveaux de profondeur
+
+---
+
+## Session 34 - Parcours Spirituels, Contextes, Sous-thèmes & Niveaux (COMPLETE)
+
+### Task ID: parcours-contexts-depth
+**Agent**: Main Agent
+**Task**: Implement Parcours Spirituels, Theme Contexts, Sub-themes, and Depth Levels
+
+### Work Log:
+
+1. **Parcours Spirituels Created** (`/src/data/parcours.ts`):
+   - **Les 40 Versets Essentiels** (📜): 40 key Quranic verses with titles
+   - **Préparation à la Prière** (🕌): 20 verses for concentration before salat
+   - **Guérison du Cœur** (💚): 20 verses of comfort and healing
+   - **Verset du jour selon l'humeur**:
+     - 😊 Joie, 😢 Tristesse, 😰 Angoisse, 😤 Colère, 🙏 Gratitude, 🤔 Doute
+
+2. **Thèmes par Contexte**:
+   - 🌅 **Matin**: Gratitude, Espoir, Force
+   - 🌙 **Soir**: Pardon, Détachement, Présence
+   - 🏔️ **Épreuve**: Patience, Confiance, Guérison
+   - ✨ **Joie**: Gratitude, Amour, Méditation
+
+3. **Sous-thèmes ajoutés** (3-4 per theme):
+   - **Confiance**: Destin, Provision, Protection
+   - **Patience**: Épreuve, Prière, Victoire
+   - **Guérison**: Corps, Cœur, Relations, Spirituelle
+   - And more for all 15 themes...
+
+4. **Niveaux de Profondeur**:
+   - 🌱 **Niveau 1 - Découverte**: Verset simple
+   - 🌊 **Niveau 2 - Contemplation**: Verset + Miroir
+   - 💫 **Niveau 3 - Profond**: Verset + Miroir + 6 Tajalli + Munajat
+
+5. **UI Updates**:
+   - New header bar with Parcours and Context selectors
+   - Depth level buttons in all verse views
+   - Sub-theme badges shown in theme detail view
+   - Improved visual hierarchy with icons
+
+6. **Technical Implementation**:
+   - New file: `/src/data/parcours.ts` with all parcours data
+   - Updated `themes.ts` with sub-themes structure
+   - New views: `renderParcoursView()`, `renderContextView()`
+   - New state variables: `selectedParcours`, `selectedContext`, `depthLevel`
+   - Added imports: Compass, Layers, Sunrise, Sunset, Mountain, PartyPopper, Zap
+
+### Stage Summary:
+- **Parcours Spirituels**: ✅ 3 parcours + 6 moods
+- **Contextes Temporels**: ✅ 4 contexts (Matin/Soir/Épreuve/Joie)
+- **Sous-thèmes**: ✅ 3-4 sub-themes per main theme
+- **Niveaux de Profondeur**: ✅ 3 levels with progressive detail
+- **UI Polish**: ✅ Clean integration with existing interface
 
 ---
 
