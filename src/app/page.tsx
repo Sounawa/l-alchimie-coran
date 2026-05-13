@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef, useMemo, useLayoutEffect } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Search, X, ChevronLeft, ChevronRight, Shuffle, 
   Menu, Sparkles, Heart, Bookmark, BookmarkCheck,
-  Copy, Share2, Volume2, VolumeX, Clock, Eye, Play, Pause,
+  Copy, Share2, Clock,
   Moon, Sun, BookOpen, Home, Star, Compass, Layers, 
   Sunrise, Sunset, Mountain, PartyPopper, Zap
 } from 'lucide-react';
@@ -98,41 +98,6 @@ const ParticlesBackground = () => {
   );
 };
 
-// Audio Player Component
-const AudioPlayer = ({ 
-  isPlaying, 
-  onToggle, 
-  isLoading 
-}: { 
-  isPlaying: boolean; 
-  onToggle: () => void; 
-  isLoading: boolean;
-}) => (
-  <div className="audio-player">
-    <button
-      onClick={onToggle}
-      disabled={isLoading}
-      className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center text-gold hover:bg-gold/30 transition-colors disabled:opacity-50"
-    >
-      {isLoading ? (
-        <div className="w-4 h-4 border-2 border-gold/50 border-t-gold rounded-full animate-spin" />
-      ) : isPlaying ? (
-        <Pause className="w-4 h-4" />
-      ) : (
-        <Play className="w-4 h-4 ml-0.5" />
-      )}
-    </button>
-    <div className="flex-1">
-      <div className={`audio-wave ${!isPlaying ? 'paused' : ''}`}>
-        <span /><span /><span /><span /><span />
-      </div>
-    </div>
-    <span className="text-[10px] text-muted-foreground uppercase tracking-wider">
-      Récitation
-    </span>
-  </div>
-);
-
 export default function QuranMirrorPage() {
   // State
   const [surahs, setSurahs] = useState<Surah[]>([]);
@@ -153,11 +118,8 @@ export default function QuranMirrorPage() {
   const [bookmarks, setBookmarks] = useState<BookmarkData[]>([]);
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [readingHistory, setReadingHistory] = useState<string[]>([]);
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
-  const [isAudioLoading, setIsAudioLoading] = useState(false);
   const [readingProgress, setReadingProgress] = useState(0);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // Load surahs list
   useEffect(() => {
@@ -416,67 +378,6 @@ export default function QuranMirrorPage() {
   const hasMiroir = (surahId: number, verseId: number) => {
     return !!MIROIR[`${surahId}:${verseId}`];
   };
-
-  // Audio toggle handler with actual TTS
-  const handleAudioToggle = useCallback(async () => {
-    if (!selectedVerse) return;
-    
-    setIsAudioLoading(true);
-    
-    try {
-      if (isAudioPlaying) {
-        // Stop playback
-        setIsAudioPlaying(false);
-        if (audioRef.current) {
-          audioRef.current.pause();
-          audioRef.current = null;
-        }
-      } else {
-        // Start playback with TTS
-        // Use Arabic text for recitation
-        const textToSpeak = selectedVerse.text;
-        
-        const response = await fetch('/api/tts', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ 
-            text: textToSpeak,
-            voice: 'tongtong',
-            speed: 0.75
-          }),
-        });
-        
-        if (!response.ok) {
-          throw new Error('Failed to generate audio');
-        }
-        
-        const audioBlob = await response.blob();
-        const audioUrl = URL.createObjectURL(audioBlob);
-        
-        const audio = new Audio(audioUrl);
-        audioRef.current = audio;
-        
-        audio.onended = () => {
-          setIsAudioPlaying(false);
-          URL.revokeObjectURL(audioUrl);
-        };
-        
-        audio.onerror = () => {
-          setIsAudioPlaying(false);
-          toast.error('Erreur de lecture audio');
-          URL.revokeObjectURL(audioUrl);
-        };
-        
-        await audio.play();
-        setIsAudioPlaying(true);
-      }
-    } catch (error) {
-      console.error('Audio error:', error);
-      toast.error('Erreur de génération audio');
-    } finally {
-      setIsAudioLoading(false);
-    }
-  }, [selectedVerse, isAudioPlaying]);
 
   // Scroll progress tracking
   useEffect(() => {
@@ -1527,20 +1428,6 @@ export default function QuranMirrorPage() {
               <span>•</span>
               <span>Verset {selectedVerse.id} / {currentSurah.total_verses}</span>
             </div>
-            
-            {/* Audio Player */}
-            <motion.div 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.18 }}
-              className="mb-6"
-            >
-              <AudioPlayer 
-                isPlaying={isAudioPlaying}
-                onToggle={handleAudioToggle}
-                isLoading={isAudioLoading}
-              />
-            </motion.div>
             
             {/* Miroir content */}
             {!miroir ? (
