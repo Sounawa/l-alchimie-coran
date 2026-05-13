@@ -20,7 +20,7 @@ import {
 } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { THEMES, THEME_MAP } from '@/data/themes';
+import { THEMES, THEME_MAP, THEME_CATEGORIES } from '@/data/themes';
 import { MIROIR, getMiroirCount, getRandomMiroir, MiroirEntry } from '@/data/miroir';
 import { toast } from 'sonner';
 
@@ -958,13 +958,28 @@ export default function QuranMirrorPage() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      onClick={() => {
-                        const verse: Verse = {
-                          id: item.verseId,
-                          text: '',
-                          translation: item.miroir.mirrorVersion
+                      onClick={async () => {
+                        await loadSurah(item.surahId);
+                        // Wait for surah to load then select verse
+                        const checkAndSelect = () => {
+                          if (currentSurah) {
+                            const verse = currentSurah.verses.find(v => v.id === item.verseId);
+                            if (verse) {
+                              selectVerse(verse);
+                              return true;
+                            }
+                          }
+                          return false;
                         };
-                        selectVerse(verse);
+                        // Try immediately, then retry if needed
+                        if (!checkAndSelect()) {
+                          const interval = setInterval(() => {
+                            if (checkAndSelect()) {
+                              clearInterval(interval);
+                            }
+                          }, 100);
+                          setTimeout(() => clearInterval(interval), 3000);
+                        }
                       }}
                       className="text-[11px] h-7"
                     >
@@ -1471,52 +1486,69 @@ export default function QuranMirrorPage() {
             </Button>
           </div>
         </header>
-        
-        {/* Theme filters */}
-        <div className="px-4 py-2 border-b border-border flex flex-wrap gap-1.5 items-center flex-shrink-0 overflow-x-auto">
-          <span className="text-[11px] text-muted-foreground mr-1 whitespace-nowrap">Thèmes :</span>
-          {THEMES.map(theme => {
-            const count = Object.values(MIROIR).filter(m => m.theme.includes(theme.key)).length;
-            if (count === 0) return null;
 
-            return (
-              <motion.button
-                key={theme.key}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+        {/* Theme filters by category */}
+        <div className="px-4 py-3 border-b border-border flex-shrink-0 bg-black/20">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Thèmes spirituels</span>
+            {selectedTheme && (
+              <Button
+                variant="ghost"
+                size="sm"
                 onClick={() => {
-                  if (selectedTheme === theme.key) {
-                    setSelectedTheme(null);
-                    setView('welcome');
-                  } else {
-                    setSelectedTheme(theme.key);
-                    setView('theme');
-                  }
+                  setSelectedTheme(null);
+                  setView('welcome');
                 }}
-                className={`px-2.5 py-1 rounded-full text-[11px] border transition-all whitespace-nowrap
-                  ${selectedTheme === theme.key
-                    ? 'opacity-100 shadow-sm'
-                    : 'opacity-60 hover:opacity-100'}`}
-                style={{
-                  background: theme.bg,
-                  borderColor: theme.border,
-                  color: theme.color
-                }}
+                className="h-5 px-2 text-[10px] text-muted-foreground hover:text-foreground"
               >
-                {theme.ar} {theme.label}
-              </motion.button>
-            );
-          })}
-          {selectedTheme && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setSelectedTheme(null)}
-              className="h-6 px-2 text-[10px] text-muted-foreground hover:text-foreground"
-            >
-              Effacer
-            </Button>
-          )}
+                Effacer le filtre
+              </Button>
+            )}
+          </div>
+          <div className="space-y-2">
+            {THEME_CATEGORIES.map(category => (
+              <div key={category.key} className="flex flex-wrap items-center gap-1.5">
+                <span className="text-[10px] text-muted-foreground/70 mr-1 flex items-center gap-1 min-w-[140px]">
+                  <span>{category.icon}</span>
+                  <span className="font-medium">{category.label}</span>
+                  <span className="font-arabic text-muted-foreground/50">({category.ar})</span>
+                </span>
+                {category.themes.map(theme => {
+                  const count = Object.values(MIROIR).filter(m => m.theme.includes(theme.key)).length;
+                  if (count === 0) return null;
+
+                  return (
+                    <motion.button
+                      key={theme.key}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => {
+                        if (selectedTheme === theme.key) {
+                          setSelectedTheme(null);
+                          setView('welcome');
+                        } else {
+                          setSelectedTheme(theme.key);
+                          setView('theme');
+                        }
+                      }}
+                      className={`px-2 py-0.5 rounded-full text-[10px] border transition-all whitespace-nowrap
+                        ${selectedTheme === theme.key
+                          ? 'opacity-100 shadow-sm ring-1 ring-offset-1 ring-offset-background'
+                          : 'opacity-50 hover:opacity-100'}`}
+                      style={{
+                        background: theme.bg,
+                        borderColor: theme.border,
+                        color: theme.color,
+                        ringColor: selectedTheme === theme.key ? theme.color : undefined
+                      }}
+                    >
+                      {theme.ar} {theme.label}
+                    </motion.button>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
         </div>
         
         {/* Content */}
