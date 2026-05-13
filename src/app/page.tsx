@@ -717,7 +717,7 @@ export default function QuranMirrorPage() {
         >
           <div className="font-arabic text-3xl text-gold mb-2">{currentSurah.name}</div>
           <div className="font-title text-lg text-foreground/80">{currentSurah.translation}</div>
-          <div className="text-[11px] text-muted-foreground mt-1">
+          <div className="text-xs text-muted-foreground mt-1">
             {currentSurah.transliteration} • {currentSurah.type === 'meccan' ? 'Mécquoise' : 'Médinoise'} • {currentSurah.total_verses} versets
           </div>
           
@@ -841,7 +841,7 @@ export default function QuranMirrorPage() {
               onClick={() => loadSurah(result.surahId)}
               className="w-full text-left p-4 rounded-lg border border-border bg-card hover:bg-white/[0.02] transition-all"
             >
-              <div className="flex items-center gap-2 mb-2 text-[11px]">
+              <div className="flex items-center gap-2 mb-2 text-xs">
                 <span className="text-gold/70">{result.reference}</span>
                 <span className="text-muted-foreground">{result.surahName}</span>
                 {result.hasMiroir && (
@@ -872,7 +872,7 @@ export default function QuranMirrorPage() {
         >
           <div className="text-4xl mb-2">{parcours.icon}</div>
           <div className="font-title text-lg text-foreground/80">{parcours.title}</div>
-          <div className="text-[11px] text-muted-foreground mt-1">
+          <div className="text-xs text-muted-foreground mt-1">
             {parcours.verses.length} versets • {parcours.description}
           </div>
 
@@ -926,7 +926,7 @@ export default function QuranMirrorPage() {
                       {verseItem.reference}
                     </span>
                     {verseItem.title && (
-                      <span className="text-[11px] text-foreground/80 font-medium">{verseItem.title}</span>
+                      <span className="text-xs text-foreground/80 font-medium">{verseItem.title}</span>
                     )}
                     <span className="text-[10px] text-muted-foreground">
                       {surah?.translation}
@@ -1033,7 +1033,7 @@ export default function QuranMirrorPage() {
         >
           <div className="text-4xl mb-2">{context.icon}</div>
           <div className="font-title text-lg text-foreground/80">{context.title}</div>
-          <div className="text-[11px] text-muted-foreground mt-1">
+          <div className="text-xs text-muted-foreground mt-1">
             {context.description}
           </div>
           <div className="text-[10px] text-muted-foreground/60 mt-1">
@@ -1123,8 +1123,8 @@ export default function QuranMirrorPage() {
                       <div className="grid grid-cols-2 gap-1.5 mt-3 pt-3 border-t border-border/30">
                         {item.miroir.tajalli.slice(0, 4).map((t, i) => (
                           <div key={i} className="p-1.5 rounded bg-white/[0.02]">
-                            <span className="text-[9px] font-medium" style={{ color: t.color }}>{t.label}</span>
-                            <p className="text-[9px] text-muted-foreground leading-relaxed">{t.text}</p>
+                            <span className="text-[10px] font-medium" style={{ color: t.color }}>{t.label}</span>
+                            <p className="text-[10px] text-muted-foreground leading-relaxed">{t.text}</p>
                           </div>
                         ))}
                       </div>
@@ -1157,7 +1157,7 @@ export default function QuranMirrorPage() {
         >
           <div className="font-arabic text-3xl mb-2" style={{ color: theme.color }}>{theme.ar}</div>
           <div className="font-title text-lg text-foreground/80">{theme.label}</div>
-          <div className="text-[11px] text-muted-foreground mt-1">
+          <div className="text-xs text-muted-foreground mt-1">
             {themeVerses.length} verset{themeVerses.length !== 1 ? 's' : ''} miroir
           </div>
 
@@ -1223,7 +1223,7 @@ export default function QuranMirrorPage() {
                       style={{ background: theme.bg, color: theme.color }}>
                       {item.reference}
                     </span>
-                    <span className="text-[11px] text-muted-foreground">
+                    <span className="text-xs text-muted-foreground">
                       {surah?.translation} ({surah?.name})
                     </span>
                     {isBookmarkedVerse && (
@@ -1254,10 +1254,10 @@ export default function QuranMirrorPage() {
                           <div key={i} className="p-2 rounded-lg bg-white/[0.02] border border-border/30">
                             <div className="flex items-center gap-1.5 mb-1">
                               <span style={{ color: t.color }}>◈</span>
-                              <span className="text-[11px] font-medium" style={{ color: t.color }}>{t.label}</span>
+                              <span className="text-xs font-medium" style={{ color: t.color }}>{t.label}</span>
                               <span className="font-arabic text-[10px] text-muted-foreground">{t.ar}</span>
                             </div>
-                            <p className="text-[11px] text-muted-foreground leading-relaxed">{t.text}</p>
+                            <p className="text-xs text-muted-foreground leading-relaxed">{t.text}</p>
                           </div>
                         ))}
                       </div>
@@ -1267,8 +1267,8 @@ export default function QuranMirrorPage() {
                   {/* Munajat - only in level 3 */}
                   {depthLevel >= 3 && (
                     <div className="mt-3 pt-3 border-t border-border/30">
-                      <p className="text-[10px] text-muted-foreground mb-1 font-medium">Munajat</p>
-                      <p className="text-xs text-foreground/70 italic leading-relaxed">
+                      <p className="text-xs text-muted-foreground mb-1 font-medium">Munajat</p>
+                      <p className="text-sm text-foreground/70 italic leading-relaxed">
                         {item.miroir.munajat}
                       </p>
                     </div>
@@ -1280,7 +1280,7 @@ export default function QuranMirrorPage() {
                       variant="outline"
                       size="sm"
                       onClick={() => loadSurah(item.surahId)}
-                      className="text-[11px] h-7"
+                      className="text-xs h-7"
                     >
                       <BookOpen className="w-3 h-3 mr-1" />
                       Voir la sourate
@@ -1309,7 +1309,7 @@ export default function QuranMirrorPage() {
                           setTimeout(() => clearInterval(interval), 3000);
                         }
                       }}
-                      className="text-[11px] h-7"
+                      className="text-xs h-7"
                     >
                       <Sparkles className="w-3 h-3 mr-1" />
                       Contempler
@@ -1350,7 +1350,7 @@ export default function QuranMirrorPage() {
           <div className="flex flex-col items-center justify-center h-full p-6 text-center">
             <Bookmark className="w-10 h-10 text-muted-foreground/30 mb-4" />
             <p className="text-sm text-muted-foreground">Aucun favori</p>
-            <p className="text-[11px] text-muted-foreground/50 mt-1">
+            <p className="text-xs text-muted-foreground/50 mt-1">
               Appuyez sur le bouton favori pour enregistrer un verset
             </p>
           </div>
@@ -1520,7 +1520,7 @@ export default function QuranMirrorPage() {
             </motion.div>
             
             {/* Reference row */}
-            <div className="flex flex-wrap justify-center gap-2 text-[11px] text-muted-foreground mb-6">
+            <div className="flex flex-wrap justify-center gap-2 text-xs text-muted-foreground mb-6">
               <span>{currentSurah.name} — {currentSurah.translation}</span>
               <span>•</span>
               <span>{currentSurah.type === 'meccan' ? 'Mécquoise' : 'Médinoise'}</span>
@@ -1551,7 +1551,7 @@ export default function QuranMirrorPage() {
                 <p className="text-sm text-muted-foreground">
                   La méditation miroir de ce verset sera disponible dans une prochaine vague.
                 </p>
-                <p className="text-[11px] text-muted-foreground/50 mt-2">
+                <p className="text-xs text-muted-foreground/50 mt-2">
                   Le Coran intégral (6236 versets) est en cours de contemplation.
                 </p>
               </div>
@@ -1613,7 +1613,7 @@ export default function QuranMirrorPage() {
                       {miroir.mirrorVersion}
                     </div>
                     
-                    <div className="flex flex-wrap gap-4 mt-4 text-[11px] text-muted-foreground">
+                    <div className="flex flex-wrap gap-4 mt-4 text-xs text-muted-foreground">
                       {miroir.emotion && (
                         <span>Émotion : <b className="text-foreground/70">{miroir.emotion}</b></span>
                       )}
@@ -1629,7 +1629,7 @@ export default function QuranMirrorPage() {
                         {miroir.relatedNames.map(name => (
                           <span 
                             key={name}
-                            className="px-2.5 py-1 rounded-full text-[11px] border border-purple/30 bg-purple/15 text-purple/90 hover:bg-purple/20 transition-colors cursor-default"
+                            className="px-2.5 py-1 rounded-full text-xs border border-purple/30 bg-purple/15 text-purple/90 hover:bg-purple/20 transition-colors cursor-default"
                           >
                             {name}
                           </span>
@@ -1646,7 +1646,7 @@ export default function QuranMirrorPage() {
                   transition={{ delay: 0.3 }}
                   className="p-5 rounded-xl bg-card border border-border mb-6"
                 >
-                  <h4 className="text-[11px] text-muted-foreground uppercase tracking-wider mb-3 flex items-center gap-2">
+                  <h4 className="text-xs text-muted-foreground uppercase tracking-wider mb-3 flex items-center gap-2">
                     <span>🧭</span> Réflexion
                   </h4>
                   <p className="text-sm text-foreground/65 leading-relaxed">
@@ -1821,7 +1821,7 @@ export default function QuranMirrorPage() {
             {/* Parcours */}
             <div className="flex items-center gap-1.5">
               <Compass className="w-3 h-3 text-gold/70" />
-              <span className="text-[9px] text-muted-foreground uppercase tracking-wider">Parcours</span>
+              <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Parcours</span>
             </div>
             {PARCOURS_LIST.map(parcours => (
               <motion.button
@@ -1855,7 +1855,7 @@ export default function QuranMirrorPage() {
             {/* Contextes */}
             <div className="flex items-center gap-1.5">
               <Zap className="w-3 h-3 text-purple/70" />
-              <span className="text-[9px] text-muted-foreground uppercase tracking-wider">Moment</span>
+              <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Moment</span>
             </div>
             {THEME_CONTEXTS.map(context => (
               <motion.button
