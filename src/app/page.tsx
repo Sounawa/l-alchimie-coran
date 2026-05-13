@@ -21,7 +21,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { THEMES, THEME_MAP } from '@/data/themes';
-import { MIROIR, getMiroirCount, getRandomMiroir } from '@/data/miroir';
+import { MIROIR, getMiroirCount, getRandomMiroir, MiroirEntry } from '@/data/miroir';
 import { toast } from 'sonner';
 
 // Types
@@ -144,7 +144,7 @@ export default function QuranMirrorPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [view, setView] = useState<'welcome' | 'surah' | 'search'>('welcome');
+  const [view, setView] = useState<'welcome' | 'surah' | 'search' | 'theme'>('welcome');
   const [bookmarks, setBookmarks] = useState<BookmarkData[]>([]);
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [readingHistory, setReadingHistory] = useState<string[]>([]);
@@ -255,7 +255,8 @@ export default function QuranMirrorPage() {
       setShowDetail(false);
       setView('surah');
       setSidebarOpen(false);
-      
+      setSelectedTheme(null); // Clear theme when loading surah
+
       // Add to reading history
       const historyEntry = `${id}`;
       setReadingHistory(prev => {
@@ -387,6 +388,24 @@ export default function QuranMirrorPage() {
       return miroir && miroir.theme.includes(selectedTheme);
     });
   }, [currentSurah, selectedTheme]);
+
+  // Get all verses for a theme across all surahs
+  const getThemeVerses = useCallback((themeKey: string) => {
+    const results: { surahId: number; verseId: number; reference: string; miroir: MiroirEntry }[] = [];
+
+    Object.entries(MIROIR).forEach(([ref, miroir]) => {
+      if (miroir.theme.includes(themeKey)) {
+        const [surahId, verseId] = ref.split(':').map(Number);
+        results.push({ surahId, verseId, reference: ref, miroir });
+      }
+    });
+
+    // Sort by surah and verse
+    return results.sort((a, b) => {
+      if (a.surahId !== b.surahId) return a.surahId - b.surahId;
+      return a.verseId - b.verseId;
+    });
+  }, []);
 
   // Check if verse has miroir
   const hasMiroir = (surahId: number, verseId: number) => {
@@ -832,6 +851,135 @@ export default function QuranMirrorPage() {
       )}
     </div>
   );
+
+  // Render theme verses view
+  const renderThemeVerses = () => {
+    if (!selectedTheme) return null;
+    const theme = THEME_MAP[selectedTheme];
+    if (!theme) return null;
+
+    const themeVerses = getThemeVerses(selectedTheme);
+
+    return (
+      <div className="max-w-3xl mx-auto p-6">
+        {/* Theme header */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-8"
+        >
+          <div className="font-arabic text-3xl mb-2" style={{ color: theme.color }}>{theme.ar}</div>
+          <div className="font-title text-lg text-foreground/80">{theme.label}</div>
+          <div className="text-[11px] text-muted-foreground mt-1">
+            {themeVerses.length} verset{themeVerses.length !== 1 ? 's' : ''} miroir
+          </div>
+
+          <div className="gold-divider max-w-[180px] mx-auto mt-4">
+            <span></span>
+            <div className="dot"></div>
+            <div className="dot-sm"></div>
+            <div className="dot"></div>
+            <span></span>
+          </div>
+        </motion.div>
+
+        {/* Verses list with scroll */}
+        <ScrollArea className="h-[calc(100vh-280px)]">
+          <div className="space-y-3 pr-4">
+            {themeVerses.map((item, index) => {
+              const surah = surahs.find(s => s.id === item.surahId);
+              const isBookmarkedVerse = bookmarks.some(b => b.reference === item.reference);
+
+              return (
+                <motion.div
+                  key={item.reference}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: Math.min(index * 0.02, 0.5) }}
+                  className="p-4 rounded-xl border border-border bg-card hover:bg-white/[0.02] transition-all"
+                >
+                  {/* Header */}
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-medium"
+                      style={{ background: theme.bg, color: theme.color }}>
+                      {item.reference}
+                    </span>
+                    <span className="text-[11px] text-muted-foreground">
+                      {surah?.translation} ({surah?.name})
+                    </span>
+                    {isBookmarkedVerse && (
+                      <BookmarkCheck className="w-4 h-4 ml-auto text-gold/50" />
+                    )}
+                  </div>
+
+                  {/* Miroir content */}
+                  <div className="mb-4">
+                    <p className="text-sm text-foreground/80 leading-relaxed mb-3">
+                      {item.miroir.mirrorVersion}
+                    </p>
+                  </div>
+
+                  {/* 6 Tajalli levels */}
+                  <div className="border-t border-border/50 pt-3">
+                    <p className="text-[10px] text-muted-foreground mb-2 font-medium">Les 6 Regards du Tajalli</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {item.miroir.tajalli.map((t, i) => (
+                        <div key={i} className="p-2 rounded-lg bg-white/[0.02] border border-border/30">
+                          <div className="flex items-center gap-1.5 mb-1">
+                            <span style={{ color: t.color }}>◈</span>
+                            <span className="text-[11px] font-medium" style={{ color: t.color }}>{t.label}</span>
+                            <span className="font-arabic text-[10px] text-muted-foreground">{t.ar}</span>
+                          </div>
+                          <p className="text-[11px] text-muted-foreground leading-relaxed line-clamp-2">{t.text}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Munajat */}
+                  <div className="mt-3 pt-3 border-t border-border/30">
+                    <p className="text-[10px] text-muted-foreground mb-1 font-medium">Munajat</p>
+                    <p className="text-xs text-foreground/70 italic leading-relaxed">
+                      {item.miroir.munajat}
+                    </p>
+                  </div>
+
+                  {/* Action buttons */}
+                  <div className="flex gap-2 mt-3 pt-3 border-t border-border/30">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => loadSurah(item.surahId)}
+                      className="text-[11px] h-7"
+                    >
+                      <BookOpen className="w-3 h-3 mr-1" />
+                      Voir la sourate
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => {
+                        const verse: Verse = {
+                          id: item.verseId,
+                          text: '',
+                          translation: item.miroir.mirrorVersion
+                        };
+                        selectVerse(verse);
+                      }}
+                      className="text-[11px] h-7"
+                    >
+                      <Sparkles className="w-3 h-3 mr-1" />
+                      Contempler
+                    </Button>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </ScrollArea>
+      </div>
+    );
+  };
 
   // Render bookmarks panel
   const renderBookmarksPanel = () => (
@@ -1326,28 +1474,36 @@ export default function QuranMirrorPage() {
         
         {/* Theme filters */}
         <div className="px-4 py-2 border-b border-border flex flex-wrap gap-1.5 items-center flex-shrink-0 overflow-x-auto">
-          <span className="text-[11px] text-muted-foreground mr-1 whitespace-nowrap">Miroir :</span>
+          <span className="text-[11px] text-muted-foreground mr-1 whitespace-nowrap">Thèmes :</span>
           {THEMES.map(theme => {
             const count = Object.values(MIROIR).filter(m => m.theme.includes(theme.key)).length;
             if (count === 0) return null;
-            
+
             return (
               <motion.button
                 key={theme.key}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setSelectedTheme(selectedTheme === theme.key ? null : theme.key)}
+                onClick={() => {
+                  if (selectedTheme === theme.key) {
+                    setSelectedTheme(null);
+                    setView('welcome');
+                  } else {
+                    setSelectedTheme(theme.key);
+                    setView('theme');
+                  }
+                }}
                 className={`px-2.5 py-1 rounded-full text-[11px] border transition-all whitespace-nowrap
-                  ${selectedTheme === theme.key 
-                    ? 'opacity-100 shadow-sm' 
+                  ${selectedTheme === theme.key
+                    ? 'opacity-100 shadow-sm'
                     : 'opacity-60 hover:opacity-100'}`}
-                style={{ 
-                  background: theme.bg, 
-                  borderColor: theme.border, 
-                  color: theme.color 
+                style={{
+                  background: theme.bg,
+                  borderColor: theme.border,
+                  color: theme.color
                 }}
               >
-                {theme.ar} {theme.label} ({count})
+                {theme.ar} {theme.label}
               </motion.button>
             );
           })}
@@ -1378,6 +1534,7 @@ export default function QuranMirrorPage() {
               {view === 'welcome' && renderWelcome()}
               {view === 'surah' && renderVerseList()}
               {view === 'search' && renderSearchResults()}
+              {view === 'theme' && renderThemeVerses()}
             </>
           )}
         </div>

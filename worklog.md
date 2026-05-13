@@ -2,11 +2,57 @@
 
 ## Project Status
 - **Status**: ✅ COMPLETE - All 114 Surahs covered
-- **Last Verified**: Session 31 (Current)
+- **Last Verified**: Session 32 (Current)
 - **Framework**: Next.js 16 with App Router, TypeScript, Tailwind CSS 4, shadcn/ui
-- **Miroir Coverage**: 6236 entries | 6236 with 6 tajalli levels | 115,648 lines of code
+- **Miroir Coverage**: 6236 entries | 6236 with 6 tajalli levels | 115,613 lines of code
 - **All Surahs**: ✅ COMPLETE - All 6236 Quran verses covered (one entry per verse)
 - **Data Integrity**: ✅ No duplicates | ✅ All references valid
+- **Theme View**: ✅ 15 themes with full verse display and 6 tajalli levels
+
+---
+
+## Session 32 - Theme Reorganization & View Improvements (COMPLETE)
+
+### Task ID: theme-reorganization
+**Agent**: Main Agent
+**Task**: Reorganize theme tabs without numbers, create theme view with all verses and 6 tajalli levels
+
+### Work Log:
+
+1. **Theme Button Improvements**:
+   - Removed count numbers from theme buttons
+   - Changed label from "Miroir :" to "Thèmes :"
+   - Buttons now show only `{ar} {label}` format (e.g., "توكل Confiance")
+
+2. **New Theme View Created**:
+   - Added new view state: `'theme'` alongside 'welcome', 'surah', 'search'
+   - Created `getThemeVerses()` function to get all verses for a theme across all surahs
+   - Created `renderThemeVerses()` component with:
+     - Theme header with Arabic name and French label
+     - Verse count display
+     - ScrollArea for proper scrolling
+     - Each verse card shows:
+       - Reference and surah name
+       - Full miroir content
+       - **All 6 Tajalli levels** displayed in grid
+       - Munajat prayer
+       - Action buttons (Voir la sourate, Contempler)
+
+3. **Navigation Updates**:
+   - Clicking a theme button now switches to 'theme' view
+   - Clicking the same theme again returns to 'welcome' view
+   - Loading a surah clears the theme selection
+
+4. **Technical Details**:
+   - Added `MiroirEntry` type import
+   - Theme verses are sorted by surah and verse number
+   - Scroll functionality implemented with ScrollArea component
+
+### Stage Summary:
+- **Theme Buttons**: Clean interface without numbers ✅
+- **Theme View**: Shows all verses for selected theme ✅
+- **6 Tajalli Levels**: Fully displayed in each verse card ✅
+- **Scroll Functionality**: Working with ScrollArea ✅
 
 ---
 
