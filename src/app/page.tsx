@@ -1011,16 +1011,17 @@ export default function QuranMirrorPage() {
 
     // Get all verses for the themes in this context
     const contextVerses: { reference: string; miroir: MiroirEntry; themeKey: string }[] = [];
-    context.themes.forEach(themeKey => {
-      Object.entries(MIROIR).forEach(([ref, miroir]) => {
-        if (miroir.theme.includes(themeKey)) {
-          contextVerses.push({ reference: ref, miroir, themeKey });
-        }
-      });
+    
+    Object.entries(MIROIR).forEach(([ref, miroir]) => {
+      // Check if any of the context themes match this verse's themes
+      const matchingTheme = context.themes.find(t => miroir.theme.includes(t));
+      if (matchingTheme) {
+        contextVerses.push({ reference: ref, miroir, themeKey: matchingTheme });
+      }
     });
 
-    // Shuffle and limit
-    const shuffled = contextVerses.sort(() => Math.random() - 0.5).slice(0, 20);
+    // Shuffle with proper randomization
+    const shuffled = [...contextVerses].sort(() => Math.random() - 0.5).slice(0, 20);
 
     return (
       <div className="max-w-3xl mx-auto p-6">
@@ -1034,6 +1035,9 @@ export default function QuranMirrorPage() {
           <div className="font-title text-lg text-foreground/80">{context.title}</div>
           <div className="text-[11px] text-muted-foreground mt-1">
             {context.description}
+          </div>
+          <div className="text-[10px] text-muted-foreground/60 mt-1">
+            {contextVerses.length} versets disponibles • {shuffled.length} affichés
           </div>
 
           {/* Themes badges */}
@@ -1082,47 +1086,53 @@ export default function QuranMirrorPage() {
         {/* Verses */}
         <ScrollArea className="h-[calc(100vh-380px)]">
           <div className="space-y-3 pr-4">
-            {shuffled.map((item, index) => {
-              const surah = surahs.find(s => s.id === parseInt(item.reference.split(':')[0]));
-              const theme = THEME_MAP[item.themeKey];
+            {shuffled.length === 0 ? (
+              <p className="text-center text-muted-foreground py-10">
+                Aucun verset trouvé pour ce contexte.
+              </p>
+            ) : (
+              shuffled.map((item, index) => {
+                const surah = surahs.find(s => s.id === parseInt(item.reference.split(':')[0]));
+                const theme = THEME_MAP[item.themeKey];
 
-              return (
-                <motion.div
-                  key={item.reference + index}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: Math.min(index * 0.03, 0.5) }}
-                  className="p-4 rounded-xl border border-border bg-card hover:bg-white/[0.02] transition-all"
-                >
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-medium"
-                      style={{ background: theme?.bg, color: theme?.color }}>
-                      {item.reference}
-                    </span>
-                    <span className="text-[10px] text-muted-foreground">{surah?.translation}</span>
-                  </div>
-
-                  {depthLevel >= 1 && (
-                    <p className="text-sm text-foreground/80 leading-relaxed">{item.miroir.mirrorVersion}</p>
-                  )}
-
-                  {depthLevel >= 2 && (
-                    <p className="text-xs text-muted-foreground leading-relaxed mt-2">{item.miroir.reflection}</p>
-                  )}
-
-                  {depthLevel >= 3 && (
-                    <div className="grid grid-cols-2 gap-1.5 mt-3 pt-3 border-t border-border/30">
-                      {item.miroir.tajalli.slice(0, 4).map((t, i) => (
-                        <div key={i} className="p-1.5 rounded bg-white/[0.02]">
-                          <span className="text-[9px] font-medium" style={{ color: t.color }}>{t.label}</span>
-                          <p className="text-[9px] text-muted-foreground leading-relaxed">{t.text}</p>
-                        </div>
-                      ))}
+                return (
+                  <motion.div
+                    key={item.reference + '-' + index}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: Math.min(index * 0.03, 0.5) }}
+                    className="p-4 rounded-xl border border-border bg-card hover:bg-white/[0.02] transition-all"
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-medium"
+                        style={{ background: theme?.bg, color: theme?.color }}>
+                        {item.reference}
+                      </span>
+                      <span className="text-[10px] text-muted-foreground">{surah?.translation}</span>
                     </div>
-                  )}
-                </motion.div>
-              );
-            })}
+
+                    {depthLevel >= 1 && (
+                      <p className="text-sm text-foreground/80 leading-relaxed">{item.miroir.mirrorVersion}</p>
+                    )}
+
+                    {depthLevel >= 2 && (
+                      <p className="text-xs text-muted-foreground leading-relaxed mt-2">{item.miroir.reflection}</p>
+                    )}
+
+                    {depthLevel >= 3 && (
+                      <div className="grid grid-cols-2 gap-1.5 mt-3 pt-3 border-t border-border/30">
+                        {item.miroir.tajalli.slice(0, 4).map((t, i) => (
+                          <div key={i} className="p-1.5 rounded bg-white/[0.02]">
+                            <span className="text-[9px] font-medium" style={{ color: t.color }}>{t.label}</span>
+                            <p className="text-[9px] text-muted-foreground leading-relaxed">{t.text}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })
+            )}
           </div>
         </ScrollArea>
       </div>
