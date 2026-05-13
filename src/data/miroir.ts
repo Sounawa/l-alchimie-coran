@@ -26545,23 +26545,6 @@ MIROIR["16:51"] = {
   munajat: `Ya Wahid, Tu es l'Unique. Unifie mon cœur vers Toi seul. Ne permets pas que je me divise entre plusieurs amours.`
 };
 
-MIROIR["16:68-69"] = {
-  reference: "16:68-69",
-  theme: ["création", "guidance", "guérison"],
-  emotion: "Émerveillement, gratitude",
-  difficulty: "débutant",
-  relatedNames: ["Al-Hadi", "Ash-Shafi"],
-  mirrorVersion: `« Ton Seigneur a inspiré à l'abeille : 'Prends des demeures dans les montagnes, les arbres et les treillages. Puis mange de tous les fruits et suis les chemins de ton Seigneur.' » Le miroir me montre la guidance divine même pour les plus petites créatures. « Awha rabbuka ila al-nahl » — ton Seigneur a inspiré à l'abeille. L'abeille suit la guidance et produit du miel. « Fihi shifa'un li-al-nas » — en lui, il y a une guérison pour les gens. Le miroir m'invite à voir la guidance et la guérison dans chaque détail de la création.`,
-  reflection: `La plus petite créature suit la guidance divine. Le résultat est la guérison pour les autres.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Awha rabbuka ila al-nahl... fihi shifa'un li-al-nas » — ton Seigneur a inspiré à l'abeille... en lui, il y a une guérison pour les gens." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Est-ce que je suis la guidance comme l'abeille ? Est-ce que je produis du miel pour les autres ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "La guidance n'est pas seulement pour les grands prophètes — elle est pour chaque créature." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "Toute la création suit la guidance divine. Seul l'homme a le choix de la suivre ou non." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui suit la guidance produit de la guérison pour les autres." }
-  ],
-  munajat: `Ya Hadi, Tu guides même l'abeille. Guide-moi comme Tu la guides. Fais que je produise du miel pour les autres, pas du poison.`
-};
 
 MIROIR["16:90"] = {
   reference: "16:90",
@@ -26814,23 +26797,6 @@ MIROIR["18:10"] = {
   munajat: `Ya Waliyy, je cherche refuge en Toi comme les jeunes de la caverne. Donne-moi de Ta part une miséricorde. Protège-moi de tout mal.`
 };
 
-MIROIR["18:23-24"] = {
-  reference: "18:23-24",
-  theme: ["intention", "inshallah", "humble"],
-  emotion: "Humilité, rappel",
-  difficulty: "débutant",
-  relatedNames: ["Al-Qadir", "Al-Murid"],
-  mirrorVersion: `« Et ne dis jamais à propos d'une chose : 'Je ferai cela demain' sans dire : 'Si Allah le veut.' » Le miroir me montre l'humilité du planning. « Wa la taqulanna li-shay'in inni fa'ilun dhalika ghadan » — ne dis jamais : je ferai cela demain. « Illa an yasha'a Allahu » — sans dire : si Allah le veut. L'avenir n'est pas entre mes mains. Je peux planifier, mais le résultat appartient à Allah. Le miroir m'invite à ajouter « inshallah » à chaque projet.`,
-  reflection: `« Inshallah » n'est pas une superstition — c'est une reconnaissance de la souveraineté d'Allah sur l'avenir.`,
-  tajalli: [
-    { label: "La Forme", ar: "الأصل", color: "var(--gold)", text: "« Wa la taqulanna li-shay'in inni fa'ilun dhalika ghadan illa an yasha'a Allahu » — ne dis jamais : je ferai cela demain, sans dire : si Allah le veut." },
-    { label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", text: "Est-ce que je dis « inshallah » par habitude ou par conviction ? Est-ce que je reconnais vraiment que l'avenir est entre les mains d'Allah ?" },
-    { label: "L'Inversion", ar: "القلب", color: "var(--purple)", text: "L'incertitude de l'avenir n'est pas une angoisse — c'est une invitation à la confiance." },
-    { label: "L'Universel", ar: "الكون", color: "#34d399", text: "L'univers entier fonctionne par la volonté divine. L'homme est le seul à prétendre contrôler son avenir." },
-    { label: "Le Secret", ar: "السر", color: "#fb7185", text: "Celui qui dit « inshallah » avec conviction vit en paix avec l'incertitude." }
-  ],
-  munajat: `Ya Qadir, l'avenir T'appartient. Fais que je dise « inshallah » avec conviction. Aide-moi à planifier tout en Te faisant confiance pour le résultat.`
-};
 
 MIROIR["18:39"] = {
   reference: "18:39",
