@@ -72,6 +72,99 @@
 
 ---
 
+## Session 37.5 - Nafs Feature: Les 7 Niveaux de l'Âme (COMPLETE)
+
+### Task ID: nafs-feature
+**Agent**: Main Agent
+**Task**: Add new "Nafs" (النفس) tab with 7 levels of the soul
+
+### Work Log:
+
+**Feature Added:**
+New "Nafs" (💙) tab in the navigation header with 7 levels of the soul according to Islamic/Sufi tradition:
+
+1. **🔥 An-Nafs al-Ammara** (النَّفْسُ الأَمَّارَةُ) - L'Âme Incitative (Level 1)
+   - State: Esclave des passions
+   - Challenge: Résister aux désirs immédiats
+   - Virtue: La conscience (wara)
+
+2. **⚔️ An-Nafs al-Lawwama** (النَّفْسُ اللَّوَّامَةُ) - L'Âme Qui Se Blâme (Level 2)
+   - State: En lutte constante
+   - Challenge: Transformer le blâme en action
+   - Virtue: Le repentir (tawba)
+
+3. **🍃 An-Nafs al-Mutma'inna** (النَّفْسُ الْمُطْمَئِنَّةُ) - L'Âme Apaisée (Level 3)
+   - State: En paix intérieure
+   - Challenge: Maintenir la sérénité
+   - Virtue: La paix (sakina)
+
+4. **💎 An-Nafs ar-Radiyya** (النَّفْسُ الرَّاضِيَةُ) - L'Âme Satisfaite (Level 4)
+   - State: Satisfaite d'Allah
+   - Challenge: Être reconnaissant en toute circonstance
+   - Virtue: La gratitude (shukr)
+
+5. **✨ An-Nafs al-Mardiyya** (النَّفْسُ الْمَرْضِيَّةُ) - L'Âme Agréée (Level 5)
+   - State: Agrée par Allah
+   - Challenge: Persévérer dans l'excellence
+   - Virtue: L'excellence (ihsan)
+
+6. **👑 An-Nafs al-Kamila** (النَّفْسُ الْكَامِلَةُ) - L'Âme Parfaite (Level 6)
+   - State: Complète et parfaite
+   - Challenge: Servir comme modèle
+   - Virtue: La perfection (kamal)
+
+7. **🌟 An-Nafs as-Safiya** (النَّفْسُ الصَّافِيَةُ) - L'Âme Purifiée (Level 7)
+   - State: Pure et transparente
+   - Challenge: Rester dans la présence divine
+   - Virtue: La pureté (safa)
+
+**Technical Implementation:**
+1. **New Data Structure** (`/src/data/themes.ts`):
+   - Created `NafsLevel` interface
+   - Added `NAFS_LEVELS` array with 7 levels
+   - Each level has: Arabic name, French name, description, color scheme, icon, state, challenge, virtue, and verses
+
+2. **New View** (`/src/app/page.tsx`):
+   - Added `selectedNafsLevel` state
+   - Added `'nafs'` to view type union
+   - Created `renderNafsView()` function with:
+     - Overview grid showing all 7 levels
+     - Detail view for selected level with verses
+     - Integration with depth levels (1, 2, 3)
+     - Color-coded borders matching each level
+
+3. **UI Integration**:
+   - Added Nafs tab with Heart icon (💙) in rose color
+   - Added Nafs dropdown panel in header
+   - Updated all navigation handlers to clear `selectedNafsLevel`
+   - Added `{view === 'nafs' && renderNafsView()}` to content rendering
+
+**Color Scheme:**
+- Level 1 (Incitative): Red (#ef4444)
+- Level 2 (Blâme): Orange (#f97316)
+- Level 3 (Apaisée): Green (#22c55e)
+- Level 4 (Satisfaite): Blue (#3b82f6)
+- Level 5 (Agréée): Purple (#8b5cf6)
+- Level 6 (Parfaite): Amber (#f59e0b)
+- Level 7 (Purifiée): Cyan (#06b6d4)
+
+### Testing Performed:
+- ✅ Nafs tab expands correctly showing 7 levels
+- ✅ Each level displays Arabic and French names
+- ✅ Detail view shows state, challenge, virtue
+- ✅ Verses load correctly with MIROIR content
+- ✅ Level filter buttons work
+- ✅ "Contempler" buttons functional
+- ✅ Clear button resets selection
+
+### Stage Summary:
+- **Nafs Feature**: ✅ 7 levels of the soul with full UI
+- **Data**: ✅ Complete structure with Arabic/French names
+- **Verses**: ✅ 4 verses per level with contemplative content
+- **Navigation**: ✅ Integrated into tabbed header system
+
+---
+
 ## Session 36 - Theme Expansion: 3 Phases Complete (COMPLETE)
 
 ### Task ID: theme-expansion-phases

@@ -7,7 +7,7 @@ import {
   Menu, Sparkles, Heart, Bookmark, BookmarkCheck,
   Copy, Share2, Clock, ChevronDown, ChevronUp,
   Moon, Sun, BookOpen, Home, Star, Compass, Layers, 
-  Sunrise, Sunset, Mountain, PartyPopper, Zap
+  Sunrise, Sunset, Mountain, PartyPopper, Zap, Flame
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -21,7 +21,7 @@ import {
 } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { THEMES, THEME_MAP, THEME_CATEGORIES, PARCOURS_LIST, VERSETS_HUMEUR, THEME_CONTEXTS, DEPTH_LEVELS, SPIRITUAL_JOURNEYS, DIVINE_NAME_PARCOURS, PROPHET_PARCOURS, DIVINE_NAMES } from '@/data/themes';
+import { THEMES, THEME_MAP, THEME_CATEGORIES, PARCOURS_LIST, VERSETS_HUMEUR, THEME_CONTEXTS, DEPTH_LEVELS, SPIRITUAL_JOURNEYS, DIVINE_NAME_PARCOURS, PROPHET_PARCOURS, DIVINE_NAMES, NAFS_LEVELS } from '@/data/themes';
 import { MIROIR, getMiroirCount, getRandomMiroir, MiroirEntry } from '@/data/miroir';
 import { toast } from 'sonner';
 
@@ -110,19 +110,20 @@ export default function QuranMirrorPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [view, setView] = useState<'welcome' | 'surah' | 'search' | 'theme' | 'parcours' | 'context' | 'journey' | 'divineName' | 'prophet'>('welcome');
+  const [view, setView] = useState<'welcome' | 'surah' | 'search' | 'theme' | 'parcours' | 'context' | 'journey' | 'divineName' | 'prophet' | 'nafs'>('welcome');
   const [selectedParcours, setSelectedParcours] = useState<string | null>(null);
   const [selectedContext, setSelectedContext] = useState<string | null>(null);
   const [selectedMood, setSelectedMood] = useState<string | null>(null);
   const [selectedJourney, setSelectedJourney] = useState<string | null>(null);
   const [selectedDivineName, setSelectedDivineName] = useState<string | null>(null);
   const [selectedProphet, setSelectedProphet] = useState<string | null>(null);
+  const [selectedNafsLevel, setSelectedNafsLevel] = useState<number | null>(null);
   const [depthLevel, setDepthLevel] = useState<1 | 2 | 3>(2);
   const [bookmarks, setBookmarks] = useState<BookmarkData[]>([]);
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [readingHistory, setReadingHistory] = useState<string[]>([]);
   const [readingProgress, setReadingProgress] = useState(0);
-  const [activeHeaderTab, setActiveHeaderTab] = useState<'parcours' | 'moments' | 'voyages' | 'noms' | 'prophetes' | 'themes' | null>(null);
+  const [activeHeaderTab, setActiveHeaderTab] = useState<'parcours' | 'moments' | 'voyages' | 'noms' | 'prophetes' | 'themes' | 'nafs' | null>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   // Load surahs list
@@ -1705,6 +1706,255 @@ export default function QuranMirrorPage() {
     );
   };
 
+  // Render Nafs view - Les 7 niveaux de l'âme
+  const renderNafsView = () => {
+    const nafsLevel = NAFS_LEVELS?.find(n => n.level === selectedNafsLevel);
+    
+    // If no level selected, show overview of all levels
+    if (!nafsLevel) {
+      return (
+        <div className="flex-1 flex flex-col min-h-0">
+          {/* Header */}
+          <div className="p-6 pb-0 text-center flex-shrink-0">
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <div className="text-4xl mb-2">💙</div>
+              <div className="font-arabic text-3xl text-gold mb-2">النَّفْسُ</div>
+              <div className="font-title text-lg text-foreground/80">Les 7 Niveaux de l'Âme</div>
+              <div className="text-xs text-muted-foreground mt-1 max-w-md mx-auto">
+                Le voyage de l'âme depuis ses tendances les plus basses jusqu'à sa purification complète, 
+                selon la tradition soufie et les versets du Coran.
+              </div>
+
+              <div className="gold-divider max-w-[180px] mx-auto mt-4">
+                <span></span>
+                <div className="dot"></div>
+                <div className="dot-sm"></div>
+                <div className="dot"></div>
+                <span></span>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Levels Grid */}
+          <div className="flex-1 min-h-0 overflow-hidden px-6 pb-6">
+            <ScrollArea className="h-full">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 pr-4 max-w-4xl mx-auto py-4">
+                {NAFS_LEVELS?.map((level, index) => (
+                  <motion.button
+                    key={level.level}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => {
+                      setSelectedNafsLevel(level.level);
+                      setView('nafs');
+                    }}
+                    className="p-4 rounded-xl border text-left transition-all group"
+                    style={{ 
+                      background: level.bgColor, 
+                      borderColor: level.borderColor,
+                    }}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-2xl">{level.icon}</span>
+                      <span className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold"
+                        style={{ background: level.color, color: 'white' }}>
+                        {level.level}
+                      </span>
+                    </div>
+                    <div className="font-arabic text-lg mb-1" style={{ color: level.color }}>
+                      {level.ar}
+                    </div>
+                    <div className="text-sm font-medium" style={{ color: level.color }}>
+                      {level.fr}
+                    </div>
+                    <div className="text-[10px] text-muted-foreground mt-2 line-clamp-2">
+                      {level.description.slice(0, 80)}...
+                    </div>
+                    <div className="flex items-center gap-2 mt-3 text-[10px]">
+                      <span className="px-2 py-0.5 rounded-full" style={{ background: level.color + '20', color: level.color }}>
+                        {level.verses.length} versets
+                      </span>
+                      <span className="text-muted-foreground">{level.state}</span>
+                    </div>
+                  </motion.button>
+                ))}
+              </div>
+            </ScrollArea>
+          </div>
+        </div>
+      );
+    }
+
+    // Show selected level detail
+    return (
+      <div className="flex-1 flex flex-col min-h-0">
+        {/* Header */}
+        <div className="p-6 pb-0 flex-shrink-0">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            {/* Back button */}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => {
+                setSelectedNafsLevel(null);
+              }}
+              className="mb-4 text-muted-foreground hover:text-foreground"
+            >
+              <ChevronLeft className="w-4 h-4 mr-1" />
+              Tous les niveaux
+            </Button>
+
+            <div className="text-center">
+              <div className="text-4xl mb-2">{nafsLevel.icon}</div>
+              <div className="font-arabic text-3xl mb-2" style={{ color: nafsLevel.color }}>
+                {nafsLevel.ar}
+              </div>
+              <div className="font-title text-lg text-foreground/80">
+                Niveau {nafsLevel.level}: {nafsLevel.fr}
+              </div>
+            </div>
+
+            {/* Level info cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-4 max-w-2xl mx-auto">
+              <div className="p-3 rounded-lg border border-border/50 bg-white/[0.02] text-center">
+                <div className="text-[10px] text-muted-foreground mb-1">État</div>
+                <div className="text-xs font-medium" style={{ color: nafsLevel.color }}>{nafsLevel.state}</div>
+              </div>
+              <div className="p-3 rounded-lg border border-border/50 bg-white/[0.02] text-center">
+                <div className="text-[10px] text-muted-foreground mb-1">Défi</div>
+                <div className="text-xs font-medium">{nafsLevel.challenge}</div>
+              </div>
+              <div className="p-3 rounded-lg border border-border/50 bg-white/[0.02] text-center">
+                <div className="text-[10px] text-muted-foreground mb-1">Vertu</div>
+                <div className="text-xs font-medium">{nafsLevel.virtue}</div>
+              </div>
+            </div>
+
+            <p className="text-xs text-muted-foreground text-center mt-4 max-w-lg mx-auto leading-relaxed">
+              {nafsLevel.description}
+            </p>
+
+            <div className="gold-divider max-w-[180px] mx-auto mt-4">
+              <span></span>
+              <div className="dot"></div>
+              <div className="dot-sm"></div>
+              <div className="dot"></div>
+              <span></span>
+            </div>
+
+            {/* Depth level selector */}
+            <div className="flex justify-center gap-2 mt-6 mb-4">
+              {DEPTH_LEVELS.map(level => (
+                <button
+                  key={level.level}
+                  onClick={() => setDepthLevel(level.level as 1 | 2 | 3)}
+                  className={`px-3 py-1.5 rounded-full text-[10px] border transition-all flex items-center gap-1.5
+                    ${depthLevel === level.level 
+                      ? 'bg-white/10 border-white/30' 
+                      : 'border-border/50 hover:border-border'}`}
+                >
+                  <span>{level.icon}</span>
+                  <span>Niveau {level.level}</span>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Verses */}
+        <div className="flex-1 min-h-0 overflow-hidden px-6 pb-6">
+          <ScrollArea className="h-full">
+            <div className="space-y-3 pr-4 max-w-3xl mx-auto">
+            {nafsLevel.verses.map((verseItem, index) => {
+              const miroir = MIROIR[verseItem.reference];
+              if (!miroir) return null;
+
+              const [surahId, verseId] = verseItem.reference.split(':').map(Number);
+              const surah = surahs.find(s => s.id === surahId);
+
+              return (
+                <motion.div
+                  key={verseItem.reference + '-' + index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: Math.min(index * 0.03, 0.5) }}
+                  className="p-4 rounded-xl border bg-card hover:bg-white/[0.02] transition-all"
+                  style={{ borderColor: nafsLevel.borderColor }}
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-medium"
+                      style={{ background: nafsLevel.bgColor, color: nafsLevel.color }}>
+                      {verseItem.reference}
+                    </span>
+                    {verseItem.title && (
+                      <span className="text-xs text-foreground/80 font-medium">{verseItem.title}</span>
+                    )}
+                    <span className="text-[10px] text-muted-foreground">
+                      {surah?.translation}
+                    </span>
+                  </div>
+
+                  {depthLevel >= 1 && (
+                    <p className="text-sm text-foreground/80 leading-relaxed">
+                      {miroir.mirrorVersion}
+                    </p>
+                  )}
+
+                  {depthLevel >= 2 && (
+                    <p className="text-xs text-muted-foreground leading-relaxed mt-2">
+                      {miroir.reflection}
+                    </p>
+                  )}
+
+                  {depthLevel >= 3 && (
+                    <div className="border-t border-border/50 pt-3 mt-3">
+                      <p className="text-[10px] text-muted-foreground mb-2 font-medium">Les 6 Regards du Tajalli</p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {miroir.tajalli.map((t, i) => (
+                          <div key={i} className="p-2 rounded-lg bg-white/[0.02] border border-border/30">
+                            <div className="flex items-center gap-1.5 mb-1">
+                              <span style={{ color: t.color }}>◈</span>
+                              <span className="text-[10px] font-medium" style={{ color: t.color }}>{t.label}</span>
+                            </div>
+                            <p className="text-[10px] text-muted-foreground leading-relaxed">{t.text}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="flex gap-2 mt-3 pt-3 border-t border-border/30">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={async () => {
+                        await loadSurah(surahId);
+                      }}
+                      className="text-[10px] h-6"
+                    >
+                      <Sparkles className="w-3 h-3 mr-1" />
+                      Contempler
+                    </Button>
+                  </div>
+                </motion.div>
+              );
+            })}
+            </div>
+          </ScrollArea>
+        </div>
+      </div>
+    );
+  };
+
   // Render bookmarks panel
   const renderBookmarksPanel = () => (
     <motion.div
@@ -2245,6 +2495,17 @@ export default function QuranMirrorPage() {
               {activeHeaderTab === 'prophetes' ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
             </button>
 
+            {/* Nafs Tab */}
+            <button
+              onClick={() => setActiveHeaderTab(activeHeaderTab === 'nafs' ? null : 'nafs')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all whitespace-nowrap
+                ${activeHeaderTab === 'nafs' ? 'bg-rose-500/15 text-rose-400' : 'text-muted-foreground hover:text-foreground hover:bg-white/[0.03]'}`}
+            >
+              <Heart className="w-3.5 h-3.5" />
+              <span>Nafs</span>
+              {activeHeaderTab === 'nafs' ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+            </button>
+
             <div className="w-px h-5 bg-border/50 mx-1" />
 
             {/* Thèmes Tab */}
@@ -2259,7 +2520,7 @@ export default function QuranMirrorPage() {
             </button>
 
             {/* Clear filter button */}
-            {(selectedTheme || selectedParcours || selectedContext || selectedJourney || selectedDivineName || selectedProphet) && (
+            {(selectedTheme || selectedParcours || selectedContext || selectedJourney || selectedDivineName || selectedProphet || selectedNafsLevel) && (
               <Button
                 variant="ghost"
                 size="sm"
@@ -2270,6 +2531,7 @@ export default function QuranMirrorPage() {
                   setSelectedJourney(null);
                   setSelectedDivineName(null);
                   setSelectedProphet(null);
+                  setSelectedNafsLevel(null);
                   setActiveHeaderTab(null);
                   setView('welcome');
                 }}
@@ -2306,6 +2568,7 @@ export default function QuranMirrorPage() {
                           setSelectedJourney(null);
                           setSelectedDivineName(null);
                           setSelectedProphet(null);
+                          setSelectedNafsLevel(null);
                           setActiveHeaderTab(null);
                           setView('parcours');
                         }}
@@ -2338,6 +2601,7 @@ export default function QuranMirrorPage() {
                           setSelectedJourney(null);
                           setSelectedDivineName(null);
                           setSelectedProphet(null);
+                          setSelectedNafsLevel(null);
                           setActiveHeaderTab(null);
                           setView('context');
                         }}
@@ -2371,6 +2635,7 @@ export default function QuranMirrorPage() {
                           setSelectedTheme(null);
                           setSelectedDivineName(null);
                           setSelectedProphet(null);
+                          setSelectedNafsLevel(null);
                           setActiveHeaderTab(null);
                           setView('journey');
                         }}
@@ -2406,6 +2671,7 @@ export default function QuranMirrorPage() {
                             setSelectedTheme(null);
                             setSelectedJourney(null);
                             setSelectedProphet(null);
+                            setSelectedNafsLevel(null);
                             setActiveHeaderTab(null);
                             setView('divineName');
                           }}
@@ -2439,6 +2705,7 @@ export default function QuranMirrorPage() {
                           setSelectedTheme(null);
                           setSelectedJourney(null);
                           setSelectedDivineName(null);
+                          setSelectedNafsLevel(null);
                           setActiveHeaderTab(null);
                           setView('prophet');
                         }}
@@ -2453,6 +2720,47 @@ export default function QuranMirrorPage() {
                     )) : (
                       <span className="text-[11px] text-muted-foreground">Aucun prophète disponible</span>
                     )}
+                  </div>
+                )}
+
+                {/* Nafs Panel */}
+                {activeHeaderTab === 'nafs' && (
+                  <div className="p-3">
+                    <div className="text-center mb-3">
+                      <span className="font-arabic text-lg text-rose-400">النَّفْسُ</span>
+                      <p className="text-[10px] text-muted-foreground mt-1">Les 7 niveaux de l'âme selon la tradition soufie</p>
+                    </div>
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      {NAFS_LEVELS && NAFS_LEVELS.length > 0 ? NAFS_LEVELS.map(level => (
+                        <motion.button
+                          key={level.level}
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          onClick={() => {
+                            setSelectedNafsLevel(level.level);
+                            setSelectedParcours(null);
+                            setSelectedContext(null);
+                            setSelectedTheme(null);
+                            setSelectedJourney(null);
+                            setSelectedDivineName(null);
+                            setSelectedProphet(null);
+                            setActiveHeaderTab(null);
+                            setView('nafs');
+                          }}
+                          className={`px-3 py-1.5 rounded-lg text-[11px] border transition-all flex items-center gap-1.5
+                            ${selectedNafsLevel === level.level
+                              ? 'border-rose-500/30 text-rose-400'
+                              : 'border-border/50 hover:border-rose-500/30 text-muted-foreground hover:text-foreground'}`}
+                          style={{ background: selectedNafsLevel === level.level ? level.bgColor : undefined }}
+                        >
+                          <span>{level.icon}</span>
+                          <span className="font-arabic text-sm">{level.ar.split(' ').pop()}</span>
+                          <span>{level.fr}</span>
+                        </motion.button>
+                      )) : (
+                        <span className="text-[11px] text-muted-foreground">Aucun niveau disponible</span>
+                      )}
+                    </div>
                   </div>
                 )}
 
@@ -2482,6 +2790,7 @@ export default function QuranMirrorPage() {
                                     setSelectedJourney(null);
                                     setSelectedDivineName(null);
                                     setSelectedProphet(null);
+                                    setSelectedNafsLevel(null);
                                     setActiveHeaderTab(null);
                                     setView('theme');
                                   }}
@@ -2533,6 +2842,7 @@ export default function QuranMirrorPage() {
               {view === 'journey' && renderJourneyView()}
               {view === 'divineName' && renderDivineNameView()}
               {view === 'prophet' && renderProphetView()}
+              {view === 'nafs' && renderNafsView()}
             </>
           )}
         </div>

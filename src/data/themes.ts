@@ -386,6 +386,166 @@ export const PROPHET_PARCOURS: ProphetParcours[] = [
   },
 ];
 
+// La Nafs - Les 7 Niveaux de l'Âme (النفس)
+export interface NafsLevel {
+  level: number;
+  key: string;
+  ar: string;
+  fr: string;
+  description: string;
+  color: string;
+  bgColor: string;
+  borderColor: string;
+  icon: string;
+  state: string; // État spirituel
+  challenge: string; // Défi à surmonter
+  virtue: string; // Vertu à développer
+  verses: { reference: string; title?: string }[];
+}
+
+export const NAFS_LEVELS: NafsLevel[] = [
+  {
+    level: 1,
+    key: "nafs-amnara",
+    ar: "النَّفْسُ الأَمَّارَةُ",
+    fr: "L'Âme Incitative",
+    description: "L'âme qui pousse vers le mal, les désirs et les passions. Elle commande et ordonne. C'est le niveau le plus bas, où l'être est esclave de ses pulsions.",
+    color: "#ef4444",
+    bgColor: "rgba(239,68,68,0.1)",
+    borderColor: "rgba(239,68,68,0.3)",
+    icon: "🔥",
+    state: "Esclave des passions",
+    challenge: "Résister aux désirs immédiats",
+    virtue: "La conscience (wara)",
+    verses: [
+      { reference: "12:53", title: "L'âme incite au mal" },
+      { reference: "79:40", title: "Celui qui craint son Seigneur" },
+      { reference: "75:14", title: "L'homme connaît son âme" },
+      { reference: "91:7", title: "Par l'âme et Celui qui l'a harmonisée" },
+    ]
+  },
+  {
+    level: 2,
+    key: "nafs-lawwama",
+    ar: "النَّفْسُ اللَّوَّامَةُ",
+    fr: "L'Âme Qui Se Blâme",
+    description: "L'âme qui se critique elle-même, qui regrette ses erreurs. Elle hésite entre le bien et le mal. C'est l'âme du combat spirituel, du jihad intérieur.",
+    color: "#f97316",
+    bgColor: "rgba(249,115,22,0.1)",
+    borderColor: "rgba(249,115,22,0.3)",
+    icon: "⚔️",
+    state: "En lutte constante",
+    challenge: "Transformer le blâme en action",
+    virtue: "Le repentir (tawba)",
+    verses: [
+      { reference: "75:2", title: "L'âme qui se blâme" },
+      { reference: "3:135", title: "Ceux qui implorent le pardon" },
+      { reference: "57:16", title: "Les cœurs durs" },
+      { reference: "79:40", title: "Interdire à l'âme ses passions" },
+    ]
+  },
+  {
+    level: 3,
+    key: "nafs-mutmainna",
+    ar: "النَّفْسُ الْمُطْمَئِنَّةُ",
+    fr: "L'Âme Apaisée",
+    description: "L'âme qui a trouvé la paix et la tranquillité. Elle ne s'agite plus, elle est rassurée par le rappel d'Allah. C'est l'âme de la sérénité et de la confiance.",
+    color: "#22c55e",
+    bgColor: "rgba(34,197,94,0.1)",
+    borderColor: "rgba(34,197,94,0.3)",
+    icon: "🍃",
+    state: "En paix intérieure",
+    challenge: "Maintenir la sérénité",
+    virtue: "La paix (sakina)",
+    verses: [
+      { reference: "89:27", title: "Ô âme apaisée" },
+      { reference: "13:28", title: "Les cœurs se rassurent" },
+      { reference: "9:26", title: "La tranquillité (sakina)" },
+      { reference: "48:4", title: "La sérénité descend" },
+    ]
+  },
+  {
+    level: 4,
+    key: "nafs-radiyya",
+    ar: "النَّفْسُ الرَّاضِيَةُ",
+    fr: "L'Âme Satisfaite",
+    description: "L'âme qui est satisfaite de tout ce qu'Allah lui donne. Elle ne se plaint pas, elle accepte avec gratitude. Elle a fait la paix avec le destin.",
+    color: "#3b82f6",
+    bgColor: "rgba(59,130,246,0.1)",
+    borderColor: "rgba(59,130,246,0.3)",
+    icon: "💎",
+    state: "Satisfaite d'Allah",
+    challenge: "Être reconnaissant en toute circonstance",
+    virtue: "La gratitude (shukr)",
+    verses: [
+      { reference: "89:28", title: "Satisfaite et agréée" },
+      { reference: "14:7", title: "Si vous êtes reconnaissants" },
+      { reference: "2:155", title: "Annonce la bonne nouvelle aux patients" },
+      { reference: "39:10", title: "La récompense des patients" },
+    ]
+  },
+  {
+    level: 5,
+    key: "nafs-mardiyya",
+    ar: "النَّفْسُ الْمَرْضِيَّةُ",
+    fr: "L'Âme Agréée",
+    description: "L'âme qui a obtenu l'agrément d'Allah. Ses actions sont acceptées, elle est aimée de son Seigneur. C'est l'âme des rapprochés (muqarrabun).",
+    color: "#8b5cf6",
+    bgColor: "rgba(139,92,246,0.1)",
+    borderColor: "rgba(139,92,246,0.3)",
+    icon: "✨",
+    state: "Agrée par Allah",
+    challenge: "Persévérer dans l'excellence",
+    virtue: "L'excellence (ihsan)",
+    verses: [
+      { reference: "89:28", title: "Satisfaite et agréée" },
+      { reference: "89:29", title: "Entre parmi Mes serviteurs" },
+      { reference: "4:125", title: "Allah aime ceux qui font le bien" },
+      { reference: "5:13", title: "Allah aime ceux qui font le bien" },
+    ]
+  },
+  {
+    level: 6,
+    key: "nafs-kamila",
+    ar: "النَّفْسُ الْكَامِلَةُ",
+    fr: "L'Âme Parfaite",
+    description: "L'âme parfaite, qui a atteint la complétude spirituelle. Elle reflète les attributs divins, elle est le miroir d'Allah. C'est l'âme des prophètes et des saints.",
+    color: "#f59e0b",
+    bgColor: "rgba(245,158,11,0.1)",
+    borderColor: "rgba(245,158,11,0.3)",
+    icon: "👑",
+    state: "Complète et parfaite",
+    challenge: "Servir comme modèle",
+    virtue: "La perfection (kamal)",
+    verses: [
+      { reference: "33:21", title: "Un excellent modèle" },
+      { reference: "68:4", title: "Un caractère immense" },
+      { reference: "91:9", title: "Celui qui la purifie réussit" },
+      { reference: "35:18", title: "Se purifier" },
+    ]
+  },
+  {
+    level: 7,
+    key: "nafs-safiya",
+    ar: "النَّفْسُ الصَّافِيَةُ",
+    fr: "L'Âme Purifiée",
+    description: "L'âme cristalline, transparente, pure de toute souillure. Elle ne voit qu'Allah, ne désire qu'Allah. C'est le sommet de la réalisation spirituelle.",
+    color: "#06b6d4",
+    bgColor: "rgba(6,182,212,0.1)",
+    borderColor: "rgba(6,182,212,0.3)",
+    icon: "🌟",
+    state: "Pure et transparente",
+    challenge: "Rester dans la présence divine",
+    virtue: "La pureté (safa)",
+    verses: [
+      { reference: "91:9", title: "A réussi celui qui la purifie" },
+      { reference: "87:14", title: "A réussi celui qui se purifie" },
+      { reference: "80:3", title: "L'aveugle qui s'est purifié" },
+      { reference: "79:18", title: "Je te guiderai vers ton Seigneur" },
+    ]
+  },
+];
+
 // Toutes les catégories de thèmes par dimension spirituelle (PHASE 1 + PHASE 2)
 export const THEME_CATEGORIES: ThemeCategory[] = [
   // === DIMENSION INTÉRIEURE ===
