@@ -212,8 +212,6 @@ export const VERSETS_HUMEUR = {
 // Tous les parcours
 export const PARCOURS_LIST: Parcours[] = [
   PARCOURS_40_VERSETS,
-  PARCOURS_PRIERE,
-  PARCOURS_GUERISON,
 ];
 
 // Contextes temporels
