@@ -21,7 +21,7 @@ import {
 } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { THEMES, THEME_MAP, THEME_CATEGORIES, PARCOURS_LIST, VERSETS_HUMEUR, THEME_CONTEXTS, DEPTH_LEVELS } from '@/data/themes';
+import { THEMES, THEME_MAP, THEME_CATEGORIES, PARCOURS_LIST, VERSETS_HUMEUR, THEME_CONTEXTS, DEPTH_LEVELS, SPIRITUAL_JOURNEYS, DIVINE_NAME_PARCOURS, PROPHET_PARCOURS, DIVINE_NAMES } from '@/data/themes';
 import { MIROIR, getMiroirCount, getRandomMiroir, MiroirEntry } from '@/data/miroir';
 import { toast } from 'sonner';
 
@@ -110,10 +110,13 @@ export default function QuranMirrorPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [view, setView] = useState<'welcome' | 'surah' | 'search' | 'theme' | 'parcours' | 'context'>('welcome');
+  const [view, setView] = useState<'welcome' | 'surah' | 'search' | 'theme' | 'parcours' | 'context' | 'journey' | 'divineName' | 'prophet'>('welcome');
   const [selectedParcours, setSelectedParcours] = useState<string | null>(null);
   const [selectedContext, setSelectedContext] = useState<string | null>(null);
   const [selectedMood, setSelectedMood] = useState<string | null>(null);
+  const [selectedJourney, setSelectedJourney] = useState<string | null>(null);
+  const [selectedDivineName, setSelectedDivineName] = useState<string | null>(null);
+  const [selectedProphet, setSelectedProphet] = useState<string | null>(null);
   const [depthLevel, setDepthLevel] = useState<1 | 2 | 3>(2);
   const [bookmarks, setBookmarks] = useState<BookmarkData[]>([]);
   const [showBookmarks, setShowBookmarks] = useState(false);
@@ -1260,6 +1263,447 @@ export default function QuranMirrorPage() {
     );
   };
 
+  // Render spiritual journey view
+  const renderJourneyView = () => {
+    const journey = SPIRITUAL_JOURNEYS?.find(j => j.key === selectedJourney);
+    if (!journey) {
+      return (
+        <div className="flex-1 flex items-center justify-center">
+          <p className="text-muted-foreground">Voyage non trouvé</p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex-1 flex flex-col min-h-0">
+        {/* Journey header */}
+        <div className="p-6 pb-0 text-center flex-shrink-0">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <div className="text-4xl mb-2">{journey.icon}</div>
+            <div className="font-title text-lg text-foreground/80">{journey.title}</div>
+            <div className="text-xs text-muted-foreground mt-1">
+              {journey.description}
+            </div>
+
+            <div className="gold-divider max-w-[180px] mx-auto mt-4">
+              <span></span>
+              <div className="dot"></div>
+              <div className="dot-sm"></div>
+              <div className="dot"></div>
+              <span></span>
+            </div>
+
+            {/* Stages */}
+            <div className="flex flex-wrap justify-center gap-2 mt-4">
+              {journey.stages.map((stage, index) => (
+                <div 
+                  key={stage.order}
+                  className="flex items-center gap-1 text-[10px]"
+                >
+                  <span className="w-5 h-5 rounded-full bg-white/[0.05] border border-border/50 flex items-center justify-center text-muted-foreground">
+                    {stage.order}
+                  </span>
+                  <span className="text-muted-foreground">{stage.theme}</span>
+                  {index < journey.stages.length - 1 && <span className="text-border mx-1">→</span>}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Depth level selector */}
+          <div className="flex justify-center gap-2 mt-6 mb-4">
+            {DEPTH_LEVELS.map(level => (
+              <button
+                key={level.level}
+                onClick={() => setDepthLevel(level.level as 1 | 2 | 3)}
+                className={`px-3 py-1.5 rounded-full text-[10px] border transition-all flex items-center gap-1.5
+                  ${depthLevel === level.level 
+                    ? 'bg-white/10 border-white/30' 
+                    : 'border-border/50 hover:border-border'}`}
+              >
+                <span>{level.icon}</span>
+                <span>Niveau {level.level}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Verses */}
+        <div className="flex-1 min-h-0 overflow-hidden px-6 pb-6">
+          <ScrollArea className="h-full">
+            <div className="space-y-3 pr-4 max-w-3xl mx-auto">
+            {journey.verses.map((verseItem, index) => {
+              const miroir = MIROIR[verseItem.reference];
+              if (!miroir) return null;
+
+              const [surahId, verseId] = verseItem.reference.split(':').map(Number);
+              const surah = surahs.find(s => s.id === surahId);
+              const stage = journey.stages.find(s => s.order === verseItem.stage);
+
+              return (
+                <motion.div
+                  key={verseItem.reference + '-' + index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: Math.min(index * 0.03, 0.5) }}
+                  className="p-4 rounded-xl border border-border bg-card hover:bg-white/[0.02] transition-all"
+                >
+                  {/* Header */}
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="w-6 h-6 rounded-full bg-purple/20 text-purple flex items-center justify-center text-[10px] font-medium">
+                      {verseItem.stage}
+                    </span>
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-gold/10 text-gold">
+                      {verseItem.reference}
+                    </span>
+                    {verseItem.title && (
+                      <span className="text-xs text-foreground/80 font-medium">{verseItem.title}</span>
+                    )}
+                    {stage && (
+                      <span className="text-[10px] text-muted-foreground ml-auto">
+                        Étape: {stage.theme}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Level 1: Simple verse */}
+                  {depthLevel >= 1 && (
+                    <p className="text-sm text-foreground/80 leading-relaxed">
+                      {miroir.mirrorVersion}
+                    </p>
+                  )}
+
+                  {/* Level 2: Miroir */}
+                  {depthLevel >= 2 && (
+                    <p className="text-xs text-muted-foreground leading-relaxed mt-2">
+                      {miroir.reflection}
+                    </p>
+                  )}
+
+                  {/* Level 3: 6 Tajalli */}
+                  {depthLevel >= 3 && (
+                    <div className="border-t border-border/50 pt-3 mt-3">
+                      <p className="text-[10px] text-muted-foreground mb-2 font-medium">Les 6 Regards du Tajalli</p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {miroir.tajalli.map((t, i) => (
+                          <div key={i} className="p-2 rounded-lg bg-white/[0.02] border border-border/30">
+                            <div className="flex items-center gap-1.5 mb-1">
+                              <span style={{ color: t.color }}>◈</span>
+                              <span className="text-[10px] font-medium" style={{ color: t.color }}>{t.label}</span>
+                            </div>
+                            <p className="text-[10px] text-muted-foreground leading-relaxed">{t.text}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Action */}
+                  <div className="flex gap-2 mt-3 pt-3 border-t border-border/30">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={async () => {
+                        await loadSurah(surahId);
+                      }}
+                      className="text-[10px] h-6"
+                    >
+                      <Sparkles className="w-3 h-3 mr-1" />
+                      Contempler
+                    </Button>
+                  </div>
+                </motion.div>
+              );
+            })}
+            </div>
+          </ScrollArea>
+        </div>
+      </div>
+    );
+  };
+
+  // Render divine name view
+  const renderDivineNameView = () => {
+    const parcours = DIVINE_NAME_PARCOURS?.find(p => p.divineName === selectedDivineName);
+    if (!parcours) {
+      return (
+        <div className="flex-1 flex items-center justify-center">
+          <p className="text-muted-foreground">Parcours non trouvé</p>
+        </div>
+      );
+    }
+
+    const divineName = DIVINE_NAMES?.find(n => n.key === selectedDivineName);
+
+    return (
+      <div className="flex-1 flex flex-col min-h-0">
+        {/* Header */}
+        <div className="p-6 pb-0 text-center flex-shrink-0">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            {divineName && (
+              <div className="font-arabic text-4xl text-gold mb-2">{divineName.ar}</div>
+            )}
+            <div className="font-title text-lg text-foreground/80">{parcours.title}</div>
+            <div className="text-xs text-muted-foreground mt-1">
+              {parcours.description}
+            </div>
+            {divineName && (
+              <div className="text-[10px] text-muted-foreground/60 mt-2">
+                {divineName.meaning}
+              </div>
+            )}
+
+            <div className="gold-divider max-w-[180px] mx-auto mt-4">
+              <span></span>
+              <div className="dot"></div>
+              <div className="dot-sm"></div>
+              <div className="dot"></div>
+              <span></span>
+            </div>
+          </motion.div>
+
+          {/* Depth level selector */}
+          <div className="flex justify-center gap-2 mt-6 mb-4">
+            {DEPTH_LEVELS.map(level => (
+              <button
+                key={level.level}
+                onClick={() => setDepthLevel(level.level as 1 | 2 | 3)}
+                className={`px-3 py-1.5 rounded-full text-[10px] border transition-all flex items-center gap-1.5
+                  ${depthLevel === level.level 
+                    ? 'bg-white/10 border-white/30' 
+                    : 'border-border/50 hover:border-border'}`}
+              >
+                <span>{level.icon}</span>
+                <span>Niveau {level.level}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Verses */}
+        <div className="flex-1 min-h-0 overflow-hidden px-6 pb-6">
+          <ScrollArea className="h-full">
+            <div className="space-y-3 pr-4 max-w-3xl mx-auto">
+            {parcours.verses.map((verseItem, index) => {
+              const miroir = MIROIR[verseItem.reference];
+              if (!miroir) return null;
+
+              const [surahId, verseId] = verseItem.reference.split(':').map(Number);
+              const surah = surahs.find(s => s.id === surahId);
+
+              return (
+                <motion.div
+                  key={verseItem.reference + '-' + index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: Math.min(index * 0.03, 0.5) }}
+                  className="p-4 rounded-xl border border-border bg-card hover:bg-white/[0.02] transition-all"
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-gold/10 text-gold">
+                      {verseItem.reference}
+                    </span>
+                    {verseItem.title && (
+                      <span className="text-xs text-foreground/80 font-medium">{verseItem.title}</span>
+                    )}
+                    <span className="text-[10px] text-muted-foreground">
+                      {surah?.translation}
+                    </span>
+                  </div>
+
+                  {depthLevel >= 1 && (
+                    <p className="text-sm text-foreground/80 leading-relaxed">
+                      {miroir.mirrorVersion}
+                    </p>
+                  )}
+
+                  {depthLevel >= 2 && (
+                    <p className="text-xs text-muted-foreground leading-relaxed mt-2">
+                      {miroir.reflection}
+                    </p>
+                  )}
+
+                  {depthLevel >= 3 && (
+                    <div className="border-t border-border/50 pt-3 mt-3">
+                      <p className="text-[10px] text-muted-foreground mb-2 font-medium">Les 6 Regards du Tajalli</p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {miroir.tajalli.map((t, i) => (
+                          <div key={i} className="p-2 rounded-lg bg-white/[0.02] border border-border/30">
+                            <div className="flex items-center gap-1.5 mb-1">
+                              <span style={{ color: t.color }}>◈</span>
+                              <span className="text-[10px] font-medium" style={{ color: t.color }}>{t.label}</span>
+                            </div>
+                            <p className="text-[10px] text-muted-foreground leading-relaxed">{t.text}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="flex gap-2 mt-3 pt-3 border-t border-border/30">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={async () => {
+                        await loadSurah(surahId);
+                      }}
+                      className="text-[10px] h-6"
+                    >
+                      <Sparkles className="w-3 h-3 mr-1" />
+                      Contempler
+                    </Button>
+                  </div>
+                </motion.div>
+              );
+            })}
+            </div>
+          </ScrollArea>
+        </div>
+      </div>
+    );
+  };
+
+  // Render prophet view
+  const renderProphetView = () => {
+    const prophetParcours = PROPHET_PARCOURS?.find(p => p.prophet === selectedProphet);
+    if (!prophetParcours) {
+      return (
+        <div className="flex-1 flex items-center justify-center">
+          <p className="text-muted-foreground">Prophète non trouvé</p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex-1 flex flex-col min-h-0">
+        {/* Header */}
+        <div className="p-6 pb-0 text-center flex-shrink-0">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <div className="font-arabic text-4xl text-gold mb-2">{prophetParcours.ar}</div>
+            <div className="font-title text-lg text-foreground/80">{prophetParcours.title}</div>
+            <div className="text-xs text-muted-foreground mt-1">
+              {prophetParcours.description}
+            </div>
+
+            <div className="gold-divider max-w-[180px] mx-auto mt-4">
+              <span></span>
+              <div className="dot"></div>
+              <div className="dot-sm"></div>
+              <div className="dot"></div>
+              <span></span>
+            </div>
+          </motion.div>
+
+          {/* Depth level selector */}
+          <div className="flex justify-center gap-2 mt-6 mb-4">
+            {DEPTH_LEVELS.map(level => (
+              <button
+                key={level.level}
+                onClick={() => setDepthLevel(level.level as 1 | 2 | 3)}
+                className={`px-3 py-1.5 rounded-full text-[10px] border transition-all flex items-center gap-1.5
+                  ${depthLevel === level.level 
+                    ? 'bg-white/10 border-white/30' 
+                    : 'border-border/50 hover:border-border'}`}
+              >
+                <span>{level.icon}</span>
+                <span>Niveau {level.level}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Verses */}
+        <div className="flex-1 min-h-0 overflow-hidden px-6 pb-6">
+          <ScrollArea className="h-full">
+            <div className="space-y-3 pr-4 max-w-3xl mx-auto">
+            {prophetParcours.verses.map((verseItem, index) => {
+              const miroir = MIROIR[verseItem.reference];
+              if (!miroir) return null;
+
+              const [surahId, verseId] = verseItem.reference.split(':').map(Number);
+              const surah = surahs.find(s => s.id === surahId);
+
+              return (
+                <motion.div
+                  key={verseItem.reference + '-' + index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: Math.min(index * 0.03, 0.5) }}
+                  className="p-4 rounded-xl border border-border bg-card hover:bg-white/[0.02] transition-all"
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-gold/10 text-gold">
+                      {verseItem.reference}
+                    </span>
+                    {verseItem.title && (
+                      <span className="text-xs text-foreground/80 font-medium">{verseItem.title}</span>
+                    )}
+                    <span className="text-[10px] text-muted-foreground">
+                      {surah?.translation}
+                    </span>
+                  </div>
+
+                  {depthLevel >= 1 && (
+                    <p className="text-sm text-foreground/80 leading-relaxed">
+                      {miroir.mirrorVersion}
+                    </p>
+                  )}
+
+                  {depthLevel >= 2 && (
+                    <p className="text-xs text-muted-foreground leading-relaxed mt-2">
+                      {miroir.reflection}
+                    </p>
+                  )}
+
+                  {depthLevel >= 3 && (
+                    <div className="border-t border-border/50 pt-3 mt-3">
+                      <p className="text-[10px] text-muted-foreground mb-2 font-medium">Les 6 Regards du Tajalli</p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {miroir.tajalli.map((t, i) => (
+                          <div key={i} className="p-2 rounded-lg bg-white/[0.02] border border-border/30">
+                            <div className="flex items-center gap-1.5 mb-1">
+                              <span style={{ color: t.color }}>◈</span>
+                              <span className="text-[10px] font-medium" style={{ color: t.color }}>{t.label}</span>
+                            </div>
+                            <p className="text-[10px] text-muted-foreground leading-relaxed">{t.text}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="flex gap-2 mt-3 pt-3 border-t border-border/30">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={async () => {
+                        await loadSurah(surahId);
+                      }}
+                      className="text-[10px] h-6"
+                    >
+                      <Sparkles className="w-3 h-3 mr-1" />
+                      Contempler
+                    </Button>
+                  </div>
+                </motion.div>
+              );
+            })}
+            </div>
+          </ScrollArea>
+        </div>
+      </div>
+    );
+  };
+
   // Render bookmarks panel
   const renderBookmarksPanel = () => (
     <motion.div
@@ -1814,6 +2258,126 @@ export default function QuranMirrorPage() {
             )) : (
               <span className="text-[10px] text-muted-foreground">Aucun moment</span>
             )}
+
+            <div className="w-px h-4 bg-border/50 mx-1" />
+
+            {/* Voyages Spirituels */}
+            <div className="flex items-center gap-1.5">
+              <Star className="w-3 h-3 text-mirror/70" />
+              <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Voyages</span>
+            </div>
+            {SPIRITUAL_JOURNEYS && SPIRITUAL_JOURNEYS.length > 0 ? SPIRITUAL_JOURNEYS.map(journey => (
+              <motion.button
+                key={journey.key}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  if (selectedJourney === journey.key) {
+                    setSelectedJourney(null);
+                    setView('welcome');
+                  } else {
+                    setSelectedJourney(journey.key);
+                    setSelectedParcours(null);
+                    setSelectedContext(null);
+                    setSelectedTheme(null);
+                    setSelectedDivineName(null);
+                    setSelectedProphet(null);
+                    setView('journey');
+                  }
+                }}
+                className={`px-2.5 py-1 rounded-full text-[10px] border transition-all flex items-center gap-1
+                  ${selectedJourney === journey.key
+                    ? 'bg-white/10 border-white/30 shadow-sm'
+                    : 'border-border/50 hover:border-border opacity-70 hover:opacity-100'}`}
+                style={{ color: '#a78bfa' }}
+              >
+                <span>{journey.icon}</span>
+                <span>{journey.title}</span>
+              </motion.button>
+            )) : (
+              <span className="text-[10px] text-muted-foreground">Aucun voyage</span>
+            )}
+
+            <div className="w-px h-4 bg-border/50 mx-1" />
+
+            {/* Noms Divins */}
+            <div className="flex items-center gap-1.5">
+              <Sparkles className="w-3 h-3 text-gold/70" />
+              <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Noms Divins</span>
+            </div>
+            {DIVINE_NAME_PARCOURS && DIVINE_NAME_PARCOURS.length > 0 ? DIVINE_NAME_PARCOURS.map(parcours => {
+              const divineName = DIVINE_NAMES?.find(n => n.key === parcours.divineName);
+              return (
+                <motion.button
+                  key={parcours.divineName}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    if (selectedDivineName === parcours.divineName) {
+                      setSelectedDivineName(null);
+                      setView('welcome');
+                    } else {
+                      setSelectedDivineName(parcours.divineName);
+                      setSelectedParcours(null);
+                      setSelectedContext(null);
+                      setSelectedTheme(null);
+                      setSelectedJourney(null);
+                      setSelectedProphet(null);
+                      setView('divineName');
+                    }
+                  }}
+                  className={`px-2.5 py-1 rounded-full text-[10px] border transition-all flex items-center gap-1
+                    ${selectedDivineName === parcours.divineName
+                      ? 'bg-white/10 border-white/30 shadow-sm'
+                      : 'border-border/50 hover:border-border opacity-70 hover:opacity-100'}`}
+                  style={{ color: '#fbbf24' }}
+                >
+                  {divineName && <span className="font-arabic">{divineName.ar}</span>}
+                  <span>{parcours.title}</span>
+                </motion.button>
+              );
+            }) : (
+              <span className="text-[10px] text-muted-foreground">Aucun nom divin</span>
+            )}
+
+            <div className="w-px h-4 bg-border/50 mx-1" />
+
+            {/* Prophètes */}
+            <div className="flex items-center gap-1.5">
+              <BookOpen className="w-3 h-3 text-green-500/70" />
+              <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Prophètes</span>
+            </div>
+            {PROPHET_PARCOURS && PROPHET_PARCOURS.length > 0 ? PROPHET_PARCOURS.slice(0, 5).map(prophet => (
+              <motion.button
+                key={prophet.prophet}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  if (selectedProphet === prophet.prophet) {
+                    setSelectedProphet(null);
+                    setView('welcome');
+                  } else {
+                    setSelectedProphet(prophet.prophet);
+                    setSelectedParcours(null);
+                    setSelectedContext(null);
+                    setSelectedTheme(null);
+                    setSelectedJourney(null);
+                    setSelectedDivineName(null);
+                    setView('prophet');
+                  }
+                }}
+                className={`px-2.5 py-1 rounded-full text-[10px] border transition-all flex items-center gap-1
+                  ${selectedProphet === prophet.prophet
+                    ? 'bg-white/10 border-white/30 shadow-sm'
+                    : 'border-border/50 hover:border-border opacity-70 hover:opacity-100'}`}
+                style={{ color: '#10b981' }}
+              >
+                <span className="font-arabic">{prophet.ar}</span>
+                <span>{prophet.title}</span>
+              </motion.button>
+            )) : (
+              <span className="text-[10px] text-muted-foreground">Aucun prophète</span>
+            )}
           </div>
         </div>
 
@@ -1821,7 +2385,7 @@ export default function QuranMirrorPage() {
         <div className="px-4 py-3 border-b border-border flex-shrink-0 bg-black/20">
           <div className="flex items-center justify-between mb-2">
             <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Thèmes spirituels</span>
-            {(selectedTheme || selectedParcours || selectedContext) && (
+            {(selectedTheme || selectedParcours || selectedContext || selectedJourney || selectedDivineName || selectedProphet) && (
               <Button
                 variant="ghost"
                 size="sm"
@@ -1829,6 +2393,9 @@ export default function QuranMirrorPage() {
                   setSelectedTheme(null);
                   setSelectedParcours(null);
                   setSelectedContext(null);
+                  setSelectedJourney(null);
+                  setSelectedDivineName(null);
+                  setSelectedProphet(null);
                   setView('welcome');
                 }}
                 className="h-5 px-2 text-[10px] text-muted-foreground hover:text-foreground"
@@ -1847,7 +2414,7 @@ export default function QuranMirrorPage() {
                 </span>
                 {category.themes.map(theme => {
                   const count = Object.values(MIROIR).filter(m => m.theme.includes(theme.key)).length;
-                  if (count === 0) return null;
+                  // Show all themes, even if count is 0 (new themes)
 
                   return (
                     <motion.button
@@ -1866,7 +2433,9 @@ export default function QuranMirrorPage() {
                       className={`px-2 py-0.5 rounded-full text-[10px] border transition-all whitespace-nowrap
                         ${selectedTheme === theme.key
                           ? 'opacity-100 shadow-sm ring-1 ring-offset-1 ring-offset-background'
-                          : 'opacity-50 hover:opacity-100'}`}
+                          : count === 0 
+                            ? 'opacity-30 hover:opacity-60 italic'
+                            : 'opacity-50 hover:opacity-100'}`}
                       style={{
                         background: theme.bg,
                         borderColor: theme.border,
@@ -1901,6 +2470,9 @@ export default function QuranMirrorPage() {
               {view === 'theme' && renderThemeVerses()}
               {view === 'parcours' && renderParcoursView()}
               {view === 'context' && renderContextView()}
+              {view === 'journey' && renderJourneyView()}
+              {view === 'divineName' && renderDivineNameView()}
+              {view === 'prophet' && renderProphetView()}
             </>
           )}
         </div>
