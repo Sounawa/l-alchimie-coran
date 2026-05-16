@@ -2,12 +2,55 @@
 
 ## Project Status
 - **Status**: ✅ COMPLETE - All 114 Surahs covered
-- **Last Verified**: Session 34 (Current)
+- **Last Verified**: Session 35 (Current)
 - **Framework**: Next.js 16 with App Router, TypeScript, Tailwind CSS 4, shadcn/ui
 - **Miroir Coverage**: 6236 entries | 6236 with 6 tajalli levels | 115,613 lines of code
 - **All Surahs**: ✅ COMPLETE - All 6236 Quran verses covered (one entry per verse)
 - **Data Integrity**: ✅ No duplicates | ✅ All references valid
 - **Features**: ✅ Parcours | ✅ Contextes | ✅ Sous-thèmes | ✅ Niveaux de profondeur
+
+---
+
+## Session 35 - Parcours & Moment Tabs Fix (COMPLETE)
+
+### Task ID: parcours-moment-fix
+**Agent**: Main Agent
+**Task**: Fix "Parcours" and "Moment" tabs not working when clicked
+
+### Work Log:
+
+1. **Problem Identified**:
+   - User reported: "quand je clique sur parcours et moment il se passe rien"
+   - The Parcours and Moment (Context) tab buttons were not displaying content when clicked
+
+2. **Root Cause Analysis**:
+   - The parent content container at line 1887 had `flex-1 overflow-auto` but was missing `flex flex-col`
+   - Without `flex-col`, the child views' `flex-1` classes couldn't expand properly
+   - Additionally, the child views had `overflow-hidden` which prevented proper rendering
+
+3. **Fixes Applied**:
+   - Added `flex flex-col` to the parent content container: `<div className="flex-1 flex flex-col overflow-auto">`
+   - Changed `overflow-hidden` to `min-h-0` in three render functions:
+     - `renderParcoursView()` - Line 775
+     - `renderContextView()` - Line 945
+     - `renderThemeVerses()` - Line 1084
+
+4. **Testing Performed**:
+   - Used agent-browser to verify fixes
+   - Clicked on "📜 Les 40 Versets Essentiels" Parcours button - ✅ Works correctly
+   - Clicked on "🌅 Matin" Moment button - ✅ Works correctly
+   - Both views now display verses with contemplation content
+
+5. **Scheduled Task Created**:
+   - Created a 15-minute recurring cron job for webDevReview
+   - Job ID: 154050
+   - Purpose: Periodic QA and feature improvement
+
+### Stage Summary:
+- **Parcours Tab**: ✅ Now displays selected parcours with all verses
+- **Moment Tab**: ✅ Now displays context-based verses (Matin, Soir, Épreuve, Joie)
+- **Theme View**: ✅ Also fixed as part of the same issue
+- **Root Cause**: Missing `flex flex-col` on parent container causing flex children to not expand
 
 ---
 

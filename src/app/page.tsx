@@ -772,7 +772,7 @@ export default function QuranMirrorPage() {
     }
 
     return (
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col min-h-0">
         {/* Parcours header */}
         <div className="p-6 pb-0 text-center flex-shrink-0">
           <motion.div
@@ -942,7 +942,7 @@ export default function QuranMirrorPage() {
     const shuffled = [...contextVerses].sort(() => Math.random() - 0.5).slice(0, 20);
 
     return (
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col min-h-0">
         {/* Context header */}
         <div className="p-6 pb-0 text-center flex-shrink-0">
           <motion.div
@@ -1081,7 +1081,7 @@ export default function QuranMirrorPage() {
     const themeVerses = getThemeVerses(selectedTheme);
 
     return (
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col min-h-0">
         {/* Theme header */}
         <div className="p-6 pb-0 text-center flex-shrink-0">
           <motion.div
@@ -1884,7 +1884,7 @@ export default function QuranMirrorPage() {
         </div>
         
         {/* Content */}
-        <div className="flex-1 overflow-auto">
+        <div className="flex-1 flex flex-col overflow-auto">
           {isLoading ? (
             <div className="flex items-center justify-center h-full">
               <motion.div 
