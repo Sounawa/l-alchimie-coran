@@ -2,12 +2,73 @@
 
 ## Project Status
 - **Status**: ✅ COMPLETE - All 114 Surahs covered
-- **Last Verified**: Session 36 (Current)
+- **Last Verified**: Session 37 (Current)
 - **Framework**: Next.js 16 with App Router, TypeScript, Tailwind CSS 4, shadcn/ui
 - **Miroir Coverage**: 6236 entries | 6236 with 6 tajalli levels | 115,613 lines of code
 - **All Surahs**: ✅ COMPLETE - All 6236 Quran verses covered (one entry per verse)
 - **Data Integrity**: ✅ No duplicates | ✅ All references valid
 - **Features**: ✅ Parcours | ✅ Contextes | ✅ Sous-thèmes | ✅ Niveaux de profondeur | ✅ Voyages Spirituels | ✅ Noms Divins | ✅ Prophètes
+
+---
+
+## Session 37 - Header Redesign & Journey Fix (COMPLETE)
+
+### Task ID: header-journey-fix
+**Agent**: Main Agent
+**Task**: Fix journey view not showing content and redesign header for better UX
+
+### Work Log:
+
+**Problem Identified:**
+1. User reported: "Le Voyage du Cœur" showed no content when clicked
+2. Header was too crowded with fixed buttons for all features
+3. Verse references in SPIRITUAL_JOURNEYS used range notation (e.g., "2:1-2") that didn't match MIROIR single-verse references
+
+**Fixes Applied:**
+
+1. **Fixed Journey Verse References** (`/src/data/themes.ts`):
+   - Changed "2:1-2" → "2:2" 
+   - Changed "73:1-6" → "73:2"
+   - Changed "51:17-18" → "51:18"
+   - All references now match actual MIROIR entries
+
+2. **Redesigned Header** (`/src/app/page.tsx`):
+   - Replaced crowded fixed header with clean tabbed navigation
+   - Added 6 collapsible tabs: Parcours, Moments, Voyages, Noms Divins, Prophètes, Thèmes
+   - Each tab expands to show its options when clicked
+   - Added AnimatePresence for smooth dropdown animations
+   - Added `activeHeaderTab` state to track which tab is open
+   - Added ChevronDown/ChevronUp icons for visual feedback
+
+3. **Technical Changes:**
+   - Added new state: `activeHeaderTab`
+   - Added ChevronDown, ChevronUp imports from lucide-react
+   - Removed old two-section header (Parcours+Contextes and Thèmes)
+   - Created unified tabbed interface with dropdown panels
+
+### UI Improvements:
+- **Before**: Two fixed rows of buttons taking up vertical space
+- **After**: Single compact tab bar with expandable dropdowns
+- Each tab has distinct color coding:
+  - Parcours: Gold
+  - Moments: Purple
+  - Voyages: #a78bfa
+  - Noms Divins: Amber
+  - Prophètes: Emerald
+  - Thèmes: Mirror
+
+### Testing Performed:
+- ✅ Tab navigation works correctly
+- ✅ Voyages dropdown shows 3 journeys
+- ✅ "Le Voyage du Cœur" displays 7 stages with verses
+- ✅ All verse content visible with contemplation text
+- ✅ "Contempler" buttons functional
+
+### Stage Summary:
+- **Journey View**: ✅ Now displays all stages and verses correctly
+- **Header UX**: ✅ Cleaner, more organized interface
+- **Navigation**: ✅ Intuitive tabbed system with smooth animations
+- **Content**: ✅ All spiritual journeys accessible and functional
 
 ---
 

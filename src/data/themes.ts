@@ -256,7 +256,7 @@ export const SPIRITUAL_JOURNEYS: SpiritualJourney[] = [
       { order: 7, theme: "serenite", description: "Atteindre la sérénité" },
     ],
     verses: [
-      { reference: "2:1-2", stage: 1, title: "Le Livre sans doute" },
+      { reference: "2:2", stage: 1, title: "Le Livre sans doute" },
       { reference: "3:159", stage: 2, title: "Place ta confiance en Allah" },
       { reference: "2:153", stage: 3, title: "Allah est avec les patients" },
       { reference: "14:7", stage: 4, title: "Si vous êtes reconnaissants" },
@@ -278,9 +278,9 @@ export const SPIRITUAL_JOURNEYS: SpiritualJourney[] = [
     ],
     verses: [
       { reference: "17:79", stage: 3, title: "La prière nocturne" },
-      { reference: "73:1-6", stage: 2, title: "Lève-toi la nuit" },
+      { reference: "73:2", stage: 2, title: "Lève-toi la nuit" },
       { reference: "32:16", stage: 4, title: "Ils s'arrachent de leurs lits" },
-      { reference: "51:17-18", stage: 3, title: "Avant l'aube, ils implorent le pardon" },
+      { reference: "51:18", stage: 3, title: "Avant l'aube, ils implorent le pardon" },
       { reference: "3:17", stage: 4, title: "Ceux qui implorent avant l'aube" },
       { reference: "25:64", stage: 3, title: "Ceux qui passent la nuit prosternés" },
       { reference: "76:26", stage: 3, title: "Glorifie-Le une partie de la nuit" },

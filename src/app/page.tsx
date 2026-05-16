@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Search, X, ChevronLeft, ChevronRight, Shuffle, 
   Menu, Sparkles, Heart, Bookmark, BookmarkCheck,
-  Copy, Share2, Clock,
+  Copy, Share2, Clock, ChevronDown, ChevronUp,
   Moon, Sun, BookOpen, Home, Star, Compass, Layers, 
   Sunrise, Sunset, Mountain, PartyPopper, Zap
 } from 'lucide-react';
@@ -122,6 +122,7 @@ export default function QuranMirrorPage() {
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [readingHistory, setReadingHistory] = useState<string[]>([]);
   const [readingProgress, setReadingProgress] = useState(0);
+  const [activeHeaderTab, setActiveHeaderTab] = useState<'parcours' | 'moments' | 'voyages' | 'noms' | 'prophetes' | 'themes' | null>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   // Load surahs list
@@ -2186,205 +2187,78 @@ export default function QuranMirrorPage() {
           </div>
         </header>
 
-        {/* Parcours Spirituels & Contextes */}
-        <div className="px-4 py-2 border-b border-border flex-shrink-0 bg-black/10">
-          <div className="flex flex-wrap items-center gap-3">
-            {/* Parcours */}
-            <div className="flex items-center gap-1.5">
-              <Compass className="w-3 h-3 text-gold/70" />
-              <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Parcours</span>
-            </div>
-            {PARCOURS_LIST && PARCOURS_LIST.length > 0 ? PARCOURS_LIST.map(parcours => (
-              <motion.button
-                key={parcours.key}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  if (selectedParcours === parcours.key) {
-                    setSelectedParcours(null);
-                    setView('welcome');
-                  } else {
-                    setSelectedParcours(parcours.key);
-                    setSelectedContext(null);
-                    setSelectedTheme(null);
-                    setView('parcours');
-                  }
-                }}
-                className={`px-2.5 py-1 rounded-full text-[10px] border transition-all flex items-center gap-1
-                  ${selectedParcours === parcours.key
-                    ? 'bg-white/10 border-white/30 shadow-sm'
-                    : 'border-border/50 hover:border-border opacity-70 hover:opacity-100'}`}
-                style={{ color: parcours.color }}
-              >
-                <span>{parcours.icon}</span>
-                <span>{parcours.title}</span>
-              </motion.button>
-            )) : (
-              <span className="text-[10px] text-muted-foreground">Aucun parcours</span>
-            )}
+        {/* Navigation Tabs */}
+        <div className="border-b border-border flex-shrink-0 bg-black/20">
+          <div className="flex items-center gap-1 px-2 py-1.5 overflow-x-auto">
+            {/* Parcours Tab */}
+            <button
+              onClick={() => setActiveHeaderTab(activeHeaderTab === 'parcours' ? null : 'parcours')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all whitespace-nowrap
+                ${activeHeaderTab === 'parcours' ? 'bg-gold/15 text-gold' : 'text-muted-foreground hover:text-foreground hover:bg-white/[0.03]'}`}
+            >
+              <Compass className="w-3.5 h-3.5" />
+              <span>Parcours</span>
+              {activeHeaderTab === 'parcours' ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+            </button>
 
-            <div className="w-px h-4 bg-border/50 mx-1" />
+            {/* Moments Tab */}
+            <button
+              onClick={() => setActiveHeaderTab(activeHeaderTab === 'moments' ? null : 'moments')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all whitespace-nowrap
+                ${activeHeaderTab === 'moments' ? 'bg-purple/15 text-purple' : 'text-muted-foreground hover:text-foreground hover:bg-white/[0.03]'}`}
+            >
+              <Zap className="w-3.5 h-3.5" />
+              <span>Moments</span>
+              {activeHeaderTab === 'moments' ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+            </button>
 
-            {/* Contextes */}
-            <div className="flex items-center gap-1.5">
-              <Zap className="w-3 h-3 text-purple/70" />
-              <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Moment</span>
-            </div>
-            {THEME_CONTEXTS && THEME_CONTEXTS.length > 0 ? THEME_CONTEXTS.map(context => (
-              <motion.button
-                key={context.key}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  if (selectedContext === context.key) {
-                    setSelectedContext(null);
-                    setView('welcome');
-                  } else {
-                    setSelectedContext(context.key);
-                    setSelectedParcours(null);
-                    setSelectedTheme(null);
-                    setView('context');
-                  }
-                }}
-                className={`px-2.5 py-1 rounded-full text-[10px] border transition-all flex items-center gap-1
-                  ${selectedContext === context.key
-                    ? 'bg-white/10 border-white/30 shadow-sm'
-                    : 'border-border/50 hover:border-border opacity-70 hover:opacity-100'}`}
-                style={{ color: context.color }}
-              >
-                <span>{context.icon}</span>
-                <span>{context.title}</span>
-              </motion.button>
-            )) : (
-              <span className="text-[10px] text-muted-foreground">Aucun moment</span>
-            )}
+            {/* Voyages Tab */}
+            <button
+              onClick={() => setActiveHeaderTab(activeHeaderTab === 'voyages' ? null : 'voyages')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all whitespace-nowrap
+                ${activeHeaderTab === 'voyages' ? 'bg-[#a78bfa]/15 text-[#a78bfa]' : 'text-muted-foreground hover:text-foreground hover:bg-white/[0.03]'}`}
+            >
+              <Star className="w-3.5 h-3.5" />
+              <span>Voyages</span>
+              {activeHeaderTab === 'voyages' ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+            </button>
 
-            <div className="w-px h-4 bg-border/50 mx-1" />
+            {/* Noms Divins Tab */}
+            <button
+              onClick={() => setActiveHeaderTab(activeHeaderTab === 'noms' ? null : 'noms')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all whitespace-nowrap
+                ${activeHeaderTab === 'noms' ? 'bg-amber-500/15 text-amber-400' : 'text-muted-foreground hover:text-foreground hover:bg-white/[0.03]'}`}
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Noms Divins</span>
+              {activeHeaderTab === 'noms' ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+            </button>
 
-            {/* Voyages Spirituels */}
-            <div className="flex items-center gap-1.5">
-              <Star className="w-3 h-3 text-mirror/70" />
-              <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Voyages</span>
-            </div>
-            {SPIRITUAL_JOURNEYS && SPIRITUAL_JOURNEYS.length > 0 ? SPIRITUAL_JOURNEYS.map(journey => (
-              <motion.button
-                key={journey.key}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  if (selectedJourney === journey.key) {
-                    setSelectedJourney(null);
-                    setView('welcome');
-                  } else {
-                    setSelectedJourney(journey.key);
-                    setSelectedParcours(null);
-                    setSelectedContext(null);
-                    setSelectedTheme(null);
-                    setSelectedDivineName(null);
-                    setSelectedProphet(null);
-                    setView('journey');
-                  }
-                }}
-                className={`px-2.5 py-1 rounded-full text-[10px] border transition-all flex items-center gap-1
-                  ${selectedJourney === journey.key
-                    ? 'bg-white/10 border-white/30 shadow-sm'
-                    : 'border-border/50 hover:border-border opacity-70 hover:opacity-100'}`}
-                style={{ color: '#a78bfa' }}
-              >
-                <span>{journey.icon}</span>
-                <span>{journey.title}</span>
-              </motion.button>
-            )) : (
-              <span className="text-[10px] text-muted-foreground">Aucun voyage</span>
-            )}
+            {/* Prophètes Tab */}
+            <button
+              onClick={() => setActiveHeaderTab(activeHeaderTab === 'prophetes' ? null : 'prophetes')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all whitespace-nowrap
+                ${activeHeaderTab === 'prophetes' ? 'bg-emerald-500/15 text-emerald-400' : 'text-muted-foreground hover:text-foreground hover:bg-white/[0.03]'}`}
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Prophètes</span>
+              {activeHeaderTab === 'prophetes' ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+            </button>
 
-            <div className="w-px h-4 bg-border/50 mx-1" />
+            <div className="w-px h-5 bg-border/50 mx-1" />
 
-            {/* Noms Divins */}
-            <div className="flex items-center gap-1.5">
-              <Sparkles className="w-3 h-3 text-gold/70" />
-              <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Noms Divins</span>
-            </div>
-            {DIVINE_NAME_PARCOURS && DIVINE_NAME_PARCOURS.length > 0 ? DIVINE_NAME_PARCOURS.map(parcours => {
-              const divineName = DIVINE_NAMES?.find(n => n.key === parcours.divineName);
-              return (
-                <motion.button
-                  key={parcours.divineName}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    if (selectedDivineName === parcours.divineName) {
-                      setSelectedDivineName(null);
-                      setView('welcome');
-                    } else {
-                      setSelectedDivineName(parcours.divineName);
-                      setSelectedParcours(null);
-                      setSelectedContext(null);
-                      setSelectedTheme(null);
-                      setSelectedJourney(null);
-                      setSelectedProphet(null);
-                      setView('divineName');
-                    }
-                  }}
-                  className={`px-2.5 py-1 rounded-full text-[10px] border transition-all flex items-center gap-1
-                    ${selectedDivineName === parcours.divineName
-                      ? 'bg-white/10 border-white/30 shadow-sm'
-                      : 'border-border/50 hover:border-border opacity-70 hover:opacity-100'}`}
-                  style={{ color: '#fbbf24' }}
-                >
-                  {divineName && <span className="font-arabic">{divineName.ar}</span>}
-                  <span>{parcours.title}</span>
-                </motion.button>
-              );
-            }) : (
-              <span className="text-[10px] text-muted-foreground">Aucun nom divin</span>
-            )}
+            {/* Thèmes Tab */}
+            <button
+              onClick={() => setActiveHeaderTab(activeHeaderTab === 'themes' ? null : 'themes')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all whitespace-nowrap
+                ${activeHeaderTab === 'themes' ? 'bg-mirror/15 text-mirror' : 'text-muted-foreground hover:text-foreground hover:bg-white/[0.03]'}`}
+            >
+              <Layers className="w-3.5 h-3.5" />
+              <span>Thèmes</span>
+              {activeHeaderTab === 'themes' ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+            </button>
 
-            <div className="w-px h-4 bg-border/50 mx-1" />
-
-            {/* Prophètes */}
-            <div className="flex items-center gap-1.5">
-              <BookOpen className="w-3 h-3 text-green-500/70" />
-              <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Prophètes</span>
-            </div>
-            {PROPHET_PARCOURS && PROPHET_PARCOURS.length > 0 ? PROPHET_PARCOURS.slice(0, 5).map(prophet => (
-              <motion.button
-                key={prophet.prophet}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  if (selectedProphet === prophet.prophet) {
-                    setSelectedProphet(null);
-                    setView('welcome');
-                  } else {
-                    setSelectedProphet(prophet.prophet);
-                    setSelectedParcours(null);
-                    setSelectedContext(null);
-                    setSelectedTheme(null);
-                    setSelectedJourney(null);
-                    setSelectedDivineName(null);
-                    setView('prophet');
-                  }
-                }}
-                className={`px-2.5 py-1 rounded-full text-[10px] border transition-all flex items-center gap-1
-                  ${selectedProphet === prophet.prophet
-                    ? 'bg-white/10 border-white/30 shadow-sm'
-                    : 'border-border/50 hover:border-border opacity-70 hover:opacity-100'}`}
-                style={{ color: '#10b981' }}
-              >
-                <span className="font-arabic">{prophet.ar}</span>
-                <span>{prophet.title}</span>
-              </motion.button>
-            )) : (
-              <span className="text-[10px] text-muted-foreground">Aucun prophète</span>
-            )}
-          </div>
-        </div>
-
-        {/* Theme filters by category */}
-        <div className="px-4 py-3 border-b border-border flex-shrink-0 bg-black/20">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Thèmes spirituels</span>
+            {/* Clear filter button */}
             {(selectedTheme || selectedParcours || selectedContext || selectedJourney || selectedDivineName || selectedProphet) && (
               <Button
                 variant="ghost"
@@ -2396,60 +2270,246 @@ export default function QuranMirrorPage() {
                   setSelectedJourney(null);
                   setSelectedDivineName(null);
                   setSelectedProphet(null);
+                  setActiveHeaderTab(null);
                   setView('welcome');
                 }}
-                className="h-5 px-2 text-[10px] text-muted-foreground hover:text-foreground"
+                className="h-7 px-2 text-[10px] text-muted-foreground hover:text-foreground ml-auto"
               >
-                Effacer le filtre
+                <X className="w-3 h-3 mr-1" />
+                Effacer
               </Button>
             )}
           </div>
-          <div className="space-y-2">
-            {THEME_CATEGORIES.map(category => (
-              <div key={category.key} className="flex flex-wrap items-center gap-1.5">
-                <span className="text-[10px] text-muted-foreground/70 mr-1 flex items-center gap-1 min-w-[140px]">
-                  <span>{category.icon}</span>
-                  <span className="font-medium">{category.label}</span>
-                  <span className="font-arabic text-muted-foreground/50">({category.ar})</span>
-                </span>
-                {category.themes.map(theme => {
-                  const count = Object.values(MIROIR).filter(m => m.theme.includes(theme.key)).length;
-                  // Show all themes, even if count is 0 (new themes)
 
-                  return (
-                    <motion.button
-                      key={theme.key}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => {
-                        if (selectedTheme === theme.key) {
+          {/* Dropdown Panels */}
+          <AnimatePresence>
+            {activeHeaderTab && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="overflow-hidden border-t border-border/50 bg-black/10"
+              >
+                {/* Parcours Panel */}
+                {activeHeaderTab === 'parcours' && (
+                  <div className="p-3 flex flex-wrap gap-2">
+                    {PARCOURS_LIST && PARCOURS_LIST.length > 0 ? PARCOURS_LIST.map(parcours => (
+                      <motion.button
+                        key={parcours.key}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => {
+                          setSelectedParcours(parcours.key);
+                          setSelectedContext(null);
                           setSelectedTheme(null);
-                          setView('welcome');
-                        } else {
-                          setSelectedTheme(theme.key);
-                          setView('theme');
-                        }
-                      }}
-                      className={`px-2 py-0.5 rounded-full text-[10px] border transition-all whitespace-nowrap
-                        ${selectedTheme === theme.key
-                          ? 'opacity-100 shadow-sm ring-1 ring-offset-1 ring-offset-background'
-                          : count === 0 
-                            ? 'opacity-30 hover:opacity-60 italic'
-                            : 'opacity-50 hover:opacity-100'}`}
-                      style={{
-                        background: theme.bg,
-                        borderColor: theme.border,
-                        color: theme.color,
-                        ringColor: selectedTheme === theme.key ? theme.color : undefined
-                      }}
-                    >
-                      {theme.ar} {theme.label}
-                    </motion.button>
-                  );
-                })}
-              </div>
-            ))}
-          </div>
+                          setSelectedJourney(null);
+                          setSelectedDivineName(null);
+                          setSelectedProphet(null);
+                          setActiveHeaderTab(null);
+                          setView('parcours');
+                        }}
+                        className={`px-3 py-1.5 rounded-lg text-[11px] border transition-all flex items-center gap-1.5
+                          ${selectedParcours === parcours.key
+                            ? 'bg-gold/10 border-gold/30 text-gold'
+                            : 'border-border/50 hover:border-gold/30 text-muted-foreground hover:text-foreground'}`}
+                      >
+                        <span>{parcours.icon}</span>
+                        <span>{parcours.title}</span>
+                      </motion.button>
+                    )) : (
+                      <span className="text-[11px] text-muted-foreground">Aucun parcours disponible</span>
+                    )}
+                  </div>
+                )}
+
+                {/* Moments Panel */}
+                {activeHeaderTab === 'moments' && (
+                  <div className="p-3 flex flex-wrap gap-2">
+                    {THEME_CONTEXTS && THEME_CONTEXTS.length > 0 ? THEME_CONTEXTS.map(context => (
+                      <motion.button
+                        key={context.key}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => {
+                          setSelectedContext(context.key);
+                          setSelectedParcours(null);
+                          setSelectedTheme(null);
+                          setSelectedJourney(null);
+                          setSelectedDivineName(null);
+                          setSelectedProphet(null);
+                          setActiveHeaderTab(null);
+                          setView('context');
+                        }}
+                        className={`px-3 py-1.5 rounded-lg text-[11px] border transition-all flex items-center gap-1.5
+                          ${selectedContext === context.key
+                            ? 'bg-purple/10 border-purple/30 text-purple'
+                            : 'border-border/50 hover:border-purple/30 text-muted-foreground hover:text-foreground'}`}
+                        style={{ color: selectedContext === context.key ? context.color : undefined }}
+                      >
+                        <span>{context.icon}</span>
+                        <span>{context.title}</span>
+                      </motion.button>
+                    )) : (
+                      <span className="text-[11px] text-muted-foreground">Aucun moment disponible</span>
+                    )}
+                  </div>
+                )}
+
+                {/* Voyages Panel */}
+                {activeHeaderTab === 'voyages' && (
+                  <div className="p-3 flex flex-wrap gap-2">
+                    {SPIRITUAL_JOURNEYS && SPIRITUAL_JOURNEYS.length > 0 ? SPIRITUAL_JOURNEYS.map(journey => (
+                      <motion.button
+                        key={journey.key}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => {
+                          setSelectedJourney(journey.key);
+                          setSelectedParcours(null);
+                          setSelectedContext(null);
+                          setSelectedTheme(null);
+                          setSelectedDivineName(null);
+                          setSelectedProphet(null);
+                          setActiveHeaderTab(null);
+                          setView('journey');
+                        }}
+                        className={`px-3 py-1.5 rounded-lg text-[11px] border transition-all flex items-center gap-1.5
+                          ${selectedJourney === journey.key
+                            ? 'bg-[#a78bfa]/10 border-[#a78bfa]/30 text-[#a78bfa]'
+                            : 'border-border/50 hover:border-[#a78bfa]/30 text-muted-foreground hover:text-foreground'}`}
+                      >
+                        <span>{journey.icon}</span>
+                        <span>{journey.title}</span>
+                        <span className="text-[9px] opacity-60">({journey.stages.length} étapes)</span>
+                      </motion.button>
+                    )) : (
+                      <span className="text-[11px] text-muted-foreground">Aucun voyage disponible</span>
+                    )}
+                  </div>
+                )}
+
+                {/* Noms Divins Panel */}
+                {activeHeaderTab === 'noms' && (
+                  <div className="p-3 flex flex-wrap gap-2">
+                    {DIVINE_NAME_PARCOURS && DIVINE_NAME_PARCOURS.length > 0 ? DIVINE_NAME_PARCOURS.map(parcours => {
+                      const divineName = DIVINE_NAMES?.find(n => n.key === parcours.divineName);
+                      return (
+                        <motion.button
+                          key={parcours.divineName}
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          onClick={() => {
+                            setSelectedDivineName(parcours.divineName);
+                            setSelectedParcours(null);
+                            setSelectedContext(null);
+                            setSelectedTheme(null);
+                            setSelectedJourney(null);
+                            setSelectedProphet(null);
+                            setActiveHeaderTab(null);
+                            setView('divineName');
+                          }}
+                          className={`px-3 py-1.5 rounded-lg text-[11px] border transition-all flex items-center gap-1.5
+                            ${selectedDivineName === parcours.divineName
+                              ? 'bg-amber-500/10 border-amber-500/30 text-amber-400'
+                              : 'border-border/50 hover:border-amber-500/30 text-muted-foreground hover:text-foreground'}`}
+                        >
+                          {divineName && <span className="font-arabic text-sm">{divineName.ar}</span>}
+                          <span>{parcours.title}</span>
+                        </motion.button>
+                      );
+                    }) : (
+                      <span className="text-[11px] text-muted-foreground">Aucun nom divin disponible</span>
+                    )}
+                  </div>
+                )}
+
+                {/* Prophètes Panel */}
+                {activeHeaderTab === 'prophetes' && (
+                  <div className="p-3 flex flex-wrap gap-2">
+                    {PROPHET_PARCOURS && PROPHET_PARCOURS.length > 0 ? PROPHET_PARCOURS.map(prophet => (
+                      <motion.button
+                        key={prophet.prophet}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => {
+                          setSelectedProphet(prophet.prophet);
+                          setSelectedParcours(null);
+                          setSelectedContext(null);
+                          setSelectedTheme(null);
+                          setSelectedJourney(null);
+                          setSelectedDivineName(null);
+                          setActiveHeaderTab(null);
+                          setView('prophet');
+                        }}
+                        className={`px-3 py-1.5 rounded-lg text-[11px] border transition-all flex items-center gap-1.5
+                          ${selectedProphet === prophet.prophet
+                            ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+                            : 'border-border/50 hover:border-emerald-500/30 text-muted-foreground hover:text-foreground'}`}
+                      >
+                        <span className="font-arabic text-sm">{prophet.ar}</span>
+                        <span>{prophet.title}</span>
+                      </motion.button>
+                    )) : (
+                      <span className="text-[11px] text-muted-foreground">Aucun prophète disponible</span>
+                    )}
+                  </div>
+                )}
+
+                {/* Thèmes Panel */}
+                {activeHeaderTab === 'themes' && (
+                  <div className="p-3 max-h-64 overflow-y-auto">
+                    <div className="space-y-3">
+                      {THEME_CATEGORIES.map(category => (
+                        <div key={category.key}>
+                          <div className="flex items-center gap-2 mb-2">
+                            <span>{category.icon}</span>
+                            <span className="text-[11px] font-medium text-foreground/80">{category.label}</span>
+                            <span className="font-arabic text-[10px] text-muted-foreground/50">{category.ar}</span>
+                          </div>
+                          <div className="flex flex-wrap gap-1.5">
+                            {category.themes.map(theme => {
+                              const count = Object.values(MIROIR).filter(m => m.theme.includes(theme.key)).length;
+                              return (
+                                <motion.button
+                                  key={theme.key}
+                                  whileHover={{ scale: 1.02 }}
+                                  whileTap={{ scale: 0.98 }}
+                                  onClick={() => {
+                                    setSelectedTheme(theme.key);
+                                    setSelectedParcours(null);
+                                    setSelectedContext(null);
+                                    setSelectedJourney(null);
+                                    setSelectedDivineName(null);
+                                    setSelectedProphet(null);
+                                    setActiveHeaderTab(null);
+                                    setView('theme');
+                                  }}
+                                  className={`px-2 py-1 rounded-full text-[10px] border transition-all whitespace-nowrap
+                                    ${selectedTheme === theme.key
+                                      ? 'shadow-sm ring-1 ring-offset-1 ring-offset-background'
+                                      : count === 0 
+                                        ? 'opacity-30 hover:opacity-60 italic'
+                                        : 'opacity-60 hover:opacity-100'}`}
+                                  style={{
+                                    background: theme.bg,
+                                    borderColor: selectedTheme === theme.key ? theme.color : theme.border,
+                                    color: theme.color,
+                                  }}
+                                >
+                                  {theme.ar} {theme.label}
+                                </motion.button>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
         
         {/* Content */}
