@@ -2,12 +2,80 @@
 
 ## Project Status
 - **Status**: ✅ COMPLETE - All 114 Surahs covered
-- **Last Verified**: Session 38 (Current)
+- **Last Verified**: Session 39 (Current)
 - **Framework**: Next.js 16 with App Router, TypeScript, Tailwind CSS 4, shadcn/ui
 - **Miroir Coverage**: 6236 entries | 6236 with 6 tajalli levels | 115,613 lines of code
 - **All Surahs**: ✅ COMPLETE - All 6236 Quran verses covered (one entry per verse)
 - **Data Integrity**: ✅ No duplicates | ✅ All references valid
 - **Features**: ✅ Parcours | ✅ Contextes | ✅ Sous-thèmes | ✅ Niveaux de profondeur | ✅ Voyages Spirituels | ✅ Noms Divins | ✅ Prophètes | ✅ Nafs (7 niveaux)
+
+---
+
+## Session 39 - Scrolling Fix for Detail Views (COMPLETE)
+
+### Task ID: scrolling-fix-detail-views
+**Agent**: Main Agent
+**Task**: Fix scrolling issue on Nafs detail pages where content scrolled behind fixed header
+
+### Work Log:
+
+**Problem Identified:**
+User reported that on Nafs Level 2 and Level 7 detail pages, scrolling didn't work properly - the content scrolled behind the fixed header instead of having an independent scrollable area.
+
+**Root Cause Analysis:**
+1. Parent container missing `overflow-hidden` to constrain height
+2. Header section not properly separated from scrollable content
+3. ScrollArea component couldn't calculate proper height without `h-0` constraint
+4. Same issue existed in all similar detail views (Parcours, Context, Journey, DivineName, Prophet)
+
+**Fixes Applied:**
+
+1. **Nafs Detail View** (`renderNafsView`):
+   - Added `h-full overflow-hidden` to parent container
+   - Added `border-b border-border/50 bg-background/80 backdrop-blur-sm` to header for visual separation
+   - Changed scroll container to `flex-1 min-h-0 h-0 overflow-hidden`
+   - Made header more compact (reduced padding and font sizes)
+   - Added `line-clamp-2` to description for height control
+
+2. **Parcours View** (`renderParcoursView`):
+   - Applied same structure fix
+   - Compact header with proper overflow handling
+
+3. **Context View** (`renderContextView`):
+   - Applied same structure fix
+   - Improved theme badges layout
+
+4. **Journey View** (`renderJourneyView`):
+   - Applied same structure fix
+   - Compact stage indicators
+
+5. **Divine Name View** (`renderDivineNameView`):
+   - Applied same structure fix
+   - Arabic name styling preserved
+
+6. **Prophet View** (`renderProphetView`):
+   - Applied same structure fix
+
+7. **Nafs Overview** (when no level selected):
+   - Applied same structure fix for consistency
+
+**Testing Performed via agent-browser:**
+- ✅ Nafs Level 2 (L'Âme Qui Se Blâme): Scrolling works correctly
+- ✅ Nafs Level 7 (L'Âme Purifiée): Scrolling works correctly
+- ✅ Header stays fixed while content scrolls independently
+- ✅ "Contempler" buttons accessible
+- ✅ All 7 Nafs levels displayed correctly
+
+**Technical Details:**
+- Key CSS fix: `h-0` alongside `flex-1 min-h-0` for proper flex child height calculation
+- Header styling: `flex-shrink-0 border-b border-border/50 bg-background/80 backdrop-blur-sm`
+- Depth level buttons compacted: `px-2 py-1` instead of `px-3 py-1.5`
+
+### Stage Summary:
+- **Scrolling**: ✅ Fixed on all detail views
+- **Header**: ✅ Fixed and visually separated
+- **UX**: ✅ Compact headers maximize content space
+- **Consistency**: ✅ Same fix applied across all similar views
 
 ---
 
