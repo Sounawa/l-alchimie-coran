@@ -11,71 +11,65 @@
 
 ---
 
-## Session 39 - Scrolling Fix for Detail Views (COMPLETE)
+## Session 39 - Scrolling Fix & Nafs Redesign (COMPLETE)
 
-### Task ID: scrolling-fix-detail-views
+### Task ID: scrolling-fix-nafs-redesign
 **Agent**: Main Agent
-**Task**: Fix scrolling issue on Nafs detail pages where content scrolled behind fixed header
+**Task**: Fix scrolling issue and redesign Nafs section to match "Le Voyage du Cœur" style
 
 ### Work Log:
 
 **Problem Identified:**
-User reported that on Nafs Level 2 and Level 7 detail pages, scrolling didn't work properly - the content scrolled behind the fixed header instead of having an independent scrollable area.
+1. Scrolling didn't work properly on Nafs detail pages - content scrolled behind fixed header
+2. Nafs section had a different style than other sections (colored cards vs uniform list)
+3. User wanted uniform design across all sections
 
 **Root Cause Analysis:**
 1. Parent container missing `overflow-hidden` to constrain height
 2. Header section not properly separated from scrollable content
-3. ScrollArea component couldn't calculate proper height without `h-0` constraint
-4. Same issue existed in all similar detail views (Parcours, Context, Journey, DivineName, Prophet)
+3. Nafs used grid with colored cards while other sections used clean list style
 
 **Fixes Applied:**
 
-1. **Nafs Detail View** (`renderNafsView`):
+1. **Scrolling Fix** (applied to all detail views):
    - Added `h-full overflow-hidden` to parent container
-   - Added `border-b border-border/50 bg-background/80 backdrop-blur-sm` to header for visual separation
+   - Added `border-b border-border/50 bg-background/80 backdrop-blur-sm` to header
    - Changed scroll container to `flex-1 min-h-0 h-0 overflow-hidden`
-   - Made header more compact (reduced padding and font sizes)
-   - Added `line-clamp-2` to description for height control
 
-2. **Parcours View** (`renderParcoursView`):
-   - Applied same structure fix
-   - Compact header with proper overflow handling
+2. **Nafs Overview Redesign** (matching Journey style):
+   - Replaced colorful grid cards with clean uniform list
+   - Added progression indicator (1→2→3→4→5→6→7) in header
+   - Each level now shows: icon, Arabic name, French name, state, verse count
+   - Consistent border styling with `border-border bg-card`
+   - Added ChevronRight arrow for navigation hint
 
-3. **Context View** (`renderContextView`):
-   - Applied same structure fix
-   - Improved theme badges layout
+3. **Nafs Detail View Redesign** (matching Journey style):
+   - Clean header with progression indicator
+   - Level info displayed inline (État, Vertu)
+   - Verse cards match Journey verse cards exactly:
+     - Level number in circle (rose color)
+     - Reference badge in gold
+     - Surah name on the right
+     - Same depth level buttons (N1, N2, N3)
+     - Same action buttons
 
-4. **Journey View** (`renderJourneyView`):
-   - Applied same structure fix
-   - Compact stage indicators
-
-5. **Divine Name View** (`renderDivineNameView`):
-   - Applied same structure fix
-   - Arabic name styling preserved
-
-6. **Prophet View** (`renderProphetView`):
-   - Applied same structure fix
-
-7. **Nafs Overview** (when no level selected):
-   - Applied same structure fix for consistency
+4. **Visual Consistency**:
+   - Rose color accent for Nafs (matching the 💙 theme)
+   - Gold color for Arabic text and references
+   - Same card styling as Journey, Divine Names, Prophets
 
 **Testing Performed via agent-browser:**
-- ✅ Nafs Level 2 (L'Âme Qui Se Blâme): Scrolling works correctly
-- ✅ Nafs Level 7 (L'Âme Purifiée): Scrolling works correctly
-- ✅ Header stays fixed while content scrolls independently
-- ✅ "Contempler" buttons accessible
-- ✅ All 7 Nafs levels displayed correctly
-
-**Technical Details:**
-- Key CSS fix: `h-0` alongside `flex-1 min-h-0` for proper flex child height calculation
-- Header styling: `flex-shrink-0 border-b border-border/50 bg-background/80 backdrop-blur-sm`
-- Depth level buttons compacted: `px-2 py-1` instead of `px-3 py-1.5`
+- ✅ Nafs overview: Clean list with 7 levels
+- ✅ Progression indicator visible (1→2→3→4→5→6→7)
+- ✅ Nafs Level 2 detail: Scrolling works correctly
+- ✅ Header stays fixed while content scrolls
+- ✅ Consistent styling with other sections
 
 ### Stage Summary:
 - **Scrolling**: ✅ Fixed on all detail views
-- **Header**: ✅ Fixed and visually separated
-- **UX**: ✅ Compact headers maximize content space
-- **Consistency**: ✅ Same fix applied across all similar views
+- **Nafs Design**: ✅ Redesigned to match Journey style
+- **Uniformity**: ✅ All sections now have consistent styling
+- **UX**: ✅ Clean, professional appearance
 
 ---
 

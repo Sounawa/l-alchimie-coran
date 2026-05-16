@@ -1691,51 +1691,72 @@ export default function QuranMirrorPage() {
                 Le voyage de l'âme depuis ses tendances les plus basses jusqu'à sa purification complète.
               </div>
             </motion.div>
-          </div>
 
-          {/* Levels Grid */}
-          <div className="flex-1 min-h-0 h-0 overflow-hidden">
-            <ScrollArea className="h-full">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 p-4 pr-4 max-w-4xl mx-auto">
-                {NAFS_LEVELS?.map((level, index) => (
+            {/* Progression visuelle des 7 niveaux */}
+            <div className="flex flex-wrap justify-center gap-1 mt-3">
+              {NAFS_LEVELS?.map((level, index) => (
+                <div key={level.level} className="flex items-center gap-0.5">
                   <motion.button
-                    key={level.level}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
                     onClick={() => {
                       setSelectedNafsLevel(level.level);
                       setView('nafs');
                     }}
-                    className="p-4 rounded-xl border text-left transition-all group"
-                    style={{ 
-                      background: level.bgColor, 
-                      borderColor: level.borderColor,
-                    }}
+                    className={`w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold border transition-all ${
+                      selectedNafsLevel === level.level 
+                        ? 'border-rose-400 bg-rose-500/20 text-rose-400' 
+                        : 'border-border/50 bg-white/[0.03] text-muted-foreground hover:border-rose-400/50'
+                    }`}
                   >
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-2xl">{level.icon}</span>
-                      <span className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold"
-                        style={{ background: level.color, color: 'white' }}>
-                        {level.level}
-                      </span>
-                    </div>
-                    <div className="font-arabic text-lg mb-1" style={{ color: level.color }}>
-                      {level.ar}
-                    </div>
-                    <div className="text-sm font-medium" style={{ color: level.color }}>
-                      {level.fr}
-                    </div>
-                    <div className="text-[10px] text-muted-foreground mt-2 line-clamp-2">
-                      {level.description.slice(0, 80)}...
-                    </div>
-                    <div className="flex items-center gap-2 mt-3 text-[10px]">
-                      <span className="px-2 py-0.5 rounded-full" style={{ background: level.color + '20', color: level.color }}>
-                        {level.verses.length} versets
-                      </span>
-                      <span className="text-muted-foreground">{level.state}</span>
+                    {level.level}
+                  </motion.button>
+                  {index < (NAFS_LEVELS?.length || 0) - 1 && (
+                    <span className="text-border text-[10px] mx-0.5">→</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Levels Grid - Uniform style like other sections */}
+          <div className="flex-1 min-h-0 h-0 overflow-hidden">
+            <ScrollArea className="h-full">
+              <div className="space-y-2 p-4 max-w-2xl mx-auto">
+                {NAFS_LEVELS?.map((level, index) => (
+                  <motion.button
+                    key={level.level}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    whileHover={{ scale: 1.01, x: 4 }}
+                    whileTap={{ scale: 0.99 }}
+                    onClick={() => {
+                      setSelectedNafsLevel(level.level);
+                      setView('nafs');
+                    }}
+                    className="w-full p-4 rounded-xl border border-border bg-card hover:bg-white/[0.02] transition-all text-left group"
+                  >
+                    <div className="flex items-center gap-3">
+                      {/* Numéro du niveau */}
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-rose-500/10 border border-rose-500/20 flex items-center justify-center">
+                        <span className="text-rose-400 font-bold text-sm">{level.level}</span>
+                      </div>
+                      
+                      {/* Contenu */}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-lg">{level.icon}</span>
+                          <span className="font-arabic text-base text-gold">{level.ar}</span>
+                        </div>
+                        <div className="text-sm font-medium text-foreground/80">{level.fr}</div>
+                        <div className="text-[10px] text-muted-foreground mt-1">
+                          {level.state} • {level.verses.length} versets
+                        </div>
+                      </div>
+                      
+                      {/* Flèche */}
+                      <ChevronRight className="w-4 h-4 text-muted-foreground/50 group-hover:text-rose-400 transition-colors flex-shrink-0" />
                     </div>
                   </motion.button>
                 ))}
@@ -1746,79 +1767,90 @@ export default function QuranMirrorPage() {
       );
     }
 
-    // Show selected level detail
+    // Show selected level detail - Same style as Journey view
     return (
       <div className="flex-1 flex flex-col min-h-0 h-full overflow-hidden">
-        {/* Header - fixed, compact */}
-        <div className="flex-shrink-0 border-b border-border/50 bg-background/80 backdrop-blur-sm">
+        {/* Journey-style header */}
+        <div className="p-4 pb-0 text-center flex-shrink-0 border-b border-border/50 bg-background/80 backdrop-blur-sm">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="p-4"
           >
             {/* Back button */}
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => {
-                setSelectedNafsLevel(null);
-              }}
+              onClick={() => setSelectedNafsLevel(null)}
               className="mb-2 text-muted-foreground hover:text-foreground h-7"
             >
               <ChevronLeft className="w-4 h-4 mr-1" />
               Tous les niveaux
             </Button>
 
-            <div className="text-center">
-              <div className="text-3xl mb-1">{nafsLevel.icon}</div>
-              <div className="font-arabic text-2xl mb-1" style={{ color: nafsLevel.color }}>
-                {nafsLevel.ar}
-              </div>
-              <div className="font-title text-base text-foreground/80">
-                Niveau {nafsLevel.level}: {nafsLevel.fr}
-              </div>
+            <div className="text-3xl mb-1">{nafsLevel.icon}</div>
+            <div className="font-arabic text-2xl mb-1" style={{ color: nafsLevel.color }}>
+              {nafsLevel.ar}
             </div>
-
-            {/* Level info cards - compact */}
-            <div className="grid grid-cols-3 gap-2 mt-3 max-w-md mx-auto">
-              <div className="p-2 rounded-lg border border-border/50 bg-white/[0.02] text-center">
-                <div className="text-[9px] text-muted-foreground mb-0.5">État</div>
-                <div className="text-[10px] font-medium truncate" style={{ color: nafsLevel.color }}>{nafsLevel.state}</div>
-              </div>
-              <div className="p-2 rounded-lg border border-border/50 bg-white/[0.02] text-center">
-                <div className="text-[9px] text-muted-foreground mb-0.5">Défi</div>
-                <div className="text-[10px] font-medium truncate">{nafsLevel.challenge}</div>
-              </div>
-              <div className="p-2 rounded-lg border border-border/50 bg-white/[0.02] text-center">
-                <div className="text-[9px] text-muted-foreground mb-0.5">Vertu</div>
-                <div className="text-[10px] font-medium truncate">{nafsLevel.virtue}</div>
-              </div>
+            <div className="font-title text-base text-foreground/80">
+              Niveau {nafsLevel.level}: {nafsLevel.fr}
             </div>
-
-            <p className="text-[11px] text-muted-foreground text-center mt-3 max-w-lg mx-auto leading-relaxed line-clamp-2">
+            <div className="text-[11px] text-muted-foreground mt-1">
               {nafsLevel.description}
-            </p>
+            </div>
 
-            {/* Depth level selector - compact */}
-            <div className="flex justify-center gap-2 mt-3">
-              {DEPTH_LEVELS.map(level => (
-                <button
-                  key={level.level}
-                  onClick={() => setDepthLevel(level.level as 1 | 2 | 3)}
-                  className={`px-2 py-1 rounded-full text-[10px] border transition-all flex items-center gap-1
-                    ${depthLevel === level.level 
-                      ? 'bg-white/10 border-white/30' 
-                      : 'border-border/50 hover:border-border'}`}
-                >
-                  <span>{level.icon}</span>
-                  <span>N{level.level}</span>
-                </button>
+            {/* Progression des niveaux */}
+            <div className="flex flex-wrap justify-center gap-1 mt-3">
+              {NAFS_LEVELS?.map((level, index) => (
+                <div key={level.level} className="flex items-center gap-0.5">
+                  <button
+                    onClick={() => setSelectedNafsLevel(level.level)}
+                    className={`w-5 h-5 rounded-full flex items-center justify-center text-[8px] font-bold border transition-all ${
+                      selectedNafsLevel === level.level 
+                        ? 'border-rose-400 bg-rose-500/20 text-rose-400' 
+                        : 'border-border/50 bg-white/[0.03] text-muted-foreground hover:border-rose-400/50'
+                    }`}
+                  >
+                    {level.level}
+                  </button>
+                  {index < (NAFS_LEVELS?.length || 0) - 1 && (
+                    <span className="text-border text-[8px]">→</span>
+                  )}
+                </div>
               ))}
             </div>
+
+            {/* Level info */}
+            <div className="flex justify-center gap-4 mt-3 text-[10px]">
+              <div className="flex items-center gap-1">
+                <span className="text-muted-foreground">État:</span>
+                <span className="font-medium" style={{ color: nafsLevel.color }}>{nafsLevel.state}</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <span className="text-muted-foreground">Vertu:</span>
+                <span className="font-medium">{nafsLevel.virtue}</span>
+              </div>
+            </div>
           </motion.div>
+
+          {/* Depth level selector */}
+          <div className="flex justify-center gap-2 mt-3 mb-3">
+            {DEPTH_LEVELS.map(level => (
+              <button
+                key={level.level}
+                onClick={() => setDepthLevel(level.level as 1 | 2 | 3)}
+                className={`px-2 py-1 rounded-full text-[10px] border transition-all flex items-center gap-1
+                  ${depthLevel === level.level 
+                    ? 'bg-white/10 border-white/30' 
+                    : 'border-border/50 hover:border-border'}`}
+              >
+                <span>{level.icon}</span>
+                <span>N{level.level}</span>
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Verses - scrollable area */}
+        {/* Verses - Same style as Journey view */}
         <div className="flex-1 min-h-0 h-0 overflow-hidden">
           <ScrollArea className="h-full">
             <div className="space-y-3 p-4 pr-4 max-w-3xl mx-auto">
@@ -1835,34 +1867,39 @@ export default function QuranMirrorPage() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: Math.min(index * 0.03, 0.5) }}
-                  className="p-4 rounded-xl border bg-card hover:bg-white/[0.02] transition-all"
-                  style={{ borderColor: nafsLevel.borderColor }}
+                  className="p-4 rounded-xl border border-border bg-card hover:bg-white/[0.02] transition-all"
                 >
+                  {/* Header - Same as Journey */}
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-medium"
-                      style={{ background: nafsLevel.bgColor, color: nafsLevel.color }}>
+                    <span className="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center text-[10px] font-medium">
+                      {nafsLevel.level}
+                    </span>
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-gold/10 text-gold">
                       {verseItem.reference}
                     </span>
                     {verseItem.title && (
                       <span className="text-xs text-foreground/80 font-medium">{verseItem.title}</span>
                     )}
-                    <span className="text-[10px] text-muted-foreground">
+                    <span className="text-[10px] text-muted-foreground ml-auto">
                       {surah?.translation}
                     </span>
                   </div>
 
+                  {/* Level 1: Simple verse */}
                   {depthLevel >= 1 && (
                     <p className="text-sm text-foreground/80 leading-relaxed">
                       {miroir.mirrorVersion}
                     </p>
                   )}
 
+                  {/* Level 2: Miroir */}
                   {depthLevel >= 2 && (
                     <p className="text-xs text-muted-foreground leading-relaxed mt-2">
                       {miroir.reflection}
                     </p>
                   )}
 
+                  {/* Level 3: 6 Tajalli */}
                   {depthLevel >= 3 && (
                     <div className="border-t border-border/50 pt-3 mt-3">
                       <p className="text-[10px] text-muted-foreground mb-2 font-medium">Les 6 Regards du Tajalli</p>
@@ -1880,6 +1917,7 @@ export default function QuranMirrorPage() {
                     </div>
                   )}
 
+                  {/* Action */}
                   <div className="flex gap-2 mt-3 pt-3 border-t border-border/30">
                     <Button
                       variant="ghost"
