@@ -13,9 +13,8 @@ const nextConfig: NextConfig = {
   },
   // Trailing slashes for GitHub Pages compatibility
   trailingSlash: true,
-  // Base path for GitHub Pages - change 'coran-miroir' to your repo name
-  // Uncomment and modify this line when deploying to GitHub Pages:
-  // basePath: '/coran-miroir',
+  // Base path for GitHub Pages - change 'l-alchimie-coran' to your repo name
+  basePath: '/l-alchimie-coran',
 };
 
 export default nextConfig;
