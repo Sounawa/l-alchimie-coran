@@ -87,6 +87,14 @@ Used agent-browser CLI tool to systematically test all pages and features.
 - ✅ No console errors
 - ✅ Server running on port 3000
 
+### Bug Fix Applied During Testing:
+**Problem**: User reported Nafs Level 2 view couldn't scroll
+**Root Cause**: Parent content container had `overflow-auto` conflicting with child `ScrollArea` components
+**Solution**: 
+- Changed parent container from `overflow-auto` to `overflow-hidden` with `min-h-0`
+- Added proper `overflow-auto` wrappers to `renderVerseList()` and `renderSearchResults()`
+- This ensures each view handles its own scrolling independently
+
 ### Stage Summary:
 - **All Pages**: ✅ Content verified on every page
 - **Scrolling**: ✅ Works correctly on all ScrollArea components

@@ -616,7 +616,8 @@ export default function QuranMirrorPage() {
     const verses = getFilteredVerses();
     
     return (
-      <div className="max-w-3xl mx-auto p-6">
+      <div className="flex-1 flex flex-col min-h-0 overflow-auto">
+        <div className="max-w-3xl mx-auto p-6">
         {/* Surah header */}
         <motion.div 
           initial={{ opacity: 0, y: -10 }}
@@ -722,13 +723,15 @@ export default function QuranMirrorPage() {
             })}
           </div>
         )}
+        </div>
       </div>
     );
   };
 
   // Render search results
   const renderSearchResults = () => (
-    <div className="max-w-2xl mx-auto p-6">
+    <div className="flex-1 flex flex-col min-h-0 overflow-auto">
+      <div className="max-w-2xl mx-auto p-6">
       <p className="text-sm text-muted-foreground mb-4">
         {searchResults.length} résultat{searchResults.length !== 1 ? 's' : ''} pour « {searchQuery} »
       </p>
@@ -762,6 +765,7 @@ export default function QuranMirrorPage() {
           ))}
         </div>
       )}
+      </div>
     </div>
   );
 
@@ -2822,7 +2826,7 @@ export default function QuranMirrorPage() {
         </div>
         
         {/* Content */}
-        <div className="flex-1 flex flex-col overflow-auto">
+        <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
           {isLoading ? (
             <div className="flex items-center justify-center h-full">
               <motion.div 
