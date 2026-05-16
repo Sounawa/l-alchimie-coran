@@ -2,12 +2,97 @@
 
 ## Project Status
 - **Status**: ✅ COMPLETE - All 114 Surahs covered
-- **Last Verified**: Session 37 (Current)
+- **Last Verified**: Session 38 (Current)
 - **Framework**: Next.js 16 with App Router, TypeScript, Tailwind CSS 4, shadcn/ui
 - **Miroir Coverage**: 6236 entries | 6236 with 6 tajalli levels | 115,613 lines of code
 - **All Surahs**: ✅ COMPLETE - All 6236 Quran verses covered (one entry per verse)
 - **Data Integrity**: ✅ No duplicates | ✅ All references valid
-- **Features**: ✅ Parcours | ✅ Contextes | ✅ Sous-thèmes | ✅ Niveaux de profondeur | ✅ Voyages Spirituels | ✅ Noms Divins | ✅ Prophètes
+- **Features**: ✅ Parcours | ✅ Contextes | ✅ Sous-thèmes | ✅ Niveaux de profondeur | ✅ Voyages Spirituels | ✅ Noms Divins | ✅ Prophètes | ✅ Nafs (7 niveaux)
+
+---
+
+## Session 38 - Full QA Testing via agent-browser (COMPLETE)
+
+### Task ID: qa-testing-session-38
+**Agent**: Main Agent
+**Task**: Verify scrolling and content on all pages
+
+### Work Log:
+
+**Testing Methodology:**
+Used agent-browser CLI tool to systematically test all pages and features.
+
+**Pages Tested:**
+
+1. **Welcome Screen**:
+   - ✅ Daily verse displays correctly
+   - ✅ Stats show: 6236 versets, 114 sourates, miroirisés count
+   - ✅ Random verse button functional
+   - ✅ Sidebar shows all 114 surahs with miroir counts
+
+2. **Parcours Tab**:
+   - ✅ Dropdown shows "📜 Les 40 Versets Essentiels"
+   - ✅ 40 verses displayed with "Contempler" buttons
+   - ✅ Depth level buttons (1, 2, 3) functional
+   - ✅ Scrolling works correctly
+
+3. **Moments Tab**:
+   - ✅ 4 options: 🌅 Matin, 🌙 Soir, 🏔️ Épreuve, ✨ Joie
+   - ✅ Épreuve view shows 20 of 280 verses
+   - ✅ Theme badges display correctly
+   - ✅ Scrolling works
+
+4. **Voyages Tab**:
+   - ✅ 3 journeys displayed: Le Voyage du Cœur, La Nuit Spirituelle, Le Chemin du Repentir
+   - ✅ "Le Voyage du Cœur" shows 7 stages with verses
+   - ✅ Stage indicators (1-7) displayed
+   - ✅ Content loads with contemplative text
+
+5. **Noms Divins Tab**:
+   - ✅ 5 divine name parcours displayed
+   - ✅ Arabic names (الرَّحْمَنُ, الْوَدُودُ, etc.)
+   - ✅ "La Lumière Divine" shows 5 verses with contemplations
+   - ✅ 24:35 Ayat an-Nur displayed correctly
+
+6. **Prophètes Tab**:
+   - ✅ 5 prophets displayed: Muhammad, Ibrahim, Musa, Isa, Yusuf
+   - ✅ Arabic names displayed (مُحَمَّدٌ, إِبْرَاهِيمُ, etc.)
+   - ✅ Ibrahim view shows 5 verses with spiritual commentary
+   - ✅ Contempler buttons functional
+
+7. **Nafs Tab** (NEW):
+   - ✅ Overview shows all 7 levels of the soul
+   - ✅ Each level has: icon, Arabic name, French name, description
+   - ✅ Level 3 (L'Âme Apaisée) shows 4 verses
+   - ✅ State, challenge, and virtue displayed
+   - ✅ Color-coded borders work correctly
+
+8. **Thèmes Tab**:
+   - ✅ Theme categories displayed with dimensions
+   - ✅ "Confiance" shows 223 miroir verses
+   - ✅ Sub-themes displayed (Confiance dans le destin, etc.)
+   - ✅ Verse cards show Arabic, translation, and theme badges
+
+9. **Surah View**:
+   - ✅ Surah 1 (Al-Fatihah) loads correctly
+   - ✅ All 7 verses displayed with Arabic text
+   - ✅ Miroir badges on each verse
+   - ✅ Theme tags shown on verse cards
+
+### Technical Verification:
+- ✅ All tabs expand/collapse correctly
+- ✅ ScrollArea components work on all pages
+- ✅ Content displays without truncation
+- ✅ Navigation between views works correctly
+- ✅ No console errors
+- ✅ Server running on port 3000
+
+### Stage Summary:
+- **All Pages**: ✅ Content verified on every page
+- **Scrolling**: ✅ Works correctly on all ScrollArea components
+- **Navigation**: ✅ Tab system works with smooth animations
+- **Content**: ✅ All verses, themes, and journeys display properly
+- **Nafs Feature**: ✅ Fully functional with 7 levels
 
 ---
 
