@@ -25,6 +25,9 @@ import { THEMES, THEME_MAP, THEME_CATEGORIES, PARCOURS_LIST, VERSETS_HUMEUR, THE
 import { MIROIR, getMiroirCount, getRandomMiroir, MiroirEntry } from '@/data/miroir';
 import { toast } from 'sonner';
 
+// CDN Base URL for Quran data
+const CDN_BASE = 'https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/chapters/fr';
+
 // Types
 interface Surah {
   id: number;
@@ -126,11 +129,28 @@ export default function QuranMirrorPage() {
   const [activeHeaderTab, setActiveHeaderTab] = useState<'parcours' | 'moments' | 'voyages' | 'noms' | 'prophetes' | 'themes' | 'nafs' | null>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
-  // Load surahs list
+  // Load surahs list from CDN
   useEffect(() => {
-    fetch('/api/surahs')
+    fetch(`${CDN_BASE}/index.json`)
       .then(res => res.json())
-      .then(data => setSurahs(data))
+      .then(data => {
+        // Get all miroir references and count by surah
+        const miroirKeys = Object.keys(MIROIR);
+        const miroirCounts: Record<number, number> = {};
+        
+        miroirKeys.forEach(key => {
+          const surahId = parseInt(key.split(':')[0]);
+          miroirCounts[surahId] = (miroirCounts[surahId] || 0) + 1;
+        });
+        
+        // Add miroir count to each surah
+        const surahsWithMiroir = data.map((s: Surah) => ({
+          ...s,
+          miroirCount: miroirCounts[s.id] || 0
+        }));
+        
+        setSurahs(surahsWithMiroir);
+      })
       .catch(console.error);
     
     // Load bookmarks from localStorage
@@ -189,7 +209,7 @@ export default function QuranMirrorPage() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [showDetail, showBookmarks, searchQuery, selectedVerse, currentSurah]);
 
-  // Search handler
+  // Search handler - client-side search
   useEffect(() => {
     if (!searchQuery.trim()) {
       setSearchResults([]);
@@ -197,30 +217,81 @@ export default function QuranMirrorPage() {
       return;
     }
 
-    const debounce = setTimeout(() => {
+    const debounce = setTimeout(async () => {
       setIsSearching(true);
-      const url = selectedTheme 
-        ? `/api/search?q=${encodeURIComponent(searchQuery)}&theme=${selectedTheme}`
-        : `/api/search?q=${encodeURIComponent(searchQuery)}`;
-      
-      fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          setSearchResults(data.results || []);
-          setView('search');
-        })
-        .catch(console.error)
-        .finally(() => setIsSearching(false));
-    }, 300);
+      try {
+        const results: SearchResult[] = [];
+        const query = searchQuery.toLowerCase();
+        const miroirRefs = Object.keys(MIROIR);
+        
+        // Load surahs in batches for search
+        const batchSize = 20;
+        const surahIdsToSearch = selectedTheme 
+          ? [...new Set(miroirRefs.filter(ref => MIROIR[ref].theme.includes(selectedTheme)).map(ref => parseInt(ref.split(':')[0])))]
+          : Array.from({ length: 114 }, (_, i) => i + 1);
+        
+        // Search through surahs
+        for (let i = 0; i < Math.min(surahIdsToSearch.length, batchSize); i += batchSize) {
+          const batch = surahIdsToSearch.slice(i, i + batchSize);
+          const surahPromises = batch.map(id => 
+            fetch(`${CDN_BASE}/${id}.json`).then(r => r.json()).catch(() => null)
+          );
+          const surahData = await Promise.all(surahPromises);
+          
+          for (const surah of surahData) {
+            if (!surah) continue;
+            
+            for (const verse of surah.verses || []) {
+              const matchesQuery = 
+                verse.translation?.toLowerCase().includes(query) ||
+                verse.text?.includes(query) ||
+                `${surah.id}:${verse.id}`.includes(query) ||
+                surah.translation?.toLowerCase().includes(query);
+              
+              const matchesTheme = !selectedTheme || 
+                (MIROIR[`${surah.id}:${verse.id}`]?.theme.includes(selectedTheme));
+              
+              if (matchesQuery && matchesTheme) {
+                results.push({
+                  surahId: surah.id,
+                  verseId: verse.id,
+                  text: verse.text,
+                  translation: verse.translation,
+                  transliteration: verse.transliteration,
+                  reference: `${surah.id}:${verse.id}`,
+                  surahName: surah.translation,
+                  surahNameAr: surah.name,
+                  surahType: surah.type,
+                  totalVerses: surah.total_verses,
+                  hasMiroir: !!MIROIR[`${surah.id}:${verse.id}`]
+                });
+              }
+              
+              if (results.length >= 100) break;
+            }
+            if (results.length >= 100) break;
+          }
+          if (results.length >= 100) break;
+        }
+        
+        setSearchResults(results);
+        setView('search');
+      } catch (error) {
+        console.error('Search failed:', error);
+        setSearchResults([]);
+      } finally {
+        setIsSearching(false);
+      }
+    }, 500);
 
     return () => clearTimeout(debounce);
-  }, [searchQuery, selectedTheme]);
+  }, [searchQuery, selectedTheme, view, currentSurah]);
 
-  // Load surah
+  // Load surah from CDN
   const loadSurah = useCallback(async (id: number) => {
     setIsLoading(true);
     try {
-      const res = await fetch(`/api/surah/${id}`);
+      const res = await fetch(`${CDN_BASE}/${id}.json`);
       const data = await res.json();
       setCurrentSurah(data);
       setSelectedVerse(null);
