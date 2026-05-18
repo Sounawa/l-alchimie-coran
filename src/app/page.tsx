@@ -7,7 +7,9 @@ import {
   Menu, Sparkles, Heart, Bookmark, BookmarkCheck,
   Copy, Share2, Clock, ChevronDown, ChevronUp,
   Moon, Sun, BookOpen, Home, Star, Compass, Layers, 
-  Sunrise, Sunset, Mountain, PartyPopper, Zap, Flame
+  Sunrise, Sunset, Mountain, PartyPopper, Zap, Flame,
+  Brain, Map, Network, Target, TrendingUp, Lightbulb,
+  Smile, Frown, Cloud, Angry, Meh, ThumbsUp
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -113,7 +115,7 @@ export default function QuranMirrorPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [view, setView] = useState<'welcome' | 'surah' | 'search' | 'theme' | 'parcours' | 'context' | 'journey' | 'divineName' | 'prophet' | 'nafs'>('welcome');
+  const [view, setView] = useState<'welcome' | 'surah' | 'search' | 'theme' | 'parcours' | 'context' | 'journey' | 'divineName' | 'prophet' | 'nafs' | 'intelligence' | 'cartography'>('welcome');
   const [selectedParcours, setSelectedParcours] = useState<string | null>(null);
   const [selectedContext, setSelectedContext] = useState<string | null>(null);
   const [selectedMood, setSelectedMood] = useState<string | null>(null);
@@ -126,7 +128,10 @@ export default function QuranMirrorPage() {
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [readingHistory, setReadingHistory] = useState<string[]>([]);
   const [readingProgress, setReadingProgress] = useState(0);
-  const [activeHeaderTab, setActiveHeaderTab] = useState<'parcours' | 'moments' | 'voyages' | 'noms' | 'prophetes' | 'themes' | 'nafs' | null>(null);
+  // Intelligence Adaptative states
+  const [currentMood, setCurrentMood] = useState<string | null>(null);
+  const [themeInteractions, setThemeInteractions] = useState<Record<string, number>>({});
+  const [activeHeaderTab, setActiveHeaderTab] = useState<'parcours' | 'moments' | 'voyages' | 'noms' | 'prophetes' | 'themes' | 'nafs' | 'intelligence' | 'cartographie' | null>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   // Load surahs list from CDN
@@ -164,12 +169,124 @@ export default function QuranMirrorPage() {
     if (savedHistory) {
       setReadingHistory(JSON.parse(savedHistory));
     }
+    
+    // Load theme interactions for Intelligence
+    const savedInteractions = localStorage.getItem('quran-mirror-theme-interactions');
+    if (savedInteractions) {
+      setThemeInteractions(JSON.parse(savedInteractions));
+    }
+    
+    // Load current mood
+    const savedMood = localStorage.getItem('quran-mirror-current-mood');
+    if (savedMood) {
+      setCurrentMood(savedMood);
+    }
   }, []);
 
   // Save bookmarks when changed
   useEffect(() => {
     localStorage.setItem('quran-mirror-bookmarks', JSON.stringify(bookmarks));
   }, [bookmarks]);
+
+  // Track theme interaction for Intelligence
+  const trackThemeInteraction = useCallback((themeKey: string) => {
+    setThemeInteractions(prev => {
+      const updated = { ...prev, [themeKey]: (prev[themeKey] || 0) + 1 };
+      localStorage.setItem('quran-mirror-theme-interactions', JSON.stringify(updated));
+      return updated;
+    });
+  }, []);
+
+  // Get time of day for recommendations
+  const getTimeOfDay = useCallback(() => {
+    const hour = new Date().getHours();
+    if (hour >= 5 && hour < 12) return 'matin';
+    if (hour >= 12 && hour < 17) return 'apres-midi';
+    if (hour >= 17 && hour < 21) return 'soir';
+    return 'nuit';
+  }, []);
+
+  // Get recommended verses based on mood, time, and history
+  const getRecommendedVerses = useCallback((mood?: string | null, limit: number = 5) => {
+    const recommendations: { reference: string; miroir: MiroirEntry; reason: string; score: number }[] = [];
+    const timeOfDay = getTimeOfDay();
+    
+    // Mood to theme mapping
+    const moodThemeMap: Record<string, string[]> = {
+      'joie': ['gratitude', 'amour', 'meditation'],
+      'tristesse': ['guerison', 'espoir', 'patience'],
+      'angoisse': ['confiance', 'paix', 'presence'],
+      'colere': ['patience', 'pardon', 'paix'],
+      'gratitude': ['gratitude', 'amour', 'presence'],
+      'doute': ['guidance', 'foi', 'lumiere'],
+      'serenite': ['meditation', 'presence', 'paix'],
+      'epreuve': ['patience', 'confiance', 'guerison']
+    };
+    
+    // Time of day theme mapping
+    const timeThemeMap: Record<string, string[]> = {
+      'matin': ['espoir', 'lumiere', 'gratitude', 'force'],
+      'apres-midi': ['travail', 'patience', 'guidance'],
+      'soir': ['paix', 'pardon', 'meditation'],
+      'nuit': ['presence', 'secret', 'lumiere', 'intimite']
+    };
+    
+    // Get target themes based on mood and time
+    const targetThemes = new Set<string>();
+    if (mood && moodThemeMap[mood]) {
+      moodThemeMap[mood].forEach(t => targetThemes.add(t));
+    }
+    timeThemeMap[timeOfDay]?.forEach(t => targetThemes.add(t));
+    
+    // Add user's most interacted themes
+    const topThemes = Object.entries(themeInteractions)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([key]) => key);
+    topThemes.forEach(t => targetThemes.add(t));
+    
+    // Score each miroir entry
+    Object.entries(MIROIR).forEach(([ref, miroir]) => {
+      let score = 0;
+      const reasons: string[] = [];
+      
+      // Check theme matches
+      miroir.theme.forEach(t => {
+        if (targetThemes.has(t)) {
+          score += 10;
+          const theme = THEME_MAP[t];
+          if (theme) reasons.push(theme.label);
+        }
+      });
+      
+      // Boost for user's favorite themes
+      miroir.theme.forEach(t => {
+        if (topThemes.includes(t)) {
+          score += 5;
+        }
+      });
+      
+      if (score > 0) {
+        recommendations.push({
+          reference: ref,
+          miroir,
+          reason: reasons.slice(0, 2).join(', '),
+          score
+        });
+      }
+    });
+    
+    // Sort by score and shuffle top results
+    recommendations.sort((a, b) => b.score - a.score);
+    const top = recommendations.slice(0, limit * 3);
+    // Shuffle
+    for (let i = top.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [top[i], top[j]] = [top[j], top[i]];
+    }
+    
+    return top.slice(0, limit);
+  }, [themeInteractions, getTimeOfDay]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -2072,6 +2189,393 @@ export default function QuranMirrorPage() {
     </motion.div>
   );
 
+  // Render Intelligence View - Système adaptatif
+  const renderIntelligenceView = () => {
+    const timeOfDay = getTimeOfDay();
+    const recommendations = getRecommendedVerses(currentMood, 6);
+    
+    const moods = [
+      { key: 'joie', label: 'Joie', icon: Smile, color: 'text-yellow-500' },
+      { key: 'tristesse', label: 'Tristesse', icon: Frown, color: 'text-blue-500' },
+      { key: 'angoisse', label: 'Angoisse', icon: Cloud, color: 'text-purple-500' },
+      { key: 'colere', label: 'Colère', icon: Angry, color: 'text-red-500' },
+      { key: 'gratitude', label: 'Gratitude', icon: ThumbsUp, color: 'text-green-500' },
+      { key: 'doute', label: 'Doute', icon: Meh, color: 'text-orange-500' },
+      { key: 'serenite', label: 'Sérénité', icon: Heart, color: 'text-pink-500' },
+      { key: 'epreuve', label: 'Épreuve', icon: Mountain, color: 'text-stone-500' },
+    ];
+    
+    const timeLabels: Record<string, { label: string; icon: typeof Sunrise; greeting: string }> = {
+      'matin': { label: 'Matin', icon: Sunrise, greeting: 'Bonjour' },
+      'apres-midi': { label: 'Après-midi', icon: Sun, greeting: 'Bon après-midi' },
+      'soir': { label: 'Soir', icon: Sunset, greeting: 'Bonsoir' },
+      'nuit': { label: 'Nuit', icon: Moon, greeting: 'Bonne nuit' },
+    };
+    
+    const timeInfo = timeLabels[timeOfDay];
+    const TimeIcon = timeInfo.icon;
+    
+    // Get top themes from interactions
+    const topThemes = Object.entries(themeInteractions)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5);
+    
+    return (
+      <div className="flex-1 flex flex-col min-h-0 h-full overflow-hidden">
+        {/* Header */}
+        <div className="p-4 pb-0 text-center flex-shrink-0 border-b border-border/50 bg-background/80 backdrop-blur-sm">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <div className="flex items-center justify-center gap-2 mb-1">
+              <Brain className="w-6 h-6 text-purple-400" />
+              <span className="text-xl">🧠</span>
+            </div>
+            <div className="font-arabic text-xl text-gold mb-1">الذَّكَاءُ الرُّوحِيُّ</div>
+            <div className="font-title text-base text-foreground/80">Intelligence Spirituelle</div>
+            <div className="text-[11px] text-muted-foreground mt-1">
+              Recommandations adaptées à votre état et votre parcours
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="flex-1 min-h-0 h-0 overflow-hidden">
+          <ScrollArea className="h-full">
+            <div className="p-4 space-y-6 max-w-2xl mx-auto">
+              
+              {/* Time greeting */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="p-4 rounded-xl bg-gradient-to-r from-purple-500/10 to-gold/10 border border-purple-500/20"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center">
+                    <TimeIcon className="w-6 h-6 text-purple-400" />
+                  </div>
+                  <div>
+                    <div className="text-lg font-medium">{timeInfo.greeting}</div>
+                    <div className="text-xs text-muted-foreground">
+                      {timeInfo.label} • Moment propice à la contemplation
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* Mood selector */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                <h3 className="text-sm font-medium mb-3 flex items-center gap-2">
+                  <Target className="w-4 h-4 text-gold" />
+                  Comment vous sentez-vous ?
+                </h3>
+                <div className="grid grid-cols-4 gap-2">
+                  {moods.map(mood => {
+                    const Icon = mood.icon;
+                    const isSelected = currentMood === mood.key;
+                    return (
+                      <motion.button
+                        key={mood.key}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => {
+                          setCurrentMood(isSelected ? null : mood.key);
+                          localStorage.setItem('quran-mirror-current-mood', isSelected ? '' : mood.key);
+                        }}
+                        className={`p-3 rounded-xl border transition-all flex flex-col items-center gap-1
+                          ${isSelected 
+                            ? 'bg-purple-500/20 border-purple-500/50' 
+                            : 'border-border/50 hover:border-purple-500/30 bg-card'}`}
+                      >
+                        <Icon className={`w-5 h-5 ${mood.color}`} />
+                        <span className="text-[10px] text-muted-foreground">{mood.label}</span>
+                      </motion.button>
+                    );
+                  })}
+                </div>
+              </motion.div>
+              
+              {/* Recommended verses */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <h3 className="text-sm font-medium mb-3 flex items-center gap-2">
+                  <Lightbulb className="w-4 h-4 text-yellow-500" />
+                  Versets recommandés pour vous
+                  {currentMood && <Badge variant="outline" className="text-[10px]">{moods.find(m => m.key === currentMood)?.label}</Badge>}
+                </h3>
+                <div className="space-y-2">
+                  {recommendations.map((rec, i) => {
+                    const [surahId, verseId] = rec.reference.split(':').map(Number);
+                    const surah = surahs.find(s => s.id === surahId);
+                    return (
+                      <motion.button
+                        key={rec.reference}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3 + i * 0.05 }}
+                        onClick={() => {
+                          loadSurah(surahId);
+                          rec.miroir.theme.forEach(t => trackThemeInteraction(t));
+                        }}
+                        className="w-full p-3 rounded-xl border border-border bg-card hover:bg-white/[0.02] transition-all text-left group"
+                      >
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="px-2 py-0.5 rounded-full text-[10px] bg-gold/10 text-gold">
+                            {rec.reference}
+                          </span>
+                          <span className="text-[10px] text-muted-foreground">{surah?.translation}</span>
+                          <span className="ml-auto text-[9px] text-purple-400/60">{rec.reason}</span>
+                        </div>
+                        <p className="text-xs text-foreground/80 line-clamp-2">{rec.miroir.mirrorVersion}</p>
+                      </motion.button>
+                    );
+                  })}
+                </div>
+              </motion.div>
+              
+              {/* Theme analytics */}
+              {topThemes.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <h3 className="text-sm font-medium mb-3 flex items-center gap-2">
+                    <TrendingUp className="w-4 h-4 text-green-500" />
+                    Vos thèmes les plus consultés
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {topThemes.map(([key, count], i) => {
+                      const theme = THEME_MAP[key];
+                      if (!theme) return null;
+                      return (
+                        <div
+                          key={key}
+                          className="px-3 py-1.5 rounded-full text-[11px] border flex items-center gap-2"
+                          style={{ 
+                            background: theme.bg, 
+                            borderColor: theme.border, 
+                            color: theme.color 
+                          }}
+                        >
+                          <span>{theme.ar} {theme.label}</span>
+                          <span className="opacity-60">({count})</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </motion.div>
+              )}
+              
+            </div>
+          </ScrollArea>
+        </div>
+      </div>
+    );
+  };
+
+  // Render Cartography View - Cartographie Spirituelle
+  const renderCartographyView = () => {
+    // Get verse count per theme
+    const themeVerseCounts: Record<string, number> = {};
+    Object.values(MIROIR).forEach(miroir => {
+      miroir.theme.forEach(t => {
+        themeVerseCounts[t] = (themeVerseCounts[t] || 0) + 1;
+      });
+    });
+    
+    return (
+      <div className="flex-1 flex flex-col min-h-0 h-full overflow-hidden">
+        {/* Header */}
+        <div className="p-4 pb-0 text-center flex-shrink-0 border-b border-border/50 bg-background/80 backdrop-blur-sm">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <div className="flex items-center justify-center gap-2 mb-1">
+              <Map className="w-6 h-6 text-emerald-400" />
+              <span className="text-xl">🗺️</span>
+            </div>
+            <div className="font-arabic text-xl text-gold mb-1">خَرِيطَةُ الْأَرْوَاحِ</div>
+            <div className="font-title text-base text-foreground/80">Cartographie Spirituelle</div>
+            <div className="text-[11px] text-muted-foreground mt-1">
+              Explorez les connexions entre les thèmes et les versets
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="flex-1 min-h-0 h-0 overflow-hidden">
+          <ScrollArea className="h-full">
+            <div className="p-4 space-y-6 max-w-3xl mx-auto">
+              
+              {/* 7 Nafs levels map */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+              >
+                <h3 className="text-sm font-medium mb-3 flex items-center gap-2">
+                  <span className="text-rose-400">💙</span>
+                  Carte des 7 Niveaux de l'Âme
+                </h3>
+                <div className="relative p-4 rounded-xl border border-border bg-card overflow-hidden">
+                  {/* Vertical line */}
+                  <div className="absolute left-8 top-8 bottom-8 w-0.5 bg-gradient-to-b from-red-500 via-green-500 to-cyan-500 opacity-30" />
+                  
+                  <div className="space-y-2">
+                    {NAFS_LEVELS?.map((level, i) => (
+                      <motion.button
+                        key={level.level}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.1 + i * 0.05 }}
+                        onClick={() => {
+                          setSelectedNafsLevel(level.level);
+                          setView('nafs');
+                        }}
+                        className="w-full flex items-center gap-4 p-2 rounded-lg hover:bg-white/[0.02] transition-all group"
+                      >
+                        {/* Node */}
+                        <div 
+                          className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
+                          style={{ backgroundColor: level.color }}
+                        >
+                          {level.level}
+                        </div>
+                        
+                        {/* Content */}
+                        <div className="flex-1 min-w-0 text-left">
+                          <div className="flex items-center gap-2">
+                            <span className="font-arabic text-sm text-gold">{level.ar}</span>
+                            <span className="text-xs text-foreground/80">{level.fr}</span>
+                          </div>
+                          <div className="text-[10px] text-muted-foreground">{level.state}</div>
+                        </div>
+                        
+                        {/* Arrow */}
+                        <ChevronRight className="w-4 h-4 text-muted-foreground/30 group-hover:text-gold transition-colors" />
+                      </motion.button>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* Dimensional view */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                <h3 className="text-sm font-medium mb-3 flex items-center gap-2">
+                  <Layers className="w-4 h-4 text-blue-400" />
+                  Les 5 Dimensions Spirituelles
+                </h3>
+                <div className="space-y-2">
+                  {THEME_CATEGORIES?.map((category, i) => {
+                    const totalVerses = category.themes.reduce((sum, t) => sum + (themeVerseCounts[t] || 0), 0);
+                    return (
+                      <motion.button
+                        key={category.key}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.2 + i * 0.05 }}
+                        onClick={() => {
+                          setSelectedTheme(category.themes[0]);
+                          setView('theme');
+                        }}
+                        className="w-full p-3 rounded-xl border border-border bg-card hover:bg-white/[0.02] transition-all text-left group"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">{category.icon}</span>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2">
+                              <span className="font-arabic text-sm text-gold">{category.ar}</span>
+                              <span className="text-xs text-foreground/80">{category.label}</span>
+                            </div>
+                            <div className="text-[10px] text-muted-foreground">
+                              {category.themes.length} thèmes • {totalVerses} versets
+                            </div>
+                          </div>
+                          <ChevronRight className="w-4 h-4 text-muted-foreground/30 group-hover:text-gold transition-colors" />
+                        </div>
+                        
+                        {/* Progress bar */}
+                        <div className="mt-2 h-1 bg-white/[0.03] rounded-full overflow-hidden">
+                          <motion.div 
+                            initial={{ width: 0 }}
+                            animate={{ width: `${Math.min(100, totalVerses / 200)}%` }}
+                            transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
+                            className="h-full bg-gradient-to-r from-gold/50 to-purple/50 rounded-full"
+                          />
+                        </div>
+                      </motion.button>
+                    );
+                  })}
+                </div>
+              </motion.div>
+              
+              {/* Theme network */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <h3 className="text-sm font-medium mb-3 flex items-center gap-2">
+                  <Network className="w-4 h-4 text-purple-400" />
+                  Réseau des Thèmes
+                </h3>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  {THEME_CATEGORIES?.map(category => (
+                    <div key={category.key} className="p-3 rounded-xl border border-border bg-card">
+                      <div className="text-lg mb-2">{category.icon}</div>
+                      <div className="font-arabic text-sm text-gold mb-1">{category.ar}</div>
+                      <div className="text-xs text-foreground/80">{category.label}</div>
+                      <div className="flex flex-wrap gap-1 mt-2">
+                        {category.themes.slice(0, 3).map(t => {
+                          const theme = THEME_MAP[t];
+                          if (!theme) return null;
+                          const count = themeVerseCounts[t] || 0;
+                          return (
+                            <motion.button
+                              key={t}
+                              whileHover={{ scale: 1.05 }}
+                              onClick={() => {
+                                setSelectedTheme(t);
+                                setView('theme');
+                                trackThemeInteraction(t);
+                              }}
+                              className="px-2 py-0.5 rounded text-[9px] border transition-all"
+                              style={{ 
+                                background: theme.bg, 
+                                borderColor: theme.border, 
+                                color: theme.color 
+                              }}
+                            >
+                              {theme.label} ({count})
+                            </motion.button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+              
+            </div>
+          </ScrollArea>
+        </div>
+      </div>
+    );
+  };
+
   // Render detail panel
   const renderDetail = () => {
     if (!selectedVerse || !currentSurah) return null;
@@ -2576,6 +3080,42 @@ export default function QuranMirrorPage() {
               {activeHeaderTab === 'themes' ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
             </button>
 
+            <div className="w-px h-5 bg-border/50 mx-1" />
+
+            {/* Intelligence Tab */}
+            <button
+              onClick={() => {
+                setActiveHeaderTab(activeHeaderTab === 'intelligence' ? null : 'intelligence');
+                if (activeHeaderTab !== 'intelligence') {
+                  setView('intelligence');
+                } else {
+                  setView('welcome');
+                }
+              }}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all whitespace-nowrap
+                ${activeHeaderTab === 'intelligence' || view === 'intelligence' ? 'bg-purple-500/15 text-purple-400' : 'text-muted-foreground hover:text-foreground hover:bg-white/[0.03]'}`}
+            >
+              <Brain className="w-3.5 h-3.5" />
+              <span>Intelligence</span>
+            </button>
+
+            {/* Cartographie Tab */}
+            <button
+              onClick={() => {
+                setActiveHeaderTab(activeHeaderTab === 'cartographie' ? null : 'cartographie');
+                if (activeHeaderTab !== 'cartographie') {
+                  setView('cartography');
+                } else {
+                  setView('welcome');
+                }
+              }}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all whitespace-nowrap
+                ${activeHeaderTab === 'cartographie' || view === 'cartography' ? 'bg-emerald-500/15 text-emerald-400' : 'text-muted-foreground hover:text-foreground hover:bg-white/[0.03]'}`}
+            >
+              <Map className="w-3.5 h-3.5" />
+              <span>Carte</span>
+            </button>
+
             {/* Clear filter button */}
             {(selectedTheme || selectedParcours || selectedContext || selectedJourney || selectedDivineName || selectedProphet || selectedNafsLevel) && (
               <Button
@@ -2900,6 +3440,8 @@ export default function QuranMirrorPage() {
               {view === 'divineName' && renderDivineNameView()}
               {view === 'prophet' && renderProphetView()}
               {view === 'nafs' && renderNafsView()}
+              {view === 'intelligence' && renderIntelligenceView()}
+              {view === 'cartography' && renderCartographyView()}
             </>
           )}
         </div>
