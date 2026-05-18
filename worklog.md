@@ -7,8 +7,52 @@
 - **Miroir Coverage**: 6236 entries | 6236 with 6 tajalli levels | 115,613 lines of code
 - **All Surahs**: ✅ COMPLETE - All 6236 Quran verses covered (one entry per verse)
 - **Data Integrity**: ✅ No duplicates | ✅ All references valid
-- **Features**: ✅ Parcours | ✅ Contextes | ✅ Sous-thèmes | ✅ Niveaux de profondeur | ✅ Voyages Spirituels | ✅ Noms Divins | ✅ Prophètes | ✅ Nafs (7 niveaux)
+- **Features**: ✅ Parcours | ✅ Contextes | ✅ Sous-thèmes | ✅ Niveaux de profondeur | ✅ Voyages Spirituels | ✅ Noms Divins | ✅ Prophètes | ✅ Nafs (7 niveaux) | ✅ Intelligence Adaptative | ✅ Cartographie Spirituelle
 - **Deployment**: ✅ GitHub Pages Ready (Static Export)
+
+---
+
+## Session 41 - Intelligence Adaptative & Cartographie Spirituelle (COMPLETE)
+
+### Task ID: intelligence-cartography
+**Agent**: Main Agent
+**Task**: Implement Intelligence Adaptative (recommendations) and Cartographie Spirituelle (visual map)
+
+### Work Log:
+
+**1. Intelligence Adaptative (🧠) - Fully Implemented:**
+- Added 8 mood/estado selector: Joie, Tristesse, Angoisse, Colère, Gratitude, Doute, Sérénité, Épreuve
+- Implemented theme interaction tracking with localStorage persistence
+- Created recommendation algorithm based on:
+  - Current mood (maps moods to appropriate themes)
+  - Time of day (matin, après-midi, soir, nuit)
+  - User's most consulted themes
+- Time-based greetings with icons (Sunrise, Sun, Sunset, Moon)
+- Analytics section showing most consulted themes
+
+**2. Cartographie Spirituelle (🗺️) - Fully Implemented:**
+- Visual map of 7 Nafs levels with progression line
+- 5 Spiritual Dimensions visualization with progress bars
+- Theme network grid showing themes by dimension
+- Interactive navigation to themes and Nafs levels
+- Verse counts per theme displayed
+
+**Technical Changes:**
+- Added new icons: Brain, Map, Network, Target, TrendingUp, Lightbulb, Smile, Frown, Cloud, Angry, Meh, ThumbsUp
+- Added new view types: 'intelligence', 'cartography'
+- Added states: currentMood, themeInteractions
+- Added helper functions:
+  - `trackThemeInteraction()` - Records theme views to localStorage
+  - `getTimeOfDay()` - Returns current time period
+  - `getRecommendedVerses()` - AI-powered recommendations
+- Added render functions: `renderIntelligenceView()`, `renderCartographyView()`
+- Updated header with new tabs (purple for Intelligence, emerald for Cartography)
+
+### Stage Summary:
+- **Intelligence**: ✅ Mood-based recommendations, time-aware suggestions, theme tracking
+- **Cartography**: ✅ Visual map of Nafs, dimensions, and theme network
+- **UI**: ✅ New tabs in header with distinct colors
+- **Deployment**: ✅ Pushed to GitHub Pages
 
 ---
 
