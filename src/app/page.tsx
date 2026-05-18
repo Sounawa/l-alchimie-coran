@@ -2300,7 +2300,7 @@ export default function QuranMirrorPage() {
                 </div>
               </motion.div>
               
-              {/* Recommended verses */}
+              {/* Recommended verses with Tajalli */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -2311,31 +2311,60 @@ export default function QuranMirrorPage() {
                   Versets recommandés pour vous
                   {currentMood && <Badge variant="outline" className="text-[10px]">{moods.find(m => m.key === currentMood)?.label}</Badge>}
                 </h3>
-                <div className="space-y-2">
+                <div className="space-y-3">
                   {recommendations.map((rec, i) => {
                     const [surahId, verseId] = rec.reference.split(':').map(Number);
                     const surah = surahs.find(s => s.id === surahId);
                     return (
-                      <motion.button
+                      <motion.div
                         key={rec.reference}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3 + i * 0.05 }}
-                        onClick={() => {
-                          loadSurah(surahId);
-                          rec.miroir.theme.forEach(t => trackThemeInteraction(t));
-                        }}
-                        className="w-full p-3 rounded-xl border border-border bg-card hover:bg-white/[0.02] transition-all text-left group"
+                        className="rounded-xl border border-border bg-card overflow-hidden"
                       >
-                        <div className="flex items-center gap-2 mb-2">
-                          <span className="px-2 py-0.5 rounded-full text-[10px] bg-gold/10 text-gold">
-                            {rec.reference}
-                          </span>
-                          <span className="text-[10px] text-muted-foreground">{surah?.translation}</span>
-                          <span className="ml-auto text-[9px] text-purple-400/60">{rec.reason}</span>
-                        </div>
-                        <p className="text-xs text-foreground/80 line-clamp-2">{rec.miroir.mirrorVersion}</p>
-                      </motion.button>
+                        {/* Header - clickable to load surah */}
+                        <button
+                          onClick={() => {
+                            loadSurah(surahId);
+                            rec.miroir.theme.forEach(t => trackThemeInteraction(t));
+                          }}
+                          className="w-full p-3 hover:bg-white/[0.02] transition-all text-left"
+                        >
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className="px-2 py-0.5 rounded-full text-[10px] bg-gold/10 text-gold">
+                              {rec.reference}
+                            </span>
+                            <span className="text-[10px] text-muted-foreground">{surah?.translation}</span>
+                            <span className="ml-auto text-[9px] text-purple-400/60">{rec.reason}</span>
+                          </div>
+                          <p className="text-xs text-foreground/80 line-clamp-2">{rec.miroir.mirrorVersion}</p>
+                        </button>
+                        
+                        {/* Tajalli levels - 6 levels */}
+                        {rec.miroir.tajalli && rec.miroir.tajalli.length > 0 && (
+                          <div className="border-t border-border/50">
+                            <Accordion type="single" collapsible className="w-full">
+                              {rec.miroir.tajalli.map((t, ti) => (
+                                <AccordionItem key={ti} value={`tajalli-${i}-${ti}`} className="border-b border-border/30 last:border-0">
+                                  <AccordionTrigger className="px-3 py-2 hover:bg-white/[0.01] text-xs">
+                                    <div className="flex items-center gap-2">
+                                      <span style={{ color: t.color }}>◆</span>
+                                      <span style={{ color: t.color }} className="font-medium">
+                                        N{ti + 1} — {t.label}
+                                      </span>
+                                      <span className="font-arabic text-[10px] text-muted-foreground">{t.ar}</span>
+                                    </div>
+                                  </AccordionTrigger>
+                                  <AccordionContent className="px-3 pb-3 text-[11px] text-foreground/70 leading-relaxed">
+                                    {t.text}
+                                  </AccordionContent>
+                                </AccordionItem>
+                              ))}
+                            </Accordion>
+                          </div>
+                        )}
+                      </motion.div>
                     );
                   })}
                 </div>
@@ -2566,6 +2595,82 @@ export default function QuranMirrorPage() {
                       </div>
                     </div>
                   ))}
+                </div>
+              </motion.div>
+              
+              {/* 6 Tajalli Levels Map */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
+                <h3 className="text-sm font-medium mb-3 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-gold" />
+                  Les 6 Regards du Tajalli
+                </h3>
+                <div className="p-4 rounded-xl border border-gold/20 bg-gradient-to-br from-gold-dim/20 to-purple/5">
+                  <p className="text-xs text-muted-foreground mb-4">
+                    Chaque verset peut être contemplé sous 6 angles différents, révélant des couches de sens de plus en plus profondes.
+                  </p>
+                  
+                  {/* 6 Tajalli levels explanation */}
+                  <div className="space-y-2 mb-4">
+                    {[
+                      { level: 1, label: "La Forme", ar: "الأصل", color: "var(--gold)", desc: "Le sens littéral et apparent du verset" },
+                      { level: 2, label: "Le Reflet", ar: "المرصاد", color: "var(--mirror)", desc: "Ce que le verset me renvoie de moi-même" },
+                      { level: 3, label: "L'Inversion", ar: "القلب", color: "var(--purple)", desc: "Le sens renversé, la perspective divine" },
+                      { level: 4, label: "L'Universel", ar: "الكون", color: "#34d399", desc: "Le sens cosmique et universel" },
+                      { level: 5, label: "Le Secret", ar: "السر", color: "#fb7185", desc: "Le sens caché, intime et spirituel" },
+                      { level: 6, label: "L'Ombre", ar: "الظل", color: "#6366f1", desc: "L'ombre portée, ce qui résiste ou fuit" }
+                    ].map((t) => (
+                      <div key={t.level} className="flex items-center gap-3 p-2 rounded-lg bg-white/[0.02]">
+                        <div 
+                          className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold text-white flex-shrink-0"
+                          style={{ backgroundColor: t.color }}
+                        >
+                          {t.level}
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2">
+                            <span style={{ color: t.color }} className="text-xs font-medium">{t.label}</span>
+                            <span className="font-arabic text-[10px] text-muted-foreground">{t.ar}</span>
+                          </div>
+                          <div className="text-[10px] text-muted-foreground">{t.desc}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {/* Sample verse with Tajalli */}
+                  <div className="border-t border-border/50 pt-4">
+                    <p className="text-[10px] text-muted-foreground mb-2">Exemple avec le verset 1:1 :</p>
+                    {(() => {
+                      const sampleMiroir = MIROIR["1:1"];
+                      if (!sampleMiroir) return null;
+                      return (
+                        <div className="rounded-lg border border-border bg-card overflow-hidden">
+                          <Accordion type="single" collapsible className="w-full">
+                            {sampleMiroir.tajalli.map((t, ti) => (
+                              <AccordionItem key={ti} value={`sample-tajalli-${ti}`} className="border-b border-border/30 last:border-0">
+                                <AccordionTrigger className="px-3 py-2 hover:bg-white/[0.01] text-xs">
+                                  <div className="flex items-center gap-2">
+                                    <span style={{ color: t.color }}>◆</span>
+                                    <span style={{ color: t.color }} className="font-medium">
+                                      N{ti + 1} — {t.label}
+                                    </span>
+                                    <span className="font-arabic text-[10px] text-muted-foreground">{t.ar}</span>
+                                  </div>
+                                </AccordionTrigger>
+                                <AccordionContent className="px-3 pb-3 text-[11px] text-foreground/70 leading-relaxed">
+                                  {t.text}
+                                </AccordionContent>
+                              </AccordionItem>
+                            ))}
+                          </Accordion>
+                        </div>
+                      );
+                    })()}
+                  </div>
                 </div>
               </motion.div>
               
