@@ -1105,7 +1105,7 @@ export default function QuranMirrorPage() {
 
                     {depthLevel >= 3 && (
                       <div className="grid grid-cols-2 gap-1.5 mt-3 pt-3 border-t border-border/30">
-                        {item.miroir.tajalli.slice(0, 4).map((t, i) => (
+                        {item.miroir.tajalli.map((t, i) => (
                           <div key={i} className="p-1.5 rounded bg-white/[0.02]">
                             <span className="text-[10px] font-medium" style={{ color: t.color }}>{t.label}</span>
                             <p className="text-[10px] text-muted-foreground leading-relaxed">{t.text}</p>
